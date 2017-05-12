@@ -1,0 +1,13 @@
+/* 
+  Localizable.strings
+  Afostream
+
+  Created by Bahri on 11/05/2017.
+  Copyright © 2017 Bahri. All rights reserved.
+*/
+
+"Home" = "Home";
+"Favoris" = "Favoris";
+"Account" = "Account";
+"ErrorLoginField" = "Veuillez bien saisir vos identifiants";
+"Error" = "Erreur";

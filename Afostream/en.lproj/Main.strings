@@ -1,0 +1,21 @@
+
+/* Class = "UILabel"; text = "My account"; ObjectID = "1h2-1O-Ul6"; */
+"1h2-1O-Ul6.text" = "My account";
+
+/* Class = "UIButton"; normalTitle = "SIGN IN"; ObjectID = "5jR-Eg-MSt"; */
+"5jR-Eg-MSt.normalTitle" = "SIGN IN";
+
+/* Class = "UITextField"; placeholder = "Username"; ObjectID = "eEh-rM-c4V"; */
+"eEh-rM-c4V.placeholder" = "Username";
+
+/* Class = "UILabel"; text = "favoris"; ObjectID = "jyo-xN-i52"; */
+"jyo-xN-i52.text" = "favoris";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "u66-gl-8G8"; */
+"u66-gl-8G8.text" = "Label";
+
+/* Class = "UITextField"; placeholder = "Password"; ObjectID = "wjK-zQ-1pJ"; */
+"wjK-zQ-1pJ.placeholder" = "Password";
+
+/* Class = "UIButton"; normalTitle = "Forget password"; ObjectID = "zza-DA-RQz"; */
+"zza-DA-RQz.normalTitle" = "Forget password";
