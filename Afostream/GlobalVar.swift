@@ -34,10 +34,14 @@ class GlobalVar: NSObject {
         static var drmLicenseUrl:String = ""
         static var StripeKey:String = ""
         
-        static var  user_id=""
+        static var  user_id=0
         static var  CountryCode=""
         
         static var  ApiUrlParams=""
+        
+        static var catNameArr=[String]()
+        static var catIDArr=[Int]()
+        static var menuImgArr=[UIImage]()
         
         static var  access_token=""
         static var  access_token_api=""
@@ -56,6 +60,7 @@ class GlobalVar: NSObject {
         static var user_postalAddressCountry=""
         static var user_phone=""
         static var user_address=""
+        static var user_picture_url=""
         
         
         static var  Subscription_subscriptionBillingUuid=""

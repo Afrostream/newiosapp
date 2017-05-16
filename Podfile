@@ -8,6 +8,7 @@ target 'Afostream' do
 
  pod 'Alamofire', '~> 4.4'
 pod 'AlamofireNetworkActivityIndicator', '~> 2.0'
+pod 'SDWebImage', '~>3.8'
 
   # Pods for Afostream
 

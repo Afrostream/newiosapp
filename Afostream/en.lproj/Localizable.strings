@@ -11,3 +11,4 @@
 "Account" = "Account";
 "ErrorLoginField" = "Veuillez bien saisir vos identifiants";
 "Error" = "Erreur";
+"ErrorAccessToken" = "Erreur d'authentification";

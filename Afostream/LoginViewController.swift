@@ -31,6 +31,17 @@ class LoginViewController: UIViewController {
         UIApplication.shared.endIgnoringInteractionEvents()
         
     }
+    func ShowAlert(Title:String ,Message:String)
+    {
+        let alertController = UIAlertController(title: Title, message: Message, preferredStyle: .alert)
+        
+        let defaultAction = UIAlertAction(title: "OK", style: .cancel, handler: nil)
+        alertController.addAction(defaultAction)
+        
+        self.present(alertController, animated: true, completion: nil)
+    }
+    
+
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -45,21 +56,11 @@ class LoginViewController: UIViewController {
         
         
 
-        let tapGesture = UITapGestureRecognizer(target: self, action:Selector("tap:"))
+        _ = UITapGestureRecognizer(target: self, action:Selector(("tap:")))
       //  view.addGestureRecognizer(tapGesture)
     }
     
-    func ShowAlert(Title:String ,Message:String)
-    {
-        let alertController = UIAlertController(title: Title, message: Message, preferredStyle: .alert)
-        
-        let defaultAction = UIAlertAction(title: "OK", style: .cancel, handler: nil)
-        alertController.addAction(defaultAction)
-        
-        self.present(alertController, animated: true, completion: nil)
-    }
-    
-    func MakeLogin(Username:String ,Password :String)
+       func MakeLogin(Username:String ,Password :String)
     {
         
         if Username.isEmpty || Password.isEmpty
@@ -146,7 +147,10 @@ class LoginViewController: UIViewController {
                 break
                 
             case .failure(_):
-                print("There is an error")
+                let errorMessage = "General error message"
+                
+                
+                print(errorMessage) //Contains General error message or specific.
                 break
             }
         }

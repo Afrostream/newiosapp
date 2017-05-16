@@ -203,6 +203,33 @@
                                             <outlet property="lblMenu" destination="u66-gl-8G8" id="GXJ-Co-KBZ"/>
                                         </connections>
                                     </tableViewCell>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="CatTableViewCell" id="Ast-VI-WcX" customClass="CatTableViewCell" customModule="Afostream" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="72" width="320" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Ast-VI-WcX" id="TUZ-ol-qYQ">
+                                            <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cyT-bX-f6o">
+                                                    <rect key="frame" x="8" y="12" width="304" height="21"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="21" id="zhl-2L-baI"/>
+                                                    </constraints>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="cyT-bX-f6o" firstAttribute="leading" secondItem="TUZ-ol-qYQ" secondAttribute="leadingMargin" id="7dz-Q6-1rF"/>
+                                                <constraint firstItem="cyT-bX-f6o" firstAttribute="top" secondItem="TUZ-ol-qYQ" secondAttribute="topMargin" constant="4" id="BAF-qY-eAQ"/>
+                                                <constraint firstItem="cyT-bX-f6o" firstAttribute="trailing" secondItem="TUZ-ol-qYQ" secondAttribute="trailingMargin" id="iJa-b9-RlQ"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="lblCat" destination="cyT-bX-f6o" id="mEy-Ja-hd6"/>
+                                        </connections>
+                                    </tableViewCell>
                                 </prototypes>
                                 <connections>
                                     <outlet property="dataSource" destination="9GX-ZQ-ald" id="SRi-DK-IMv"/>
@@ -264,6 +291,11 @@
                             <constraint firstItem="bFf-3e-YeX" firstAttribute="bottom" secondItem="vSG-cf-m2i" secondAttribute="top" id="ztU-0U-8Q0"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="imgUser" destination="UCr-HO-qHp" id="hnm-Xh-ua8"/>
+                        <outlet property="lblEmailUser" destination="xCS-0h-RsW" id="i9v-1b-0AT"/>
+                        <outlet property="lblNameUser" destination="zrl-f4-lnn" id="VWv-FV-8WJ"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="EZ4-7v-zpG" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

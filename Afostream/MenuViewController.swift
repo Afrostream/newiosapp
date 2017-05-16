@@ -7,16 +7,23 @@
 //
 
 import UIKit
+import SDWebImage
 
 class MenuViewController: UIViewController,UITableViewDelegate,UITableViewDataSource {
     
-    var menuNameArr=[String]()
-    var menuImgArr=[UIImage]()
+ 
 
+    @IBOutlet weak var lblEmailUser: UILabel!
+    @IBOutlet weak var lblNameUser: UILabel!
+    @IBOutlet weak var imgUser: UIImageView!
+    
+
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        menuNameArr=[NSLocalizedString("Home", comment: "") ,NSLocalizedString("Favoris", comment: "") ,NSLocalizedString("Account", comment: "") ]
-        menuImgArr=[UIImage(named: "UserAccountIcon")!,UIImage(named: "UserAccountIcon")!,UIImage(named: "UserAccountIcon")!]
+               imgUser.sd_setImage(with: URL(string: GlobalVar.StaticVar.user_picture_url), placeholderImage:#imageLiteral(resourceName: "FanartPlaceholderSmall"))
+        lblNameUser.text = GlobalVar.StaticVar.user_first_name + " " + GlobalVar.StaticVar.user_last_name
+        lblEmailUser.text = GlobalVar.StaticVar.user_email
 
         // Do any additional setup after loading the view.
     }
@@ -29,14 +36,34 @@ class MenuViewController: UIViewController,UITableViewDelegate,UITableViewDataSo
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
-        return menuImgArr.count
+        return GlobalVar.StaticVar.catNameArr.count
         
     }
+    
+    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        return ""
+    }
+    
+
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        
+         if indexPath.row < 3 {
         let cell=tableView.dequeueReusableCell(withIdentifier: "MenuTableViewCell") as! MenuTableViewCell
-        cell.lblMenu.text! = menuNameArr[indexPath.row]
-        cell.imgMenu.image = menuImgArr[indexPath.row]
+        cell.lblMenu.text! = GlobalVar.StaticVar.catNameArr[indexPath.row]
+        
+       
+       cell.imgMenu.image = GlobalVar.StaticVar.menuImgArr[indexPath.row]
+        
         return cell
+            }
+         else
+         {
+            
+            let cell=tableView.dequeueReusableCell(withIdentifier: "CatTableViewCell") as! CatTableViewCell
+            cell.lblCat.text! = GlobalVar.StaticVar.catNameArr[indexPath.row]
+
+         return cell
+        }
         
     }
     
