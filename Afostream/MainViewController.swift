@@ -140,8 +140,12 @@ class MainViewController: UIViewController {
             
         ]
         
-        GlobalVar.StaticVar.catNameArr=[NSLocalizedString("Home", comment: "") ,NSLocalizedString("Favoris", comment: "") ,NSLocalizedString("Account", comment: "") ]
+        let menu = [NSLocalizedString("Home", comment: "") ,NSLocalizedString("Favoris", comment: "") ,NSLocalizedString("Account", comment: "") ]
         GlobalVar.StaticVar.menuImgArr=[UIImage(named: "UserAccountIcon")!,UIImage(named: "UserAccountIcon")!,UIImage(named: "UserAccountIcon")!]
+        
+       
+        
+        
         
 
         self.StartLoadingSpinner()
@@ -170,7 +174,11 @@ class MainViewController: UIViewController {
                         }
 
                     }
-                
+                     let section1 = SectionData(title: "Afrostream", data: menu)
+                    let section2 = SectionData(title: NSLocalizedString("CategoriesMenu", comment: "") , data: GlobalVar.StaticVar.catNameArr)
+                    
+                    
+                GlobalVar.StaticVar.menuSections = [section1,section2]
                     
               
                     /*let label = JSON["label"] as! String

@@ -21,8 +21,31 @@ extension UIColor {
 }
 
 
+struct SectionData {
+    let title: String
+    let data : [String]
+    
+    var numberOfItems: Int {
+        return data.count
+    }
+    
+    subscript(index: Int) -> String {
+        return data[index]
+    }
+}
 
+extension SectionData {
+    //  Putting a new init method here means we can
+    //  keep the original, memberwise initaliser.
+    init(title: String, data: String...) {
+        self.title = title
+        self.data  = data
+    }
+}
 class GlobalVar: NSObject {
+    
+    
+    
     
        struct StaticVar{
     
@@ -73,6 +96,11 @@ class GlobalVar: NSObject {
         
         static let   CouponUUIDGenStaging = "e9d0c006-175a-4564-a736-7cc9edb3e532"
         static let   CouponUUIDGenProd = "d9e879c7-e445-409f-ad44-817e30e62fc0"
+        
+        
+        static var menuSections: [SectionData] = [SectionData]()
+ 
+
     }
 
 }

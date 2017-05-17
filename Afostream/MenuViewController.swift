@@ -36,23 +36,26 @@ class MenuViewController: UIViewController,UITableViewDelegate,UITableViewDataSo
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
-        return GlobalVar.StaticVar.catNameArr.count
+        return GlobalVar.StaticVar.menuSections[section].numberOfItems
         
     }
     
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        return ""
+        return GlobalVar.StaticVar.menuSections[section].title
+    }
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return GlobalVar.StaticVar.menuSections.count
     }
     
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-         if indexPath.row < 3 {
+         if indexPath.section  == 0 {
         let cell=tableView.dequeueReusableCell(withIdentifier: "MenuTableViewCell") as! MenuTableViewCell
-        cell.lblMenu.text! = GlobalVar.StaticVar.catNameArr[indexPath.row]
+        cell.lblMenu.text! = GlobalVar.StaticVar.menuSections[indexPath.section][indexPath.row]
         
        
-       cell.imgMenu.image = GlobalVar.StaticVar.menuImgArr[indexPath.row]
+        cell.imgMenu.image = GlobalVar.StaticVar.menuImgArr[indexPath.row]
         
         return cell
             }
@@ -60,8 +63,7 @@ class MenuViewController: UIViewController,UITableViewDelegate,UITableViewDataSo
          {
             
             let cell=tableView.dequeueReusableCell(withIdentifier: "CatTableViewCell") as! CatTableViewCell
-            cell.lblCat.text! = GlobalVar.StaticVar.catNameArr[indexPath.row]
-
+            cell.lblCat.text! = GlobalVar.StaticVar.menuSections[indexPath.section][indexPath.row]
          return cell
         }
         
@@ -70,6 +72,9 @@ class MenuViewController: UIViewController,UITableViewDelegate,UITableViewDataSo
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
         let revealviewcontroller:SWRevealViewController = self.revealViewController()
+        
+    if indexPath.section == 0
+    {
         
         let cell:MenuTableViewCell = tableView.cellForRow(at: indexPath) as! MenuTableViewCell
   
@@ -103,6 +108,21 @@ class MenuViewController: UIViewController,UITableViewDelegate,UITableViewDataSo
             revealviewcontroller.pushFrontViewController(newFrontController, animated: true)
             
         }
+    }else if indexPath.section == 1
+    {
+        
+        let mainstoryboard:UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+        let newViewcontroller = mainstoryboard.instantiateViewController(withIdentifier: "CategorieViewController") as! CategorieViewController
+        let newFrontController = UINavigationController.init(rootViewController: newViewcontroller)
+          newViewcontroller.title = GlobalVar.StaticVar.menuSections[indexPath.section][indexPath.row]
+        
+        revealviewcontroller.pushFrontViewController(newFrontController, animated: true)
+        
+      
+        
+       // print (GlobalVar.StaticVar.menuSections[indexPath.section][indexPath.row])
+        
+    }
 
 
     }

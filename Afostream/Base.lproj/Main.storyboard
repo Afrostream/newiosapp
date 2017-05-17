@@ -215,7 +215,7 @@
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="21" id="zhl-2L-baI"/>
                                                     </constraints>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
@@ -301,20 +301,20 @@
             </objects>
             <point key="canvasLocation" x="2371.875" y="-99.295774647887328"/>
         </scene>
-        <!--Main View Controller-->
+        <!--Home-->
         <scene sceneID="J12-zc-fzn">
             <objects>
                 <viewController storyboardIdentifier="MainViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="iyJ-Fb-3VG" customClass="MainViewController" customModule="Afostream" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="Muv-nP-Q4w"/>
-                        <viewControllerLayoutGuide type="bottom" id="uIg-6F-zet"/>
+                        <viewControllerLayoutGuide type="top" id="x8E-sh-zfR"/>
+                        <viewControllerLayoutGuide type="bottom" id="Olh-Zb-zfJ"/>
                     </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="bEi-C2-pMJ">
+                    <view key="view" contentMode="scaleToFill" id="rDu-jV-u97">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
-                    <navigationItem key="navigationItem" id="gs5-z3-9Db">
+                    <navigationItem key="navigationItem" title="Home" id="gs5-z3-9Db">
                         <barButtonItem key="leftBarButtonItem" image="MenuIcon" id="YE3-sL-42B"/>
                         <barButtonItem key="rightBarButtonItem" image="SearchIcon" id="B52-mv-DAA"/>
                     </navigationItem>
@@ -326,7 +326,7 @@
             </objects>
             <point key="canvasLocation" x="2924" y="653.52323838080963"/>
         </scene>
-        <!--My Account View Controller-->
+        <!--Account-->
         <scene sceneID="Sca-N7-IhV">
             <objects>
                 <viewController storyboardIdentifier="MyAccountViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="tBe-pm-mGU" customClass="MyAccountViewController" customModule="Afostream" customModuleProvider="target" sceneMemberID="viewController">
@@ -348,7 +348,7 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
-                    <navigationItem key="navigationItem" id="xpS-Mp-Cip">
+                    <navigationItem key="navigationItem" title="Account" id="xpS-Mp-Cip">
                         <barButtonItem key="leftBarButtonItem" image="MenuIcon" id="4D1-Uu-Q8w"/>
                     </navigationItem>
                     <connections>
@@ -359,7 +359,7 @@
             </objects>
             <point key="canvasLocation" x="3704.8000000000002" y="653.52323838080963"/>
         </scene>
-        <!--Favoris View Controller-->
+        <!--Favoris-->
         <scene sceneID="lL4-XS-VUE">
             <objects>
                 <viewController storyboardIdentifier="FavorisViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="7dW-XD-HcJ" customClass="FavorisViewController" customModule="Afostream" customModuleProvider="target" sceneMemberID="viewController">
@@ -381,7 +381,7 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
-                    <navigationItem key="navigationItem" id="OaE-Ee-dIF">
+                    <navigationItem key="navigationItem" title="Favoris" id="OaE-Ee-dIF">
                         <barButtonItem key="leftBarButtonItem" image="MenuIcon" id="i0I-8T-XZD"/>
                     </navigationItem>
                     <connections>
@@ -391,6 +391,39 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="5k7-dv-ygH" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="4407.1999999999998" y="650.82458770614699"/>
+        </scene>
+        <!--Category-->
+        <scene sceneID="YrO-VE-WLH">
+            <objects>
+                <viewController storyboardIdentifier="CategorieViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="KX5-dH-qq1" customClass="CategorieViewController" customModule="Afostream" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="26Y-Hr-g6c"/>
+                        <viewControllerLayoutGuide type="bottom" id="Bi4-dM-DK0"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="qDz-ya-pTY">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="categorie" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BZa-B4-r12">
+                                <rect key="frame" x="8" y="147" width="145" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="Category" id="JdM-ZU-Vcg">
+                        <barButtonItem key="leftBarButtonItem" image="MenuIcon" id="DLD-Sy-fcm"/>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="MenuBnt" destination="DLD-Sy-fcm" id="aav-sX-SoI"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="p8m-NY-Orr" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="5133.75" y="646.47887323943667"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="ddh-GK-DRU">
