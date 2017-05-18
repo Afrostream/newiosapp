@@ -13,11 +13,15 @@ import SDWebImage
 
 
 
-class MainViewController: UIViewController {
+class MainViewController: UIViewController,UIScrollViewDelegate,UITableViewDataSource {
 
+    @IBOutlet weak var viewScroll: UIView!
     @IBOutlet weak var MenuBnt: UIBarButtonItem!
     
+    @IBOutlet weak var PageControl: UIPageControl!
+    @IBOutlet weak var SlideScrollView: UIScrollView!
     var laoding_spinner:UIActivityIndicatorView=UIActivityIndicatorView()
+      var categories = ["Action","Drama","Sicience","Kids","Horror"]
     func StartLoadingSpinner()
     {
         laoding_spinner.center=self.view.center
@@ -43,6 +47,99 @@ class MainViewController: UIViewController {
         self.present(alertController, animated: true, completion: nil)
     }
     
+    
+    
+    func SliderMoveToNextPage (sender: Timer){
+        
+          let dict = sender.userInfo as! NSDictionary
+        
+        let pageWidth:CGFloat = self.SlideScrollView.frame.width
+        let slides : [Slide] = dict["sliders"] as! [Slide]
+        let maxWidth:CGFloat = pageWidth * CGFloat(slides.count)
+        let contentOffset:CGFloat = self.SlideScrollView.contentOffset.x
+        
+        var slideToX = contentOffset + pageWidth
+        
+        if  contentOffset + pageWidth == maxWidth
+        {
+            slideToX = 0
+        }
+        self.SlideScrollView.scrollRectToVisible(CGRect(x:slideToX, y:0, width:pageWidth, height:self.SlideScrollView.frame.height), animated: true)
+    }
+    func SetupSlidesInScrollView (slides: [Slide])
+    {
+        SlideScrollView.frame = viewScroll.frame
+        
+        SlideScrollView.frame = CGRect (x: 0, y: 0, width: SlideScrollView.frame.width, height: SlideScrollView.frame.height)
+        SlideScrollView.contentSize = CGSize(width: SlideScrollView.frame.width * CGFloat(slides.count), height: SlideScrollView.frame.height)
+        
+        
+        
+        for i in 0 ..< slides.count {
+           
+           
+            
+            let xPosition = self.SlideScrollView.frame.size.width * CGFloat(i)
+             slides [i].frame = CGRect(x: xPosition, y: 0, width: self.SlideScrollView.frame.width, height: 200)
+            
+            SlideScrollView.contentSize.width = SlideScrollView.frame.width * CGFloat(i + 1)
+    
+            SlideScrollView.addSubview(slides[i])
+            
+           
+            
+        
+        }
+        
+        Timer.scheduledTimer(timeInterval: 4, target: self, selector: #selector(SliderMoveToNextPage(sender:)), userInfo: ["sliders": slides], repeats: true)
+        
+        
+    
+    }
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return categories.count
+    }
+    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        return categories[section]
+    }
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return 1
+    }
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "cell") as! CategoryRow
+        return cell
+    }
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+      
+        if revealViewController() != nil
+        {
+            MenuBnt.target=self.revealViewController()
+            MenuBnt.action = #selector(SWRevealViewController.revealToggle(_:))
+            self.view.addGestureRecognizer(self.revealViewController().panGestureRecognizer())
+            self.view.addGestureRecognizer(self.revealViewController().tapGestureRecognizer())
+            
+            self.MakeGetUserInfo(access_token:  GlobalVar.StaticVar.access_token)
+            self.MakeGetCategories(access_token:  GlobalVar.StaticVar.access_token)
+            self.MakeGetSlide(access_token: GlobalVar.StaticVar.access_token)
+            
+        
+            SlideScrollView.isPagingEnabled = true
+            SlideScrollView.showsHorizontalScrollIndicator = false
+            SlideScrollView.showsVerticalScrollIndicator = false
+            SlideScrollView.delegate = self
+            
+            viewScroll.bringSubview(toFront: PageControl)
+            
+           
+            
+        }
+        
+        // Do any additional setup after loading the view.
+    }
+    
+
     func MakeGetUserInfo(access_token:String)
     {
         
@@ -150,14 +247,14 @@ class MainViewController: UIViewController {
 
         self.StartLoadingSpinner()
         
-                print (GlobalVar.StaticVar.ApiUrlParams)
+        
         
         Alamofire.request(GlobalVar.StaticVar.BaseUrl + "/api/categorys/menu" + GlobalVar.StaticVar.ApiUrlParams, method: .get, parameters: nil, encoding: JSONEncoding.default, headers: headers).responseJSON { response in
             
             switch(response.result) {
             case .success(_):
                 
-                print (response.result)
+               
                 
                 self.StopLoadingSpinner()
                 if let JSON = response.result.value as! NSArray? {
@@ -204,28 +301,110 @@ class MainViewController: UIViewController {
         }
         
     }
-
-
-    override func viewDidLoad() {
-        super.viewDidLoad()
+    
+    func MakeGetSlide(access_token:String)
+    {
         
-        
-        if revealViewController() != nil
+        if access_token.isEmpty
         {
-            MenuBnt.target=self.revealViewController()
-            MenuBnt.action = #selector(SWRevealViewController.revealToggle(_:))
-            self.view.addGestureRecognizer(self.revealViewController().panGestureRecognizer())
-            self.view.addGestureRecognizer(self.revealViewController().tapGestureRecognizer())
-            
-            self.MakeGetUserInfo(access_token:  GlobalVar.StaticVar.access_token)
-            self.MakeGetCategories(access_token:  GlobalVar.StaticVar.access_token)
-            
+            ShowAlert(Title: NSLocalizedString("Error", comment: ""), Message: NSLocalizedString("ErrorAccessToken", comment: ""))
+            return
         }
+        
+        let headers = [
+            "Authorization": "Bearer " + GlobalVar.StaticVar.access_token
+            
+        ]
+        
+        
+        
+        
+        self.StartLoadingSpinner()
+        
 
-        // Do any additional setup after loading the view.
+        
+        Alamofire.request(GlobalVar.StaticVar.BaseUrl + "/api/categorys" + GlobalVar.StaticVar.ApiUrlParams + "&type=carrousel&populate=adSpots,adSpots.logo,adSpots.poster,adSpots.thumb,adSpots.categorys", method: .get, parameters: nil, encoding: JSONEncoding.default, headers: headers).responseJSON { response in
+            
+            switch(response.result) {
+            case .success(_):
+                
+                print (response.result)
+                
+                self.StopLoadingSpinner()
+                if let JSON = response.result.value as! NSArray? {
+                    
+                    let js = JSON[0] as? [String: Any]
+                    let jsa = js?["adSpots"] as! NSArray
+                    var slides:[Slide] = [Slide]()
+                    
+                    for element in jsa {
+                        if let movie = element as? [String: Any] {
+                            
+                            let title = movie ["title"] as! String
+                            
+                            let catArr = movie ["categorys"] as! NSArray
+                            let cat = catArr[0] as? [String: Any]
+                            let categorie = cat?["label"] as! String
+                            
+                            let posterMovie = movie ["poster"] as? [String: Any]
+                            
+                            var urlImageMovie = posterMovie?["imgix"] as! String
+                            
+                            urlImageMovie = urlImageMovie + "?&crop=entropy&fit=min&w=600&h=400&q=90&fm=jpg&&auto=format&dpr=" + String(GlobalVar.StaticVar.densityPixel)
+
+                            
+                            let slide:Slide = Bundle.main.loadNibNamed("Slide", owner: self, options:nil)?.first as! Slide
+                            
+                            slide.lblLabel.text = categorie
+                            slide.lblLabel.sizeToFit()
+                            
+                            slide.lblTitle.text = title
+                            slide.lblTitle.sizeToFit()
+                            
+                            slide.imgMovie.sd_setImage(with: URL(string: urlImageMovie), placeholderImage:#imageLiteral(resourceName: "FanartPlaceholderSmall"))
+                            slide.imgMovie.contentMode = .scaleAspectFill
+                            
+                        
+                            slides.append(slide)
+
+                           
+                        }
+                        
+                    }
+                    
+            
+                    self.PageControl.numberOfPages = slides.count
+                    self.PageControl.currentPage = 0
+                    self.SetupSlidesInScrollView(slides: slides)
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                }
+                break
+                
+            case .failure(_):
+                self.StopLoadingSpinner()
+                print("There is an error")
+                break
+            }
+        }
+        
+    }
+    
+
+    
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        let pageIndex = round(scrollView.contentOffset.x / view.frame.width)
+        PageControl.currentPage = Int(pageIndex)
+        
     }
 
-    override func didReceiveMemoryWarning() {
+
+        override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }

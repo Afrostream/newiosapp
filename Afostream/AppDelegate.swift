@@ -27,6 +27,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         UINavigationBar.appearance().barTintColor=GlobalVar.StaticVar.Violet
         UINavigationBar.appearance().tintColor=UIColor.white
         UINavigationBar.appearance().titleTextAttributes = [NSForegroundColorAttributeName : UIColor.white]
+        
+        
+        GlobalVar.StaticVar.densityPixel = Int(UIScreen.main.scale)
        
         
         if (GlobalVar.StaticVar.DevMode)

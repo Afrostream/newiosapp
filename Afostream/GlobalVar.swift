@@ -72,6 +72,8 @@ class GlobalVar: NSObject {
         static var  expires_in=0
         static var  token_type=""
         static var  date_token=""
+        
+        static var  densityPixel=0
     
         static var user_first_name=""
         static var user_last_name=""

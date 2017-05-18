@@ -29,13 +29,13 @@
                                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                                     </imageView>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="LoginLogo" translatesAutoresizingMaskIntoConstraints="NO" id="mKs-Qq-6gG">
-                                        <rect key="frame" x="8" y="17" width="304" height="17"/>
+                                        <rect key="frame" x="8" y="25" width="304" height="17"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="17" id="ZF2-Qh-le4"/>
                                         </constraints>
                                     </imageView>
                                     <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Email" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="X9H-Gh-IRI" customClass="DesignableUITextField" customModule="Afostream" customModuleProvider="target">
-                                        <rect key="frame" x="45" y="121" width="239" height="30"/>
+                                        <rect key="frame" x="45" y="129" width="239" height="30"/>
                                         <accessibility key="accessibilityConfiguration" hint="email"/>
                                         <nil key="textColor"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -51,7 +51,7 @@
                                         </userDefinedRuntimeAttributes>
                                     </textField>
                                     <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="QSp-dZ-ShT" customClass="DesignableUITextField" customModule="Afostream" customModuleProvider="target">
-                                        <rect key="frame" x="45" y="167" width="239" height="30"/>
+                                        <rect key="frame" x="45" y="175" width="239" height="30"/>
                                         <accessibility key="accessibilityConfiguration" hint="email"/>
                                         <nil key="textColor"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -67,7 +67,7 @@
                                         </userDefinedRuntimeAttributes>
                                     </textField>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="R8z-F0-Hgr">
-                                        <rect key="frame" x="88" y="251" width="144" height="32"/>
+                                        <rect key="frame" x="88" y="259" width="144" height="32"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="32" id="GdF-cG-ffY"/>
                                         </constraints>
@@ -79,7 +79,7 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="right" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Bwn-cN-6vF">
-                                        <rect key="frame" x="169" y="199" width="115" height="30"/>
+                                        <rect key="frame" x="169" y="207" width="115" height="30"/>
                                         <state key="normal" title="Forget password">
                                             <color key="titleColor" red="0.97227032229999999" green="0.97920274169999999" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         </state>
@@ -89,7 +89,7 @@
                                     <constraint firstItem="Bwn-cN-6vF" firstAttribute="trailing" secondItem="X9H-Gh-IRI" secondAttribute="trailing" id="2Vu-y7-e0A"/>
                                     <constraint firstItem="R8z-F0-Hgr" firstAttribute="centerX" secondItem="mKs-Qq-6gG" secondAttribute="centerX" id="2hp-9p-Gdt"/>
                                     <constraint firstItem="Bwn-cN-6vF" firstAttribute="top" secondItem="QSp-dZ-ShT" secondAttribute="bottom" constant="2" id="6CS-3Q-AGX"/>
-                                    <constraint firstItem="mKs-Qq-6gG" firstAttribute="top" secondItem="1N7-PD-YQd" secondAttribute="top" constant="17" id="79N-dm-IDN"/>
+                                    <constraint firstItem="mKs-Qq-6gG" firstAttribute="top" secondItem="1N7-PD-YQd" secondAttribute="top" constant="25" id="79N-dm-IDN"/>
                                     <constraint firstItem="MQE-bD-UNF" firstAttribute="top" secondItem="1N7-PD-YQd" secondAttribute="top" id="7zR-Os-qtg"/>
                                     <constraint firstAttribute="trailing" secondItem="mKs-Qq-6gG" secondAttribute="trailing" constant="8" id="AUC-DM-cgf"/>
                                     <constraint firstItem="Bwn-cN-6vF" firstAttribute="trailing" secondItem="QSp-dZ-ShT" secondAttribute="trailing" id="Am5-0s-NH4"/>
@@ -304,7 +304,7 @@
         <!--Home-->
         <scene sceneID="J12-zc-fzn">
             <objects>
-                <viewController storyboardIdentifier="MainViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="iyJ-Fb-3VG" customClass="MainViewController" customModule="Afostream" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="MainViewController" automaticallyAdjustsScrollViewInsets="NO" useStoryboardIdentifierAsRestorationIdentifier="YES" id="iyJ-Fb-3VG" customClass="MainViewController" customModule="Afostream" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="x8E-sh-zfR"/>
                         <viewControllerLayoutGuide type="bottom" id="Olh-Zb-zfJ"/>
@@ -312,7 +312,87 @@
                     <view key="view" contentMode="scaleToFill" id="rDu-jV-u97">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="154" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="hGD-nj-0fP">
+                                <rect key="frame" x="0.0" y="64" width="320" height="504"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <view key="tableHeaderView" contentMode="scaleToFill" id="sVG-MR-GbC">
+                                    <rect key="frame" x="0.0" y="0.0" width="320" height="200"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <subviews>
+                                        <pageControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" numberOfPages="3" translatesAutoresizingMaskIntoConstraints="NO" id="koC-Fu-hS8">
+                                            <rect key="frame" x="140" y="167" width="39" height="37"/>
+                                        </pageControl>
+                                        <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" pagingEnabled="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HoN-T3-WtU">
+                                            <rect key="frame" x="0.0" y="0.0" width="320" height="200"/>
+                                        </scrollView>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstItem="HoN-T3-WtU" firstAttribute="top" secondItem="sVG-MR-GbC" secondAttribute="top" id="2yG-LM-A1z"/>
+                                        <constraint firstItem="koC-Fu-hS8" firstAttribute="centerX" secondItem="HoN-T3-WtU" secondAttribute="centerX" id="CZI-XX-Thu"/>
+                                        <constraint firstAttribute="trailing" secondItem="HoN-T3-WtU" secondAttribute="trailing" id="TO3-aC-fQD"/>
+                                        <constraint firstAttribute="bottom" secondItem="HoN-T3-WtU" secondAttribute="bottom" id="eY0-w2-8lo"/>
+                                        <constraint firstAttribute="bottom" secondItem="koC-Fu-hS8" secondAttribute="bottom" constant="-4" id="gE0-sf-eq7"/>
+                                        <constraint firstAttribute="height" constant="200" id="rx9-g3-JFe"/>
+                                        <constraint firstItem="HoN-T3-WtU" firstAttribute="width" secondItem="sVG-MR-GbC" secondAttribute="width" id="sAG-8O-Lol"/>
+                                        <constraint firstItem="HoN-T3-WtU" firstAttribute="leading" secondItem="sVG-MR-GbC" secondAttribute="leading" id="uPq-qR-odA"/>
+                                    </constraints>
+                                </view>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="cell" rowHeight="130" id="M06-Zu-Jb4" customClass="CategoryRow" customModule="Afostream" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="228" width="320" height="130"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="M06-Zu-Jb4" id="9ho-ec-Vhh">
+                                            <rect key="frame" x="0.0" y="0.0" width="320" height="130"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="qYR-C1-W7F">
+                                                    <rect key="frame" x="0.0" y="0.0" width="320" height="130"/>
+                                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                    <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="5" minimumInteritemSpacing="5" id="hMh-6G-pji">
+                                                        <size key="itemSize" width="50" height="50"/>
+                                                        <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                                        <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                                        <inset key="sectionInset" minX="5" minY="5" maxX="0.0" maxY="5"/>
+                                                    </collectionViewFlowLayout>
+                                                    <cells>
+                                                        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="videoCell" id="lh9-N0-R1N" customClass="VideoCell" customModule="Afostream" customModuleProvider="target">
+                                                            <rect key="frame" x="5" y="5" width="50" height="50"/>
+                                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                            <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                                                <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                                                                <autoresizingMask key="autoresizingMask"/>
+                                                            </view>
+                                                            <color key="backgroundColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                        </collectionViewCell>
+                                                    </cells>
+                                                    <connections>
+                                                        <outlet property="dataSource" destination="M06-Zu-Jb4" id="6af-Hh-OZI"/>
+                                                        <outlet property="delegate" destination="M06-Zu-Jb4" id="2mG-cy-kxt"/>
+                                                    </connections>
+                                                </collectionView>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstAttribute="bottom" secondItem="qYR-C1-W7F" secondAttribute="bottom" id="WRs-wY-pHB"/>
+                                                <constraint firstItem="qYR-C1-W7F" firstAttribute="leading" secondItem="9ho-ec-Vhh" secondAttribute="leading" id="gzu-T3-bP2"/>
+                                                <constraint firstItem="qYR-C1-W7F" firstAttribute="top" secondItem="9ho-ec-Vhh" secondAttribute="top" id="oIm-5N-tYs"/>
+                                                <constraint firstAttribute="trailing" secondItem="qYR-C1-W7F" secondAttribute="trailing" id="y8V-fQ-nup"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="iyJ-Fb-3VG" id="Rqd-WG-yVs"/>
+                                </connections>
+                            </tableView>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="Olh-Zb-zfJ" firstAttribute="top" secondItem="hGD-nj-0fP" secondAttribute="bottom" id="7wZ-2Y-E9q"/>
+                            <constraint firstAttribute="trailing" secondItem="hGD-nj-0fP" secondAttribute="trailing" id="Sub-Cy-g6k"/>
+                            <constraint firstItem="hGD-nj-0fP" firstAttribute="top" secondItem="x8E-sh-zfR" secondAttribute="bottom" id="j0Z-fT-5aD"/>
+                            <constraint firstItem="hGD-nj-0fP" firstAttribute="leading" secondItem="rDu-jV-u97" secondAttribute="leading" id="xGO-3k-dO6"/>
+                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Home" id="gs5-z3-9Db">
                         <barButtonItem key="leftBarButtonItem" image="MenuIcon" id="YE3-sL-42B"/>
@@ -320,11 +400,14 @@
                     </navigationItem>
                     <connections>
                         <outlet property="MenuBnt" destination="YE3-sL-42B" id="edx-mn-tHP"/>
+                        <outlet property="PageControl" destination="koC-Fu-hS8" id="4pJ-Y8-Nzx"/>
+                        <outlet property="SlideScrollView" destination="HoN-T3-WtU" id="wZX-5h-uMP"/>
+                        <outlet property="viewScroll" destination="sVG-MR-GbC" id="QF5-mP-Axb"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ToW-mF-Ak7" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2924" y="653.52323838080963"/>
+            <point key="canvasLocation" x="2923.125" y="652.81690140845069"/>
         </scene>
         <!--Account-->
         <scene sceneID="Sca-N7-IhV">
