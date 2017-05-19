@@ -20,6 +20,17 @@ extension UIColor {
     
 }
 
+struct MovieModel {
+    var title:String
+    var imageUrl:String
+    var label:String
+}
+
+struct HomeCatMovie {
+var CatTitle : String
+var Movies = [MovieModel]()
+}
+
 
 struct SectionData {
     let title: String

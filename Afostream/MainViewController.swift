@@ -20,13 +20,15 @@ class MainViewController: UIViewController,UIScrollViewDelegate,UITableViewDataS
     
     @IBOutlet weak var PageControl: UIPageControl!
     @IBOutlet weak var SlideScrollView: UIScrollView!
+    @IBOutlet weak var tableView: UITableView!
     var laoding_spinner:UIActivityIndicatorView=UIActivityIndicatorView()
-      var categories = ["Action","Drama","Sicience","Kids","Horror"]
+      var categories = [HomeCatMovie]()
+    var slidesMain = [Slide]()
     func StartLoadingSpinner()
     {
         laoding_spinner.center=self.view.center
         laoding_spinner.hidesWhenStopped=true
-        laoding_spinner.activityIndicatorViewStyle=UIActivityIndicatorViewStyle.whiteLarge
+        laoding_spinner.activityIndicatorViewStyle=UIActivityIndicatorViewStyle.gray
         self.view.addSubview(laoding_spinner)
         laoding_spinner.startAnimating()
         UIApplication.shared.beginIgnoringInteractionEvents()
@@ -47,7 +49,41 @@ class MainViewController: UIViewController,UIScrollViewDelegate,UITableViewDataS
         self.present(alertController, animated: true, completion: nil)
     }
     
+    override func willTransition(to newCollection: UITraitCollection, with coordinator: UIViewControllerTransitionCoordinator) {
+                print(UIDevice.current.orientation.isLandscape)
+        
+
+        DispatchQueue.main.async {
+            self.SlideScrollView.frame = self.viewScroll.frame
+            
+            self.SlideScrollView.frame = CGRect (x: 0, y: 0, width: self.view.frame.width, height: self.SlideScrollView.frame.height)
+            self.SlideScrollView.contentSize = CGSize(width: self.view.frame.width * CGFloat(self.slidesMain.count), height: self.SlideScrollView.frame.height)
+            
     
+            
+            
+            
+            for i in 0 ..< self.slidesMain.count {
+                
+                
+                
+                let xPosition = self.SlideScrollView.frame.size.width * CGFloat(i)
+                self.slidesMain [i].frame = CGRect(x: xPosition, y: 0, width: self.SlideScrollView.frame.width, height: 200)
+                
+                self.SlideScrollView.contentSize.width = self.SlideScrollView.frame.width * CGFloat(i + 1)
+                
+                self.SlideScrollView.addSubview(self.slidesMain[i])
+                
+                
+                
+                
+            }
+            
+
+        }
+ 
+        
+    }
     
     func SliderMoveToNextPage (sender: Timer){
         
@@ -70,10 +106,12 @@ class MainViewController: UIViewController,UIScrollViewDelegate,UITableViewDataS
     {
         SlideScrollView.frame = viewScroll.frame
         
-        SlideScrollView.frame = CGRect (x: 0, y: 0, width: SlideScrollView.frame.width, height: SlideScrollView.frame.height)
-        SlideScrollView.contentSize = CGSize(width: SlideScrollView.frame.width * CGFloat(slides.count), height: SlideScrollView.frame.height)
+        SlideScrollView.frame = CGRect (x: 0, y: 0, width: view.frame.width, height: SlideScrollView.frame.height)
+        SlideScrollView.contentSize = CGSize(width: view.frame.width * CGFloat(slides.count), height: SlideScrollView.frame.height)
         
+        slidesMain = slides
         
+   
         
         for i in 0 ..< slides.count {
            
@@ -100,13 +138,14 @@ class MainViewController: UIViewController,UIScrollViewDelegate,UITableViewDataS
         return categories.count
     }
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        return categories[section]
+        return categories[section].CatTitle
     }
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return 1
     }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell") as! CategoryRow
+        cell.Movies = categories[indexPath.section].Movies
         return cell
     }
     override func viewDidLoad() {
@@ -123,6 +162,8 @@ class MainViewController: UIViewController,UIScrollViewDelegate,UITableViewDataS
             self.MakeGetUserInfo(access_token:  GlobalVar.StaticVar.access_token)
             self.MakeGetCategories(access_token:  GlobalVar.StaticVar.access_token)
             self.MakeGetSlide(access_token: GlobalVar.StaticVar.access_token)
+            
+            self.MakeGetCategoriesHomeMovies(access_token: GlobalVar.StaticVar.access_token)
             
         
             SlideScrollView.isPagingEnabled = true
@@ -301,6 +342,106 @@ class MainViewController: UIViewController,UIScrollViewDelegate,UITableViewDataS
         }
         
     }
+    
+    
+    func MakeGetCategoriesHomeMovies(access_token:String)
+    {
+        
+        if access_token.isEmpty
+        {
+            ShowAlert(Title: NSLocalizedString("Error", comment: ""), Message: NSLocalizedString("ErrorAccessToken", comment: ""))
+            return
+        }
+        
+        let headers = [
+            "Authorization": "Bearer " + GlobalVar.StaticVar.access_token
+            
+        ]
+        
+        
+        
+        
+        
+        
+        
+        self.StartLoadingSpinner()
+        
+        
+        
+        Alamofire.request(GlobalVar.StaticVar.BaseUrl + "/api/categorys/meas" + GlobalVar.StaticVar.ApiUrlParams, method: .get, parameters: nil, encoding: JSONEncoding.default, headers: headers).responseJSON { response in
+            
+            switch(response.result) {
+            case .success(_):
+                
+                
+                var HomeCatList = [HomeCatMovie]()
+                self.StopLoadingSpinner()
+                if let JSON = response.result.value as! NSArray? {
+                    
+                    
+                    
+                    for element in JSON {
+                        if let data = element as? [String: Any] {
+                            //let idcat = data["_id"] as! Int
+                            let label = data ["label"] as! String
+                            
+                            let movies = data["movies"] as! NSArray
+                            
+                            var MoviesList = [MovieModel]()
+                            
+                            for elementMovie in movies {
+                                if let dataMovie = elementMovie as? [String: Any] {
+                                    
+                                    let movileTitle = dataMovie["title"] as! String
+                                    let movileLabel = dataMovie["genre"] as? String
+                                    
+                                    
+                                    let posterMovie = dataMovie ["poster"] as? [String: Any]
+                                    
+                                    var urlImageMovie = posterMovie?["imgix"] as! String
+                                    
+                                    urlImageMovie = urlImageMovie + "?&crop=entropy&fit=min&w=300&h=250&q=90&fm=jpg&&auto=format&dpr=" + String(GlobalVar.StaticVar.densityPixel)
+                                    let mov : MovieModel = MovieModel(title: movileTitle, imageUrl: urlImageMovie, label: "")
+                                 
+
+                                    MoviesList.append(mov)
+                                    
+                                    
+                                    
+                                    
+                                    
+                                }
+                                
+                             
+                            }
+                            
+                            let homeCat : HomeCatMovie = HomeCatMovie(CatTitle: label, Movies: MoviesList )
+                            HomeCatList.append(homeCat)
+                            
+                            
+                         }
+                        
+                    }
+                   self.categories = HomeCatList
+                    self.tableView.reloadData()
+                    
+                    
+                    
+                    
+                    
+                }
+                break
+                
+            case .failure(_):
+                self.StopLoadingSpinner()
+                print("There is an error")
+                break
+            }
+        }
+        
+    }
+    
+
     
     func MakeGetSlide(access_token:String)
     {

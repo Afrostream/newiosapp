@@ -350,20 +350,45 @@
                                                     <rect key="frame" x="0.0" y="0.0" width="320" height="130"/>
                                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                     <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="5" minimumInteritemSpacing="5" id="hMh-6G-pji">
-                                                        <size key="itemSize" width="50" height="50"/>
+                                                        <size key="itemSize" width="130" height="115"/>
                                                         <size key="headerReferenceSize" width="0.0" height="0.0"/>
                                                         <size key="footerReferenceSize" width="0.0" height="0.0"/>
                                                         <inset key="sectionInset" minX="5" minY="5" maxX="0.0" maxY="5"/>
                                                     </collectionViewFlowLayout>
                                                     <cells>
                                                         <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="videoCell" id="lh9-N0-R1N" customClass="VideoCell" customModule="Afostream" customModuleProvider="target">
-                                                            <rect key="frame" x="5" y="5" width="50" height="50"/>
+                                                            <rect key="frame" x="5" y="8" width="130" height="115"/>
                                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                             <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                                                                <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                                                                <rect key="frame" x="0.0" y="0.0" width="130" height="115"/>
                                                                 <autoresizingMask key="autoresizingMask"/>
+                                                                <subviews>
+                                                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="vxS-ns-OpL">
+                                                                        <rect key="frame" x="0.0" y="0.0" width="130" height="115"/>
+                                                                    </imageView>
+                                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Wva-Bk-Ljf">
+                                                                        <rect key="frame" x="7" y="88" width="123" height="27"/>
+                                                                        <fontDescription key="fontDescription" type="system" weight="medium" pointSize="15"/>
+                                                                        <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                                        <nil key="highlightedColor"/>
+                                                                    </label>
+                                                                </subviews>
                                                             </view>
                                                             <color key="backgroundColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                            <constraints>
+                                                                <constraint firstAttribute="bottom" secondItem="vxS-ns-OpL" secondAttribute="bottom" id="1Jo-sK-IN6"/>
+                                                                <constraint firstItem="vxS-ns-OpL" firstAttribute="leading" secondItem="lh9-N0-R1N" secondAttribute="leading" id="Irv-MK-qmW"/>
+                                                                <constraint firstItem="vxS-ns-OpL" firstAttribute="top" secondItem="lh9-N0-R1N" secondAttribute="top" id="cN8-eS-7YB"/>
+                                                                <constraint firstItem="Wva-Bk-Ljf" firstAttribute="leading" secondItem="lh9-N0-R1N" secondAttribute="leadingMargin" constant="-1" id="eua-fW-hbC"/>
+                                                                <constraint firstItem="Wva-Bk-Ljf" firstAttribute="bottom" secondItem="vxS-ns-OpL" secondAttribute="bottom" id="fuG-aJ-Bl2"/>
+                                                                <constraint firstAttribute="trailing" secondItem="vxS-ns-OpL" secondAttribute="trailing" id="g8q-12-r8z"/>
+                                                                <constraint firstItem="Wva-Bk-Ljf" firstAttribute="top" secondItem="lh9-N0-R1N" secondAttribute="topMargin" constant="80" id="oIB-UL-7Md"/>
+                                                                <constraint firstItem="Wva-Bk-Ljf" firstAttribute="trailing" secondItem="vxS-ns-OpL" secondAttribute="trailing" id="seL-99-icx"/>
+                                                            </constraints>
+                                                            <connections>
+                                                                <outlet property="imgMovie" destination="vxS-ns-OpL" id="Ibu-E6-bfI"/>
+                                                                <outlet property="lblTitle" destination="Wva-Bk-Ljf" id="Dwx-FN-VEw"/>
+                                                            </connections>
                                                         </collectionViewCell>
                                                     </cells>
                                                     <connections>
@@ -402,6 +427,7 @@
                         <outlet property="MenuBnt" destination="YE3-sL-42B" id="edx-mn-tHP"/>
                         <outlet property="PageControl" destination="koC-Fu-hS8" id="4pJ-Y8-Nzx"/>
                         <outlet property="SlideScrollView" destination="HoN-T3-WtU" id="wZX-5h-uMP"/>
+                        <outlet property="tableView" destination="hGD-nj-0fP" id="tNB-Vi-ajR"/>
                         <outlet property="viewScroll" destination="sVG-MR-GbC" id="QF5-mP-Axb"/>
                     </connections>
                 </viewController>
