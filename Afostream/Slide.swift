@@ -14,4 +14,6 @@ class Slide: UIView {
     @IBOutlet weak var imgMovie: UIImageView!
     @IBOutlet weak var lblLabel: UILabel!
     @IBOutlet weak var lblTitle: UILabel!
+    
+    var movieInfo : [String: Any] = [:]
 }

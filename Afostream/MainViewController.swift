@@ -401,7 +401,7 @@ class MainViewController: UIViewController,UIScrollViewDelegate,UITableViewDataS
                                     var urlImageMovie = posterMovie?["imgix"] as! String
                                     
                                     urlImageMovie = urlImageMovie + "?&crop=entropy&fit=min&w=300&h=250&q=90&fm=jpg&&auto=format&dpr=" + String(GlobalVar.StaticVar.densityPixel)
-                                    let mov : MovieModel = MovieModel(title: movileTitle, imageUrl: urlImageMovie, label: "")
+                                    let mov : MovieModel = MovieModel(title: movileTitle, imageUrl: urlImageMovie, label: "",movieInfo: dataMovie)
                                  
 
                                     MoviesList.append(mov)
@@ -498,6 +498,18 @@ class MainViewController: UIViewController,UIScrollViewDelegate,UITableViewDataS
                             
                             slide.lblLabel.text = categorie
                             slide.lblLabel.sizeToFit()
+                            slide.movieInfo=movie
+                            
+                            slide.tag = slides.count
+                    
+                            
+                            
+                            let singleTap = UITapGestureRecognizer(target: self, action: #selector(self.SlideClick(sender:)))
+                            singleTap.numberOfTapsRequired = 1 // you can change this value
+                            slide.isUserInteractionEnabled = true
+                            slide.addGestureRecognizer(singleTap)
+                            
+                            
                             
                             slide.lblTitle.text = title
                             slide.lblTitle.sizeToFit()
@@ -537,7 +549,12 @@ class MainViewController: UIViewController,UIScrollViewDelegate,UITableViewDataS
     }
     
 
+    func SlideClick (sender: UITapGestureRecognizer)
+    {
+      let slide = sender.view as! Slide
+        print(slidesMain[slide.tag].movieInfo["title"] as! String)
     
+    }
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         let pageIndex = round(scrollView.contentOffset.x / view.frame.width)
         PageControl.currentPage = Int(pageIndex)

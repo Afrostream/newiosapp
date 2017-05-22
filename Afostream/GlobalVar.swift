@@ -24,6 +24,7 @@ struct MovieModel {
     var title:String
     var imageUrl:String
     var label:String
+    var movieInfo : [String: Any]
 }
 
 struct HomeCatMovie {

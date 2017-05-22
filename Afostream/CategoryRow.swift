@@ -14,7 +14,7 @@ class CategoryRow : UITableViewCell {
 
 }
 
-extension CategoryRow : UICollectionViewDataSource {
+extension CategoryRow : UICollectionViewDataSource,UICollectionViewDelegate {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return Movies.count
@@ -25,6 +25,11 @@ extension CategoryRow : UICollectionViewDataSource {
         cell.imgMovie.sd_setImage(with: URL(string: Movies[indexPath.row].imageUrl), placeholderImage:#imageLiteral(resourceName: "FanartPlaceholderSmall"))
         cell.lblTitle.text = Movies[indexPath.row].title
         return cell
+    }
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        
+        let title = Movies[indexPath.row].title as! String
+        print(title)
     }
 }
 

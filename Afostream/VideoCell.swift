@@ -12,4 +12,6 @@ class VideoCell: UICollectionViewCell {
     
     @IBOutlet weak var imgMovie: UIImageView!
     @IBOutlet weak var lblTitle: UILabel!
+    
+ 
 }
