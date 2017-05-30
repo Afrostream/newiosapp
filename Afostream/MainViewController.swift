@@ -146,12 +146,21 @@ class MainViewController: UIViewController,UIScrollViewDelegate,UITableViewDataS
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell") as! CategoryRow
         cell.Movies = categories[indexPath.section].Movies
+        cell.myViewController = self
         return cell
     }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        self.navigationItem.title = NSLocalizedString("Home", comment: "")
+
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+            }
     override func viewDidLoad() {
         super.viewDidLoad()
         
-      
+        
         if revealViewController() != nil
         {
             MenuBnt.target=self.revealViewController()
@@ -498,7 +507,9 @@ class MainViewController: UIViewController,UIScrollViewDelegate,UITableViewDataS
                             
                             slide.lblLabel.text = categorie
                             slide.lblLabel.sizeToFit()
-                            slide.movieInfo=movie
+                            
+                            let mv: MovieModel = MovieModel(title: title, imageUrl: urlImageMovie, label: categorie, movieInfo: movie)
+                            slide.Movie = mv
                             
                             slide.tag = slides.count
                     
@@ -552,7 +563,19 @@ class MainViewController: UIViewController,UIScrollViewDelegate,UITableViewDataS
     func SlideClick (sender: UITapGestureRecognizer)
     {
       let slide = sender.view as! Slide
-        print(slidesMain[slide.tag].movieInfo["title"] as! String)
+        let title = slidesMain[slide.tag].Movie.title
+        
+        //let vc = self.storyboard?.instantiateViewController(withIdentifier: "MovieDetailsViewController")
+        //self.present(vc!, animated: true, completion: nil)
+        
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let vc = storyboard.instantiateViewController(withIdentifier: "MovieDetailsViewController") as! MovieDetailsViewController
+        vc.title = title
+        vc.Movie = slidesMain[slide.tag].Movie
+        self.navigationItem.title = ""
+        navigationController?.pushViewController(vc,animated: true)
+        
+      
     
     }
     func scrollViewDidScroll(_ scrollView: UIScrollView) {

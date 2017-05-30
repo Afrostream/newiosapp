@@ -78,7 +78,7 @@ class MenuViewController: UIViewController,UITableViewDelegate,UITableViewDataSo
         
         let cell:MenuTableViewCell = tableView.cellForRow(at: indexPath) as! MenuTableViewCell
   
-        if cell.lblMenu.text! == "Home"
+        if cell.lblMenu.text! == NSLocalizedString("Home", comment: "")
         {
        
             let mainstoryboard:UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
@@ -88,7 +88,7 @@ class MenuViewController: UIViewController,UITableViewDelegate,UITableViewDataSo
             revealviewcontroller.pushFrontViewController(newFrontController, animated: true)
             
         }
-        if cell.lblMenu.text! == "Favoris"
+        if cell.lblMenu.text! == NSLocalizedString("Favoris", comment: "")
         {
             
             let mainstoryboard:UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
@@ -98,7 +98,7 @@ class MenuViewController: UIViewController,UITableViewDelegate,UITableViewDataSo
             revealviewcontroller.pushFrontViewController(newFrontController, animated: true)
             
         }
-        if cell.lblMenu.text! == "Account"
+        if cell.lblMenu.text! == NSLocalizedString("Account", comment: "")
         {
             
             let mainstoryboard:UIStoryboard = UIStoryboard(name: "Main", bundle: nil)

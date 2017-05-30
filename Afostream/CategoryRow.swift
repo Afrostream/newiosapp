@@ -11,6 +11,7 @@ import UIKit
 class CategoryRow : UITableViewCell {
     
     var Movies = [MovieModel]()
+    var myViewController: MainViewController!
 
 }
 
@@ -28,8 +29,14 @@ extension CategoryRow : UICollectionViewDataSource,UICollectionViewDelegate {
     }
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         
-        let title = Movies[indexPath.row].title as! String
-        print(title)
+        let title = Movies[indexPath.row].title 
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let vc = storyboard.instantiateViewController(withIdentifier: "MovieDetailsViewController") as! MovieDetailsViewController
+        vc.title = title
+        vc.Movie =  Movies[indexPath.row]
+        myViewController.navigationItem.title = ""
+        myViewController.navigationController?.pushViewController(vc,animated: true)
+      
     }
 }
 
