@@ -7,12 +7,162 @@
 //
 
 import UIKit
+import Alamofire
 import SDWebImage
 
-class MovieDetailsViewController: UIViewController {
+class MovieDetailsViewController: UIViewController,UITableViewDataSource {
     @IBOutlet weak var imgMovie: UIImageView!
     
     var Movie :MovieModel!
+    
+    @IBOutlet weak var tableView: UITableView!
+    var laoding_spinner:UIActivityIndicatorView=UIActivityIndicatorView()
+    var categories = [HomeCatMovie]()
+    
+    
+    func StartLoadingSpinner()
+    {
+        laoding_spinner.center=self.view.center
+        laoding_spinner.hidesWhenStopped=true
+        laoding_spinner.activityIndicatorViewStyle=UIActivityIndicatorViewStyle.gray
+        self.view.addSubview(laoding_spinner)
+        laoding_spinner.startAnimating()
+        UIApplication.shared.beginIgnoringInteractionEvents()
+    }
+    func StopLoadingSpinner()
+    {
+        laoding_spinner.stopAnimating()
+        UIApplication.shared.endIgnoringInteractionEvents()
+        
+    }
+    func ShowAlert(Title:String ,Message:String)
+    {
+        let alertController = UIAlertController(title: Title, message: Message, preferredStyle: .alert)
+        
+        let defaultAction = UIAlertAction(title: "OK", style: .cancel, handler: nil)
+        alertController.addAction(defaultAction)
+        
+        self.present(alertController, animated: true, completion: nil)
+    }
+
+    
+    
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return categories.count
+    }
+    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        return categories[section].CatTitle
+    }
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return 1
+    }
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "cell") as! CategoryRowSaisonEpisode
+        cell.Movies = categories[indexPath.section].Movies
+        cell.myViewController = self
+        return cell
+    }
+    
+    func MakeGetSaisonEpisode(access_token:String)
+    {
+        
+        if access_token.isEmpty
+        {
+            ShowAlert(Title: NSLocalizedString("Error", comment: ""), Message: NSLocalizedString("ErrorAccessToken", comment: ""))
+            return
+        }
+        
+        let headers = [
+            "Authorization": "Bearer " + GlobalVar.StaticVar.access_token
+            
+        ]
+        
+        
+        
+        
+        
+        
+        
+        self.StartLoadingSpinner()
+        
+        
+        
+        Alamofire.request(GlobalVar.StaticVar.BaseUrl + "/api/categorys/meas" + GlobalVar.StaticVar.ApiUrlParams, method: .get, parameters: nil, encoding: JSONEncoding.default, headers: headers).responseJSON { response in
+            
+            switch(response.result) {
+            case .success(_):
+                
+                
+                var HomeCatList = [HomeCatMovie]()
+                self.StopLoadingSpinner()
+                if let JSON = response.result.value as! NSArray? {
+                    
+                    
+                    
+                    for element in JSON {
+                        if let data = element as? [String: Any] {
+                            //let idcat = data["_id"] as! Int
+                            let label = data ["label"] as! String
+                            
+                            let movies = data["movies"] as! NSArray
+                            
+                            var MoviesList = [MovieModel]()
+                            
+                            for elementMovie in movies {
+                                if let dataMovie = elementMovie as? [String: Any] {
+                                    
+                                    let movileTitle = dataMovie["title"] as! String
+                                    let movileLabel = dataMovie["genre"] as? String
+                                    
+                                    
+                                    let posterMovie = dataMovie ["poster"] as? [String: Any]
+                                    
+                                    var urlImageMovie = posterMovie?["imgix"] as! String
+                                    
+                                    urlImageMovie = urlImageMovie + "?&crop=entropy&fit=min&w=300&h=250&q=90&fm=jpg&&auto=format&dpr=" + String(GlobalVar.StaticVar.densityPixel)
+                                    let mov : MovieModel = MovieModel(title: movileTitle, imageUrl: urlImageMovie, label: "",movieInfo: dataMovie)
+                                    
+                                    
+                                    MoviesList.append(mov)
+                                    
+                                    
+                                    
+                                    
+                                    
+                                }
+                                
+                                
+                            }
+                            
+                            let homeCat : HomeCatMovie = HomeCatMovie(CatTitle: label, Movies: MoviesList )
+                            HomeCatList.append(homeCat)
+                            
+                            
+                        }
+                        
+                    }
+                    self.categories = HomeCatList
+                    self.tableView.reloadData()
+                    
+                    
+                    
+                    
+                    
+                }
+                break
+                
+            case .failure(_):
+                self.StopLoadingSpinner()
+                print("There is an error")
+                break
+            }
+        }
+        
+    }
+    
+    
+
+
     
 
     override func viewWillAppear(_ animated: Bool) {

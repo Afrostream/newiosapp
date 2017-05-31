@@ -551,11 +551,11 @@
                                     </constraints>
                                 </view>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="cell" rowHeight="130" id="nBg-Zn-Spa" customClass="CategoryRow" customModule="Afostream" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="cell" rowHeight="130" id="nBg-Zn-Spa" customClass="CategoryRowSaisonEpisode" customModule="Afostream" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="332" width="320" height="130"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="nBg-Zn-Spa" id="ud3-GD-2DE">
-                                            <rect key="frame" x="0.0" y="0.0" width="320" height="129.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="320" height="130"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="TDe-kb-HAg">
@@ -619,7 +619,7 @@
                                     </tableViewCell>
                                 </prototypes>
                                 <connections>
-                                    <outlet property="dataSource" destination="iyJ-Fb-3VG" id="n9c-LJ-GOJ"/>
+                                    <outlet property="dataSource" destination="YCj-rc-eu2" id="0Hy-OU-0PJ"/>
                                 </connections>
                             </tableView>
                         </subviews>
@@ -633,6 +633,7 @@
                     </view>
                     <connections>
                         <outlet property="imgMovie" destination="dDv-7Q-EMa" id="dXA-h6-7lq"/>
+                        <outlet property="tableView" destination="CWd-cB-oU2" id="967-x0-x6W"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="aec-N7-ugs" userLabel="First Responder" sceneMemberID="firstResponder"/>
