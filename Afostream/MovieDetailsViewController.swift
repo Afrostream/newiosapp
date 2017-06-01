@@ -63,7 +63,7 @@ class MovieDetailsViewController: UIViewController,UITableViewDataSource {
         return cell
     }
     
-    func MakeGetSaisonEpisode(access_token:String)
+    func MakeGetSaisonEpisode(access_token:String,idMovie:String)
     {
         
         if access_token.isEmpty
@@ -87,7 +87,7 @@ class MovieDetailsViewController: UIViewController,UITableViewDataSource {
         
         
         
-        Alamofire.request(GlobalVar.StaticVar.BaseUrl + "/api/categorys/meas" + GlobalVar.StaticVar.ApiUrlParams, method: .get, parameters: nil, encoding: JSONEncoding.default, headers: headers).responseJSON { response in
+        Alamofire.request(GlobalVar.StaticVar.BaseUrl + "/api/movies/" + idMovie + GlobalVar.StaticVar.ApiUrlParams, method: .get, parameters: nil, encoding: JSONEncoding.default, headers: headers).responseJSON { response in
             
             switch(response.result) {
             case .success(_):
@@ -95,32 +95,35 @@ class MovieDetailsViewController: UIViewController,UITableViewDataSource {
                 
                 var HomeCatList = [HomeCatMovie]()
                 self.StopLoadingSpinner()
-                if let JSON = response.result.value as! NSArray? {
+                
+                
+                
+                if let JSONMovie = response.result.value as? [String: Any] {
                     
-                    
+                     let JSON = JSONMovie["seasons"] as! NSArray
                     
                     for element in JSON {
-                        if let data = element as? [String: Any] {
+                        if let saison = element as? [String: Any] {
                             //let idcat = data["_id"] as! Int
-                            let label = data ["label"] as! String
+                            let title = saison ["title"] as! String
                             
-                            let movies = data["movies"] as! NSArray
+                            let episodes = saison["episodes"] as! NSArray
                             
                             var MoviesList = [MovieModel]()
                             
-                            for elementMovie in movies {
+                            for elementMovie in episodes {
                                 if let dataMovie = elementMovie as? [String: Any] {
                                     
                                     let movileTitle = dataMovie["title"] as! String
-                                    let movileLabel = dataMovie["genre"] as? String
+                                    let episodeNumber = dataMovie["episodeNumber"] as? String
                                     
-                                    
+                                    let movileID = dataMovie["_id"] as! Int
                                     let posterMovie = dataMovie ["poster"] as? [String: Any]
                                     
                                     var urlImageMovie = posterMovie?["imgix"] as! String
                                     
                                     urlImageMovie = urlImageMovie + "?&crop=entropy&fit=min&w=300&h=250&q=90&fm=jpg&&auto=format&dpr=" + String(GlobalVar.StaticVar.densityPixel)
-                                    let mov : MovieModel = MovieModel(title: movileTitle, imageUrl: urlImageMovie, label: "",movieInfo: dataMovie)
+                                    let mov : MovieModel = MovieModel(title: movileTitle, movieID: movileID, imageUrl: urlImageMovie, label: "",movieInfo: dataMovie)
                                     
                                     
                                     MoviesList.append(mov)
@@ -134,7 +137,7 @@ class MovieDetailsViewController: UIViewController,UITableViewDataSource {
                                 
                             }
                             
-                            let homeCat : HomeCatMovie = HomeCatMovie(CatTitle: label, Movies: MoviesList )
+                            let homeCat : HomeCatMovie = HomeCatMovie(CatTitle: title, Movies: MoviesList )
                             HomeCatList.append(homeCat)
                             
                             
@@ -170,6 +173,8 @@ class MovieDetailsViewController: UIViewController,UITableViewDataSource {
     }
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        self.MakeGetSaisonEpisode(access_token: GlobalVar.StaticVar.access_token,idMovie: String(Movie.movieID))
        
         
  

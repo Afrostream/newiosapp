@@ -404,13 +404,15 @@ class MainViewController: UIViewController,UIScrollViewDelegate,UITableViewDataS
                                     let movileTitle = dataMovie["title"] as! String
                                     let movileLabel = dataMovie["genre"] as? String
                                     
+                                    let movileID = dataMovie["_id"] as! Int
+                                    
                                     
                                     let posterMovie = dataMovie ["poster"] as? [String: Any]
                                     
                                     var urlImageMovie = posterMovie?["imgix"] as! String
                                     
                                     urlImageMovie = urlImageMovie + "?&crop=entropy&fit=min&w=300&h=250&q=90&fm=jpg&&auto=format&dpr=" + String(GlobalVar.StaticVar.densityPixel)
-                                    let mov : MovieModel = MovieModel(title: movileTitle, imageUrl: urlImageMovie, label: "",movieInfo: dataMovie)
+                                    let mov : MovieModel = MovieModel(title: movileTitle, movieID: movileID, imageUrl: urlImageMovie, label: "",movieInfo: dataMovie)
                                  
 
                                     MoviesList.append(mov)
@@ -491,6 +493,7 @@ class MainViewController: UIViewController,UIScrollViewDelegate,UITableViewDataS
                         if let movie = element as? [String: Any] {
                             
                             let title = movie ["title"] as! String
+                             let movileID = movie["_id"] as! Int
                             
                             let catArr = movie ["categorys"] as! NSArray
                             let cat = catArr[0] as? [String: Any]
@@ -508,7 +511,7 @@ class MainViewController: UIViewController,UIScrollViewDelegate,UITableViewDataS
                             slide.lblLabel.text = categorie
                             slide.lblLabel.sizeToFit()
                             
-                            let mv: MovieModel = MovieModel(title: title, imageUrl: urlImageMovie, label: categorie, movieInfo: movie)
+                            let mv: MovieModel = MovieModel(title: title, movieID: movileID, imageUrl: urlImageMovie, label: categorie, movieInfo: movie)
                             slide.Movie = mv
                             
                             slide.tag = slides.count

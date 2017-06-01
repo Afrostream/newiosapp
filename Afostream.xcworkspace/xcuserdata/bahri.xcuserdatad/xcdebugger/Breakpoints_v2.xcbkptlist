@@ -186,11 +186,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Afostream/MainViewController.swift"
-            timestampString = "517758954.446352"
+            timestampString = "518049854.018277"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "515"
-            endingLineNumber = "515"
+            startingLineNumber = "518"
+            endingLineNumber = "518"
             landmarkName = "MakeGetSlide(access_token:)"
             landmarkType = "7">
          </BreakpointContent>

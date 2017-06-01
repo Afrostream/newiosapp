@@ -22,6 +22,7 @@ extension UIColor {
 
 struct MovieModel {
     var title:String
+    var movieID:Int
     var imageUrl:String
     var label:String
     var movieInfo : [String: Any]
