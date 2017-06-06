@@ -2,6 +2,7 @@ PODS:
   - Alamofire (4.4.0)
   - AlamofireNetworkActivityIndicator (2.1.0):
     - Alamofire (~> 4.1)
+  - ExpandableLabel (0.1.4)
   - SDWebImage (3.8.2):
     - SDWebImage/Core (= 3.8.2)
   - SDWebImage/Core (3.8.2)
@@ -9,13 +10,15 @@ PODS:
 DEPENDENCIES:
   - Alamofire (~> 4.4)
   - AlamofireNetworkActivityIndicator (~> 2.0)
+  - ExpandableLabel
   - SDWebImage (~> 3.8)
 
 SPEC CHECKSUMS:
   Alamofire: dc44b1600b800eb63da6a19039a0083d62a6a62d
   AlamofireNetworkActivityIndicator: 4716f6554bdfb9c7cf13b1e0e3af21163129690a
+  ExpandableLabel: e82b5dbd9ec1d30d945ca47836f1354f5e782b73
   SDWebImage: 098e97e6176540799c27e804c96653ee0833d13c
 
-PODFILE CHECKSUM: 65af6370c921e16368dd8d3dda1fc40e2422d27a
+PODFILE CHECKSUM: d1d8a1cfe9aad887b450a70f18b94f5d610a3a7e
 
 COCOAPODS: 1.2.1

@@ -10,16 +10,24 @@ import UIKit
 import Alamofire
 import SDWebImage
 
-class MovieDetailsViewController: UIViewController,UITableViewDataSource {
+
+
+class MovieDetailsViewController: UIViewController,UITableViewDataSource,ExpandableLabelDelegate {
     @IBOutlet weak var imgMovie: UIImageView!
     
+ 
+    @IBOutlet weak var scrollView: UIScrollView!
+    @IBOutlet weak var ViewT: UIView!
+    @IBOutlet weak var lblDescription: ExpandableLabel!
     var Movie :MovieModel!
+    
     
     @IBOutlet weak var tableView: UITableView!
     var laoding_spinner:UIActivityIndicatorView=UIActivityIndicatorView()
     var categories = [HomeCatMovie]()
     
     
+  
     func StartLoadingSpinner()
     {
         laoding_spinner.center=self.view.center
@@ -171,8 +179,34 @@ class MovieDetailsViewController: UIViewController,UITableViewDataSource {
     override func viewWillAppear(_ animated: Bool) {
          self.imgMovie.sd_setImage(with: URL(string: Movie.imageUrl), placeholderImage:#imageLiteral(resourceName: "FanartPlaceholderSmall"))
     }
+    func willExpandLabel(_ label: ExpandableLabel) {
+          ViewT.frame.size.height = scrollView.contentSize.height
+         tableView.reloadData()
+        
+    }
+    func didExpandLabel(_ label: ExpandableLabel) {
+        
+    }
+    func didCollapseLabel(_ label: ExpandableLabel) {
+        ViewT.frame.size.height = scrollView.contentSize.height
+        tableView.reloadData()
+    }
     override func viewDidLoad() {
         super.viewDidLoad()
+        lblDescription.delegate = self
+        lblDescription.numberOfLines = 3
+        lblDescription.collapsed = true
+        lblDescription.collapsedAttributedLink = NSAttributedString(string: NSLocalizedString("ReadMore", comment: "") )
+         lblDescription.expandedAttributedLink = NSAttributedString(string: NSLocalizedString("ReadLess", comment: "") )
+        lblDescription.setLessLinkWith(lessLink: NSLocalizedString("ReadLess", comment: ""), attributes: [NSForegroundColorAttributeName:UIColor.red], position: nil)
+        
+         let synopsis = Movie.movieInfo ["synopsis"] as! String
+        
+        if synopsis != "null"
+        {
+        
+        lblDescription.text = synopsis
+        }
         
         self.MakeGetSaisonEpisode(access_token: GlobalVar.StaticVar.access_token,idMovie: String(Movie.movieID))
        

@@ -13,3 +13,5 @@
 "Error" = "Error";
 "ErrorAccessToken" = "Authentification Error";
 "CategoriesMenu" = "Categorys";
+"ReadMore" = "Read More";
+"ReadLess" = "Read Less";

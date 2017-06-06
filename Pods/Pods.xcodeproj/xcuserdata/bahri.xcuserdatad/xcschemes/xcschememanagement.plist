@@ -14,6 +14,11 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
+		<key>ExpandableLabel.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 		<key>Pods-Afostream.xcscheme</key>
 		<dict>
 			<key>isShown</key>
@@ -32,7 +37,7 @@
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>3BD8CC5107C05F54B0EF729F93FD9B9E</key>
+		<key>30E01F11C650E0C3126E563C155D51EF</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -42,7 +47,12 @@
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>E1BF8CCA581B0261D5E411D04BF55A6E</key>
+		<key>EBED7261D931B17680C54ABA28A564CD</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>FD4DFBB3AB46542FD18CBC38BD282109</key>
 		<dict>
 			<key>primary</key>
 			<true/>

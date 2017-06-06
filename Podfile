@@ -9,6 +9,7 @@ target 'Afostream' do
  pod 'Alamofire', '~> 4.4'
 pod 'AlamofireNetworkActivityIndicator', '~> 2.0'
 pod 'SDWebImage', '~>3.8'
+pod "ExpandableLabel"
 
   # Pods for Afostream
 
