@@ -6,10 +6,11 @@ target 'Afostream' do
   use_frameworks!
 
 
- pod 'Alamofire', '~> 4.4'
+pod 'Alamofire', '~> 4.4'
 pod 'AlamofireNetworkActivityIndicator', '~> 2.0'
 pod 'SDWebImage', '~>3.8'
 pod "ExpandableLabel"
+pod 'BMPlayer'
 
   # Pods for Afostream
 

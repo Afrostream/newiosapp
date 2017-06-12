@@ -14,7 +14,17 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
+		<key>BMPlayer.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 		<key>ExpandableLabel.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>NVActivityIndicatorView.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
@@ -29,9 +39,24 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
+		<key>SnapKit.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
+		<key>018D50D9D485E240F68139A5901E7FDC</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>095287BE6F9A04831E600E3C65ADA452</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
 		<key>115FA0D867E07C04838493890DBD8D29</key>
 		<dict>
 			<key>primary</key>
@@ -47,12 +72,17 @@
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>EBED7261D931B17680C54ABA28A564CD</key>
+		<key>CFBE9028B2B10B5217315D99A3955EB2</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>FD4DFBB3AB46542FD18CBC38BD282109</key>
+		<key>D415513396571CC3964B6C310ABB1D08</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>D948AD6926B075B03353EAA714D27A32</key>
 		<dict>
 			<key>primary</key>
 			<true/>
