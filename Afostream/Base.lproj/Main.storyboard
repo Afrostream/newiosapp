@@ -630,6 +630,7 @@
                     </view>
                     <connections>
                         <outlet property="ViewT" destination="sD3-LX-79j" id="669-4I-1s7"/>
+                        <outlet property="bntPlay" destination="WGJ-Vs-4DQ" id="bwU-CH-BWw"/>
                         <outlet property="imgMovie" destination="dDv-7Q-EMa" id="dXA-h6-7lq"/>
                         <outlet property="lblDescription" destination="wvY-et-knu" id="XYi-79-e8i"/>
                         <outlet property="scrollView" destination="59w-lB-xNk" id="EXp-Ju-Mbk"/>

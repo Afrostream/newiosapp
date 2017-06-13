@@ -16,6 +16,7 @@ class MovieDetailsViewController: UIViewController,UITableViewDataSource,Expanda
     @IBOutlet weak var imgMovie: UIImageView!
     
  
+    @IBOutlet weak var bntPlay: UIButton!
     @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var ViewT: UIView!
     @IBOutlet weak var lblDescription: ExpandableLabel!
@@ -26,7 +27,20 @@ class MovieDetailsViewController: UIViewController,UITableViewDataSource,Expanda
     var laoding_spinner:UIActivityIndicatorView=UIActivityIndicatorView()
     var categories = [HomeCatMovie]()
     
+    var videoDrm:Bool? = false
+    var videoDuration:Int? = 0
+    var videoMp4DownloadUrl:String? = ""
+    var videoMp4Size:String? = ""
+    var videoMp4DecipheredSize:String? = ""
+    var videoMp4Trailer:String? = ""
     
+    var videoDashUrl:String? = ""
+    var videoHlsUrl:String? = ""
+    var videoSmoothUrl:String? = ""
+    
+     var videoID:String? = ""
+    
+    var movieType :String? = ""
   
     func StartLoadingSpinner()
     {
@@ -119,8 +133,26 @@ class MovieDetailsViewController: UIViewController,UITableViewDataSource,Expanda
                             
                             var MoviesList = [MovieModel]()
                             
+                            var IsFirstEpisode : Bool = true
+                            
                             for elementMovie in episodes {
                                 if let dataMovie = elementMovie as? [String: Any] {
+                                    
+                                    
+                                    let dataVideo = dataMovie["video"]  as? [String: Any]
+                                    
+                                    let video_id = dataVideo?["_id"] as! String
+                                    
+                                    if self.movieType == "serie"
+                                    {
+                                    
+                                        if IsFirstEpisode == true
+                                        {
+                                            IsFirstEpisode = false
+                                            self.videoID = video_id
+                                         self.MakeGetVideoInfo(access_token: GlobalVar.StaticVar.access_token, idVideo: video_id)
+                                        }
+                                    }
                                     
                                     let movileTitle = dataMovie["title"] as! String
                                     let episodeNumber = dataMovie["episodeNumber"] as? String
@@ -173,6 +205,104 @@ class MovieDetailsViewController: UIViewController,UITableViewDataSource,Expanda
     
     
 
+    func MakeGetVideoInfo(access_token:String,idVideo:String)
+    {
+        
+        if access_token.isEmpty
+        {
+            ShowAlert(Title: NSLocalizedString("Error", comment: ""), Message: NSLocalizedString("ErrorAccessToken", comment: ""))
+            return
+        }
+        
+        let headers = [
+            "Authorization": "Bearer " + GlobalVar.StaticVar.access_token
+            
+        ]
+        
+        
+        
+        
+        
+        
+        
+        self.StartLoadingSpinner()
+        
+        
+        
+        Alamofire.request(GlobalVar.StaticVar.BaseUrl + "/api/videos/" + idVideo + GlobalVar.StaticVar.ApiUrlParams, method: .get, parameters: nil, encoding: JSONEncoding.default, headers: headers).responseJSON { response in
+            
+            switch(response.result) {
+            case .success(_):
+                
+                
+          
+                self.StopLoadingSpinner()
+                
+                
+                
+                if let JSONVideo = response.result.value as? [String: Any] {
+                    
+                    self.videoDrm = JSONVideo["drm"] as? Bool
+                    self.videoDuration = JSONVideo["duration"] as? Int
+                    
+                    self.videoMp4DownloadUrl = JSONVideo["sourceMp4"] as? String
+                    
+                
+                     self.videoMp4Size = JSONVideo["sourceMp4Size"] as? String
+                    
+                     self.videoMp4DecipheredSize = JSONVideo["sourceMp4DecipheredSize"] as? String
+
+                    self.videoMp4Trailer = JSONVideo["sourceMp4Deciphered"] as? String
+                    
+                    if let JSON = JSONVideo["sources"] as? NSArray {
+                    
+                   
+                    for element in JSON {
+                        if let sr = element as? [String: Any] {
+                            //let idcat = data["_id"] as! Int
+                            let type = sr ["type"] as! String
+                            
+                            let src = sr["src"] as! String
+                            print (src)
+                            
+                        if type == "application/dash+xml"
+                        {
+                            self.videoDashUrl = src
+                            
+                        }else if type == "application/vnd.apple.mpegurl"
+                        {
+                            
+                            self.videoHlsUrl = src
+                                
+                        }else if type == "application/vnd.ms-sstr+xml"
+                        {
+                            self.videoSmoothUrl = src
+                        }
+                            
+                         self.bntPlay.isHidden = false
+                            
+                            
+                        }
+
+                    
+                    
+                    
+                    
+                   }
+                    
+                 }
+                }
+                break
+                
+            case .failure(_):
+                self.StopLoadingSpinner()
+                print("There is an error")
+                break
+            }
+        }
+        
+    }
+
 
     
 
@@ -200,7 +330,29 @@ class MovieDetailsViewController: UIViewController,UITableViewDataSource,Expanda
          lblDescription.expandedAttributedLink = NSAttributedString(string: NSLocalizedString("ReadLess", comment: "") )
         lblDescription.setLessLinkWith(lessLink: NSLocalizedString("ReadLess", comment: ""), attributes: [NSForegroundColorAttributeName:UIColor.red], position: nil)
         
+        self.bntPlay.isHidden = true
+        
          let synopsis = Movie.movieInfo ["synopsis"] as! String
+        
+         self.movieType = Movie.movieInfo ["type"] as! String
+        
+        let isLive:Bool = Movie.movieInfo ["live"] as! Bool
+        
+        
+        if self.movieType == "serie"
+        {
+            self.videoID = ""
+        }else
+        {
+        self.videoID = Movie.movieInfo ["videoId"] as! String
+        }
+        
+        
+        
+        if isLive
+        {
+            self.movieType = "live"
+        }
         
         if synopsis != "null"
         {
@@ -208,8 +360,15 @@ class MovieDetailsViewController: UIViewController,UITableViewDataSource,Expanda
         lblDescription.text = synopsis
         }
         
-        self.MakeGetSaisonEpisode(access_token: GlobalVar.StaticVar.access_token,idMovie: String(Movie.movieID))
        
+        if self.movieType != "serie"
+        {
+            if self.videoID != nil {
+                self.MakeGetVideoInfo (access_token: GlobalVar.StaticVar.access_token,idVideo: self.videoID!)
+            }
+        }
+        
+        self.MakeGetSaisonEpisode(access_token: GlobalVar.StaticVar.access_token,idMovie: String(Movie.movieID))
         
  
     }
