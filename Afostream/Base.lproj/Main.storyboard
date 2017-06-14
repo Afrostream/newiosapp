@@ -501,6 +501,9 @@
                                                         <constraint firstAttribute="width" constant="112" id="lbW-1k-DS5"/>
                                                     </constraints>
                                                     <state key="normal" image="PlayButtonNormal"/>
+                                                    <connections>
+                                                        <action selector="BntPlayAction:" destination="YCj-rc-eu2" eventType="touchUpInside" id="fvE-mj-2ak"/>
+                                                    </connections>
                                                 </button>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wvY-et-knu" customClass="ExpandableLabel" customModule="ExpandableLabel">
                                                     <rect key="frame" x="8" y="285" width="304" height="54"/>
@@ -739,6 +742,14 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="p8m-NY-Orr" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="5133.75" y="646.47887323943667"/>
+        </scene>
+        <!--AV Player View Controller-->
+        <scene sceneID="fEE-gm-cuY">
+            <objects>
+                <avPlayerViewController storyboardIdentifier="PlayerViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" videoGravity="AVLayerVideoGravityResizeAspect" id="FxZ-iG-kdx" customClass="PlayerViewController" customModule="Afostream" customModuleProvider="target" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Km2-n4-9iu" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3726" y="1458"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="ddh-GK-DRU">

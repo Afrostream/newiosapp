@@ -10,6 +10,9 @@ PODS:
     - NVActivityIndicatorView (~> 3.5)
     - SnapKit (~> 3.2)
   - ExpandableLabel (0.1.4)
+  - google-cast-sdk (3.4.0):
+    - google-cast-sdk/Core (= 3.4.0)
+  - google-cast-sdk/Core (3.4.0)
   - NVActivityIndicatorView (3.6.1)
   - SDWebImage (3.8.2):
     - SDWebImage/Core (= 3.8.2)
@@ -21,6 +24,7 @@ DEPENDENCIES:
   - AlamofireNetworkActivityIndicator (~> 2.0)
   - BMPlayer
   - ExpandableLabel
+  - google-cast-sdk
   - SDWebImage (~> 3.8)
 
 SPEC CHECKSUMS:
@@ -28,10 +32,11 @@ SPEC CHECKSUMS:
   AlamofireNetworkActivityIndicator: 4716f6554bdfb9c7cf13b1e0e3af21163129690a
   BMPlayer: 9faf3d033ba6c60b110ac6edd1c25149aa6b2c5d
   ExpandableLabel: e82b5dbd9ec1d30d945ca47836f1354f5e782b73
+  google-cast-sdk: 35da95f568b50d72628014f3320e2f3240bf2a7a
   NVActivityIndicatorView: 9f52a7f84bf5c6a798722c450fe3c198e01c56ed
   SDWebImage: 098e97e6176540799c27e804c96653ee0833d13c
   SnapKit: 1ca44df72cfa543218d177cb8aab029d10d86ea7
 
-PODFILE CHECKSUM: 1ab2eb1c0b9e9e3e769bbe01aeb85cae094a3641
+PODFILE CHECKSUM: 50aa94077c7e24b5034ad9a5b46c8187fd379760
 
 COCOAPODS: 1.2.1

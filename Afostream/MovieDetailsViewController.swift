@@ -42,6 +42,18 @@ class MovieDetailsViewController: UIViewController,UITableViewDataSource,Expanda
     
     var movieType :String? = ""
   
+    @IBAction func BntPlayAction(_ sender: Any) {
+        
+
+        
+        
+        let videoPlayerViewController = self.storyboard?.instantiateViewController(withIdentifier: "PlayerViewController") as! PlayerViewController
+        
+          videoPlayerViewController.videoURL = self.videoHlsUrl!
+        self.present(videoPlayerViewController, animated: true, completion: nil)
+
+        
+    }
     func StartLoadingSpinner()
     {
         laoding_spinner.center=self.view.center
