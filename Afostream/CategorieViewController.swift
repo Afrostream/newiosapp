@@ -7,11 +7,159 @@
 //
 
 import UIKit
+import Alamofire
+import SDWebImage
 
-class CategorieViewController: UIViewController {
+class CategorieViewController: UIViewController,UITableViewDataSource,UITableViewDelegate {
 
    
+    @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var MenuBnt: UIBarButtonItem!
+    
+    var MoviesList = [MovieModel]()
+    var catID :String = ""
+    
+    var laoding_spinner:UIActivityIndicatorView=UIActivityIndicatorView()
+ 
+    func StartLoadingSpinner()
+    {
+        laoding_spinner.center=self.view.center
+        laoding_spinner.hidesWhenStopped=true
+        laoding_spinner.activityIndicatorViewStyle=UIActivityIndicatorViewStyle.gray
+        self.view.addSubview(laoding_spinner)
+        laoding_spinner.startAnimating()
+        UIApplication.shared.beginIgnoringInteractionEvents()
+    }
+    func StopLoadingSpinner()
+    {
+        laoding_spinner.stopAnimating()
+        UIApplication.shared.endIgnoringInteractionEvents()
+        
+    }
+    func ShowAlert(Title:String ,Message:String)
+    {
+        let alertController = UIAlertController(title: Title, message: Message, preferredStyle: .alert)
+        
+        let defaultAction = UIAlertAction(title: "OK", style: .cancel, handler: nil)
+        alertController.addAction(defaultAction)
+        
+        self.present(alertController, animated: true, completion: nil)
+    }
+
+    
+    func MakeGetCategoriesMovies(access_token:String,idCat:String)
+    {
+        
+        if access_token.isEmpty
+        {
+            ShowAlert(Title: NSLocalizedString("Error", comment: ""), Message: NSLocalizedString("ErrorAccessToken", comment: ""))
+            return
+        }
+        
+        let headers = [
+            "Authorization": "Bearer " + GlobalVar.StaticVar.access_token
+            
+        ]
+        
+        
+        
+        
+        
+        
+        
+        self.StartLoadingSpinner()
+        
+        
+        
+        Alamofire.request(GlobalVar.StaticVar.BaseUrl + "/api/categorys/" + idCat + GlobalVar.StaticVar.ApiUrlParams, method: .get, parameters: nil, encoding: JSONEncoding.default, headers: headers).responseJSON { response in
+            
+            switch(response.result) {
+            case .success(_):
+                
+                
+        
+                self.StopLoadingSpinner()
+                
+                let dt = response.result.value as? [String: Any]
+                
+                
+                if let JSON = dt?["movies"] as! NSArray? {
+                    self.MoviesList.removeAll()
+                    
+                    
+                            for elementMovie in JSON {
+                                if let dataMovie = elementMovie as? [String: Any] {
+                                    
+                                    let movileTitle = dataMovie["title"] as! String
+                                    let movileLabel = dataMovie["genre"] as? String
+                                    
+                                    let movileID = dataMovie["_id"] as! Int
+                                    
+                                    
+                                    let posterMovie = dataMovie ["poster"] as? [String: Any]
+                                    
+                                    var urlImageMovie = posterMovie?["imgix"] as! String
+                                    
+                                    urlImageMovie = urlImageMovie + "?&crop=entropy&fit=min&w=300&h=250&q=90&fm=jpg&&auto=format&dpr=" + String(GlobalVar.StaticVar.densityPixel)
+                                    let mov : MovieModel = MovieModel(title: movileTitle, movieID: movileID, imageUrl: urlImageMovie, label: "",movieInfo: dataMovie)
+                                    
+                                    
+                                    self.MoviesList.append(mov)
+                                    
+                                    
+                                    
+                                    
+                                    
+                                }
+                                
+                                
+                            }
+                            
+                    
+                               self.tableView.reloadData()
+                            
+                        }
+                        
+                    
+                   
+                
+                    
+                    
+                    
+                    
+                    
+                
+                break
+                
+            case .failure(_):
+                self.StopLoadingSpinner()
+                print("There is an error")
+                break
+            }
+        }
+        
+    }
+    
+
+
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return 1
+    }
+
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return self.MoviesList.count
+    }
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "cell") as! HomeCatTableViewCell
+        cell.Movie = self.MoviesList[indexPath.row]
+        cell.imgMovie.sd_setImage(with: URL(string: self.MoviesList[indexPath.row].imageUrl), placeholderImage:#imageLiteral(resourceName: "FanartPlaceholderSmall"))
+        cell.lblTitle.text = self.MoviesList[indexPath.row].title
+
+     
+        return cell
+    }
+
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -25,6 +173,7 @@ class CategorieViewController: UIViewController {
            
             
         }
+        MakeGetCategoriesMovies (access_token: GlobalVar.StaticVar.access_token, idCat: self.catID)
     }
 
     override func didReceiveMemoryWarning() {

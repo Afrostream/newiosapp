@@ -115,6 +115,7 @@ class MenuViewController: UIViewController,UITableViewDelegate,UITableViewDataSo
         let newViewcontroller = mainstoryboard.instantiateViewController(withIdentifier: "CategorieViewController") as! CategorieViewController
         let newFrontController = UINavigationController.init(rootViewController: newViewcontroller)
           newViewcontroller.title = GlobalVar.StaticVar.menuSections[indexPath.section][indexPath.row]
+        newViewcontroller.catID = String (GlobalVar.StaticVar.catIDArr [indexPath.row])
         
         revealviewcontroller.pushFrontViewController(newFrontController, animated: true)
         
