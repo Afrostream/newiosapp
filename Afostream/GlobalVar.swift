@@ -25,6 +25,7 @@ struct MovieModel {
     var movieID:Int
     var imageUrl:String
     var label:String
+    var isFav:Bool = false
     var movieInfo : [String: Any]
 }
 

@@ -175,7 +175,7 @@ class MovieDetailsViewController: UIViewController,UITableViewDataSource,Expanda
                                     var urlImageMovie = posterMovie?["imgix"] as! String
                                     
                                     urlImageMovie = urlImageMovie + "?&crop=entropy&fit=min&w=300&h=250&q=90&fm=jpg&&auto=format&dpr=" + String(GlobalVar.StaticVar.densityPixel)
-                                    let mov : MovieModel = MovieModel(title: movileTitle, movieID: movileID, imageUrl: urlImageMovie, label: "",movieInfo: dataMovie)
+                                    let mov : MovieModel = MovieModel(title: movileTitle, movieID: movileID, imageUrl: urlImageMovie, label: "", isFav: false,movieInfo: dataMovie)
                                     
                                     
                                     MoviesList.append(mov)

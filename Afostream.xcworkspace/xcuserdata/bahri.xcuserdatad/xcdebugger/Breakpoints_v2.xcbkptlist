@@ -536,12 +536,28 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Afostream/CategorieViewController.swift"
-            timestampString = "519668124.509369"
+            timestampString = "519750169.089267"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "132"
-            endingLineNumber = "132"
+            startingLineNumber = "158"
+            endingLineNumber = "158"
             landmarkName = "MakeGetCategoriesMovies(access_token:idCat:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Afostream/CategorieViewController.swift"
+            timestampString = "519749658.581272"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "55"
+            endingLineNumber = "55"
+            landmarkName = "IsContainFav(idMovie:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

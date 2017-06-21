@@ -17,6 +17,8 @@ class CategorieViewController: UIViewController,UITableViewDataSource,UITableVie
     @IBOutlet weak var MenuBnt: UIBarButtonItem!
     
     var MoviesList = [MovieModel]()
+    
+    var ListFavMovies = [MovieModel]()
     var catID :String = ""
     
     var laoding_spinner:UIActivityIndicatorView=UIActivityIndicatorView()
@@ -44,6 +46,22 @@ class CategorieViewController: UIViewController,UITableViewDataSource,UITableVie
         alertController.addAction(defaultAction)
         
         self.present(alertController, animated: true, completion: nil)
+    }
+    
+    func IsContainFav (idMovie:Int) -> Bool
+    {
+     
+        
+        for i in 0 ..< self.ListFavMovies.count 
+        {
+            if ListFavMovies[i].movieID == idMovie
+            {
+                
+                return true
+            }
+            
+        }
+        return false
     }
 
     
@@ -101,8 +119,16 @@ class CategorieViewController: UIViewController,UITableViewDataSource,UITableVie
                                     var urlImageMovie = posterMovie?["imgix"] as! String
                                     
                                     urlImageMovie = urlImageMovie + "?&crop=entropy&fit=min&w=300&h=250&q=90&fm=jpg&&auto=format&dpr=" + String(GlobalVar.StaticVar.densityPixel)
-                                    let mov : MovieModel = MovieModel(title: movileTitle, movieID: movileID, imageUrl: urlImageMovie, label: "",movieInfo: dataMovie)
                                     
+                                    var mov:MovieModel
+                                    
+                                    if self.IsContainFav(idMovie: movileID)
+                                    {
+                                     mov = MovieModel(title: movileTitle, movieID: movileID, imageUrl: urlImageMovie, label: "", isFav: true,movieInfo: dataMovie)
+                                    }else
+                                    {
+                                       mov = MovieModel(title: movileTitle, movieID: movileID, imageUrl: urlImageMovie, label: "", isFav: false,movieInfo: dataMovie)
+                                    }
                                     
                                     self.MoviesList.append(mov)
                                     
@@ -141,6 +167,99 @@ class CategorieViewController: UIViewController,UITableViewDataSource,UITableVie
     }
     
 
+    func MakeGetFavList(access_token:String)
+    {
+        
+        if access_token.isEmpty
+        {
+            ShowAlert(Title: NSLocalizedString("Error", comment: ""), Message: NSLocalizedString("ErrorAccessToken", comment: ""))
+            return
+        }
+        
+        let headers = [
+            "Authorization": "Bearer " + GlobalVar.StaticVar.access_token
+            
+        ]
+        
+        
+        
+        
+        
+        
+        
+        self.StartLoadingSpinner()
+        
+        
+        
+        Alamofire.request(GlobalVar.StaticVar.BaseUrl + "/api/users/me/favoritesMovies/"  + GlobalVar.StaticVar.ApiUrlParams, method: .get, parameters: nil, encoding: JSONEncoding.default, headers: headers).responseJSON { response in
+            
+            switch(response.result) {
+            case .success(_):
+                
+                
+                
+                self.StopLoadingSpinner()
+                
+               
+                
+                
+                if let JSON = response.result.value as! NSArray? {
+                  
+                    self.ListFavMovies.removeAll()
+                    
+                    for elementMovie in JSON {
+                        if let dataMovie = elementMovie as? [String: Any] {
+                            
+                            let movileTitle = dataMovie["title"] as! String
+                            let movileLabel = dataMovie["genre"] as? String
+                            
+                            let movileID = dataMovie["_id"] as! Int
+                            
+                            
+                            let posterMovie = dataMovie ["poster"] as? [String: Any]
+                            
+                            var urlImageMovie = posterMovie?["imgix"] as! String
+                            
+                            urlImageMovie = urlImageMovie + "?&crop=entropy&fit=min&w=300&h=250&q=90&fm=jpg&&auto=format&dpr=" + String(GlobalVar.StaticVar.densityPixel)
+                            let mov : MovieModel = MovieModel(title: movileTitle, movieID: movileID, imageUrl: urlImageMovie, label: "", isFav: false,movieInfo: dataMovie)
+                            
+                            
+                            self.ListFavMovies.append(mov)
+                            
+                            
+                            
+                            
+                            
+                        }
+                        
+                        
+                    }
+                    
+                    
+                    self.MakeGetCategoriesMovies (access_token: GlobalVar.StaticVar.access_token, idCat: self.catID)
+                    
+                }
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                break
+                
+            case .failure(_):
+                self.StopLoadingSpinner()
+                print("There is an error")
+                break
+            }
+        }
+        
+    }
+
 
     func numberOfSections(in tableView: UITableView) -> Int {
         return 1
@@ -154,6 +273,17 @@ class CategorieViewController: UIViewController,UITableViewDataSource,UITableVie
         cell.Movie = self.MoviesList[indexPath.row]
         cell.imgMovie.sd_setImage(with: URL(string: self.MoviesList[indexPath.row].imageUrl), placeholderImage:#imageLiteral(resourceName: "FanartPlaceholderSmall"))
         cell.lblTitle.text = self.MoviesList[indexPath.row].title
+        
+        if self.MoviesList[indexPath.row].isFav
+        {
+            
+            cell.bntFav.setImage(#imageLiteral(resourceName: "RemoveFromFavoritesButtonNormal"), for: UIControlState.normal)
+            
+        }else
+        {
+            cell.bntFav.setImage(#imageLiteral(resourceName: "AddToFavoritesButtonNormal"), for: UIControlState.normal)
+        }
+        
 
      
         return cell
@@ -171,9 +301,9 @@ class CategorieViewController: UIViewController,UITableViewDataSource,UITableVie
             self.view.addGestureRecognizer(self.revealViewController().tapGestureRecognizer())
             
            
-            
+            self.MakeGetFavList(access_token: GlobalVar.StaticVar.access_token)
         }
-        MakeGetCategoriesMovies (access_token: GlobalVar.StaticVar.access_token, idCat: self.catID)
+        
     }
 
     override func didReceiveMemoryWarning() {
