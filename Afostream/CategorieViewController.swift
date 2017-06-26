@@ -114,9 +114,10 @@ class CategorieViewController: UIViewController,UITableViewDataSource,UITableVie
                                     let movileID = dataMovie["_id"] as! Int
                                     
                                     
-                                    let posterMovie = dataMovie ["poster"] as? [String: Any]
+                                    if let posterMovie = dataMovie ["poster"] as? [String: Any]
+                                    {
                                     
-                                    var urlImageMovie = posterMovie?["imgix"] as! String
+                                    var urlImageMovie = posterMovie["imgix"] as! String
                                     
                                     urlImageMovie = urlImageMovie + "?&crop=entropy&fit=min&w=300&h=250&q=90&fm=jpg&&auto=format&dpr=" + String(GlobalVar.StaticVar.densityPixel)
                                     
@@ -132,7 +133,7 @@ class CategorieViewController: UIViewController,UITableViewDataSource,UITableVie
                                     
                                     self.MoviesList.append(mov)
                                     
-                                    
+                                    }
                                     
                                     
                                     
@@ -216,9 +217,10 @@ class CategorieViewController: UIViewController,UITableViewDataSource,UITableVie
                             let movileID = dataMovie["_id"] as! Int
                             
                             
-                            let posterMovie = dataMovie ["poster"] as? [String: Any]
+                            if let posterMovie = dataMovie ["poster"] as? [String: Any]
+                            {
                             
-                            var urlImageMovie = posterMovie?["imgix"] as! String
+                            var urlImageMovie = posterMovie["imgix"] as! String
                             
                             urlImageMovie = urlImageMovie + "?&crop=entropy&fit=min&w=300&h=250&q=90&fm=jpg&&auto=format&dpr=" + String(GlobalVar.StaticVar.densityPixel)
                             let mov : MovieModel = MovieModel(title: movileTitle, movieID: movileID, imageUrl: urlImageMovie, label: "", isFav: false,movieInfo: dataMovie)
@@ -226,7 +228,7 @@ class CategorieViewController: UIViewController,UITableViewDataSource,UITableVie
                             
                             self.ListFavMovies.append(mov)
                             
-                            
+                            }
                             
                             
                             

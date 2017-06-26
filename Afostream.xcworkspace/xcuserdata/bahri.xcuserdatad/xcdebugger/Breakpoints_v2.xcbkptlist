@@ -186,11 +186,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Afostream/MainViewController.swift"
-            timestampString = "518049854.018277"
+            timestampString = "520174841.004288"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "518"
-            endingLineNumber = "518"
+            startingLineNumber = "520"
+            endingLineNumber = "520"
             landmarkName = "MakeGetSlide(access_token:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -536,11 +536,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Afostream/CategorieViewController.swift"
-            timestampString = "519750169.089267"
+            timestampString = "520177670.503852"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "158"
-            endingLineNumber = "158"
+            startingLineNumber = "159"
+            endingLineNumber = "159"
             landmarkName = "MakeGetCategoriesMovies(access_token:idCat:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -558,6 +558,22 @@
             startingLineNumber = "55"
             endingLineNumber = "55"
             landmarkName = "IsContainFav(idMovie:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Afostream/MainViewController.swift"
+            timestampString = "520174815.592422"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "413"
+            endingLineNumber = "413"
+            landmarkName = "MakeGetCategoriesHomeMovies(access_token:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

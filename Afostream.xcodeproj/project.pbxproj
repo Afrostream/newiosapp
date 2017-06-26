@@ -36,6 +36,7 @@
 		15A5D50B1EDF0842005EDC17 /* CategoryRowSaisonEpisode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15A5D50A1EDF0842005EDC17 /* CategoryRowSaisonEpisode.swift */; };
 		15ADD4281EE6D21D008FD46A /* ExpandableLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15ADD4271EE6D21D008FD46A /* ExpandableLabel.swift */; };
 		15B186CC1EC484C500EC3EBB /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 15B186CA1EC484C500EC3EBB /* Localizable.strings */; };
+		15BBFE301F0142D6002A55D9 /* FavTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15BBFE2F1F0142D6002A55D9 /* FavTableViewCell.swift */; };
 		15C769B71ECC9C89001ED39B /* Slide.xib in Resources */ = {isa = PBXBuildFile; fileRef = 15C769B61ECC9C89001ED39B /* Slide.xib */; };
 		15C769B91ECC9CCB001ED39B /* Slide.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15C769B81ECC9CCB001ED39B /* Slide.swift */; };
 		B025E2CA7F917FBBC541F5D6 /* Pods_Afostream.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 30C786182E7AE4F245C7BD0A /* Pods_Afostream.framework */; };
@@ -76,6 +77,7 @@
 		15ADD4271EE6D21D008FD46A /* ExpandableLabel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExpandableLabel.swift; sourceTree = "<group>"; };
 		15B186C91EC4846B00EC3EBB /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Main.strings; sourceTree = "<group>"; };
 		15B186CB1EC484C500EC3EBB /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
+		15BBFE2F1F0142D6002A55D9 /* FavTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FavTableViewCell.swift; sourceTree = "<group>"; };
 		15C769B61ECC9C89001ED39B /* Slide.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = Slide.xib; sourceTree = "<group>"; };
 		15C769B81ECC9CCB001ED39B /* Slide.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Slide.swift; sourceTree = "<group>"; };
 		30C786182E7AE4F245C7BD0A /* Pods_Afostream.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Afostream.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -127,6 +129,7 @@
 				157B4A771EC1C2A40061D175 /* SWRevealViewController.m */,
 				15416D261EBB5AEC0008FAD6 /* ViewController.swift */,
 				15416D281EBB5AEC0008FAD6 /* Main.storyboard */,
+				15BBFE2F1F0142D6002A55D9 /* FavTableViewCell.swift */,
 				1576157E1EF9635A00D41FDF /* HomeCatTableViewCell.swift */,
 				156A55AF1EF174B900B06B4E /* PlayerViewController.swift */,
 				157F2EF31EDC51BF0011F3B0 /* MovieDetailsViewController.swift */,
@@ -314,6 +317,7 @@
 				155A8BD91ECB4CD500CC4B94 /* CatTableViewCell.swift in Sources */,
 				15416D371EBB838B0008FAD6 /* DesignableUITextField.swift in Sources */,
 				156A55B01EF174B900B06B4E /* PlayerViewController.swift in Sources */,
+				15BBFE301F0142D6002A55D9 /* FavTableViewCell.swift in Sources */,
 				1550EAEC1EC4CE8800EC4948 /* GlobalVar.swift in Sources */,
 				158C75D31ECDE49500501FD3 /* CategoryRow.swift in Sources */,
 				157B4A7E1EC33FFC0061D175 /* MenuViewController.swift in Sources */,
