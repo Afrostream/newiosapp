@@ -33,6 +33,14 @@ class MainViewController: UIViewController,UIScrollViewDelegate,UITableViewDataS
         laoding_spinner.startAnimating()
         UIApplication.shared.beginIgnoringInteractionEvents()
     }
+    @IBAction func searchButton(_ sender: Any) {
+        
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let vc = storyboard.instantiateViewController(withIdentifier: "SearchViewController") as! SearchViewController
+        self.navigationItem.title = ""
+        self.navigationController?.pushViewController(vc,animated: true)
+       
+    }
     func StopLoadingSpinner()
     {
         laoding_spinner.stopAnimating()

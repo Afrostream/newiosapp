@@ -290,6 +290,17 @@ class CategorieViewController: UIViewController,UITableViewDataSource,UITableVie
      
         return cell
     }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let title = MoviesList[indexPath.row].title
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let vc = storyboard.instantiateViewController(withIdentifier: "MovieDetailsViewController") as! MovieDetailsViewController
+        vc.title = title
+        vc.Movie =  MoviesList[indexPath.row]
+        self.navigationItem.title = ""
+        self.navigationController?.pushViewController(vc,animated: true)
+
+    }
 
     
     override func viewDidLoad() {

@@ -170,16 +170,17 @@ class MovieDetailsViewController: UIViewController,UITableViewDataSource,Expanda
                                     let episodeNumber = dataMovie["episodeNumber"] as? String
                                     
                                     let movileID = dataMovie["_id"] as! Int
-                                    let posterMovie = dataMovie ["poster"] as? [String: Any]
+                                    if let posterMovie = dataMovie ["poster"] as? [String: Any]
+                                    {
                                     
-                                    var urlImageMovie = posterMovie?["imgix"] as! String
+                                    var urlImageMovie = posterMovie["imgix"] as! String
                                     
                                     urlImageMovie = urlImageMovie + "?&crop=entropy&fit=min&w=300&h=250&q=90&fm=jpg&&auto=format&dpr=" + String(GlobalVar.StaticVar.densityPixel)
                                     let mov : MovieModel = MovieModel(title: movileTitle, movieID: movileID, imageUrl: urlImageMovie, label: "", isFav: false,movieInfo: dataMovie)
                                     
                                     
                                     MoviesList.append(mov)
-                                    
+                                    }
                                     
                                     
                                     

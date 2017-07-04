@@ -39,6 +39,8 @@
 		15BBFE301F0142D6002A55D9 /* FavTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15BBFE2F1F0142D6002A55D9 /* FavTableViewCell.swift */; };
 		15C769B71ECC9C89001ED39B /* Slide.xib in Resources */ = {isa = PBXBuildFile; fileRef = 15C769B61ECC9C89001ED39B /* Slide.xib */; };
 		15C769B91ECC9CCB001ED39B /* Slide.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15C769B81ECC9CCB001ED39B /* Slide.swift */; };
+		15E83CD41F0A84FF009525DA /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15E83CD31F0A84FF009525DA /* SearchViewController.swift */; };
+		15E83CD61F0BCABD009525DA /* SearchTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15E83CD51F0BCABD009525DA /* SearchTableViewCell.swift */; };
 		B025E2CA7F917FBBC541F5D6 /* Pods_Afostream.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 30C786182E7AE4F245C7BD0A /* Pods_Afostream.framework */; };
 /* End PBXBuildFile section */
 
@@ -80,6 +82,8 @@
 		15BBFE2F1F0142D6002A55D9 /* FavTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FavTableViewCell.swift; sourceTree = "<group>"; };
 		15C769B61ECC9C89001ED39B /* Slide.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = Slide.xib; sourceTree = "<group>"; };
 		15C769B81ECC9CCB001ED39B /* Slide.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Slide.swift; sourceTree = "<group>"; };
+		15E83CD31F0A84FF009525DA /* SearchViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
+		15E83CD51F0BCABD009525DA /* SearchTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchTableViewCell.swift; sourceTree = "<group>"; };
 		30C786182E7AE4F245C7BD0A /* Pods_Afostream.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Afostream.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		5A005A3133F248A141B09A7E /* Pods-Afostream.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Afostream.release.xcconfig"; path = "Pods/Target Support Files/Pods-Afostream/Pods-Afostream.release.xcconfig"; sourceTree = "<group>"; };
 		B70352973EFC896AFC93AA95 /* Pods-Afostream.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Afostream.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Afostream/Pods-Afostream.debug.xcconfig"; sourceTree = "<group>"; };
@@ -129,6 +133,8 @@
 				157B4A771EC1C2A40061D175 /* SWRevealViewController.m */,
 				15416D261EBB5AEC0008FAD6 /* ViewController.swift */,
 				15416D281EBB5AEC0008FAD6 /* Main.storyboard */,
+				15E83CD51F0BCABD009525DA /* SearchTableViewCell.swift */,
+				15E83CD31F0A84FF009525DA /* SearchViewController.swift */,
 				15BBFE2F1F0142D6002A55D9 /* FavTableViewCell.swift */,
 				1576157E1EF9635A00D41FDF /* HomeCatTableViewCell.swift */,
 				156A55AF1EF174B900B06B4E /* PlayerViewController.swift */,
@@ -319,6 +325,7 @@
 				156A55B01EF174B900B06B4E /* PlayerViewController.swift in Sources */,
 				15BBFE301F0142D6002A55D9 /* FavTableViewCell.swift in Sources */,
 				1550EAEC1EC4CE8800EC4948 /* GlobalVar.swift in Sources */,
+				15E83CD41F0A84FF009525DA /* SearchViewController.swift in Sources */,
 				158C75D31ECDE49500501FD3 /* CategoryRow.swift in Sources */,
 				157B4A7E1EC33FFC0061D175 /* MenuViewController.swift in Sources */,
 				157B4A781EC1C2A40061D175 /* SWRevealViewController.m in Sources */,
@@ -326,6 +333,7 @@
 				15416D251EBB5AEB0008FAD6 /* AppDelegate.swift in Sources */,
 				15C769B91ECC9CCB001ED39B /* Slide.swift in Sources */,
 				15925C001ECC7EB60090DE5F /* CategorieViewController.swift in Sources */,
+				15E83CD61F0BCABD009525DA /* SearchTableViewCell.swift in Sources */,
 				157B4A821EC35A980061D175 /* MyAccountViewController.swift in Sources */,
 				157F2EF41EDC51BF0011F3B0 /* MovieDetailsViewController.swift in Sources */,
 			);
