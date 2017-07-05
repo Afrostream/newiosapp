@@ -37,6 +37,7 @@
 		15ADD4281EE6D21D008FD46A /* ExpandableLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15ADD4271EE6D21D008FD46A /* ExpandableLabel.swift */; };
 		15B186CC1EC484C500EC3EBB /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 15B186CA1EC484C500EC3EBB /* Localizable.strings */; };
 		15BBFE301F0142D6002A55D9 /* FavTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15BBFE2F1F0142D6002A55D9 /* FavTableViewCell.swift */; };
+		15C5231E1F0D16BD00473A82 /* RegisterUserViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15C5231D1F0D16BD00473A82 /* RegisterUserViewController.swift */; };
 		15C769B71ECC9C89001ED39B /* Slide.xib in Resources */ = {isa = PBXBuildFile; fileRef = 15C769B61ECC9C89001ED39B /* Slide.xib */; };
 		15C769B91ECC9CCB001ED39B /* Slide.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15C769B81ECC9CCB001ED39B /* Slide.swift */; };
 		15E83CD41F0A84FF009525DA /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15E83CD31F0A84FF009525DA /* SearchViewController.swift */; };
@@ -80,6 +81,7 @@
 		15B186C91EC4846B00EC3EBB /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Main.strings; sourceTree = "<group>"; };
 		15B186CB1EC484C500EC3EBB /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		15BBFE2F1F0142D6002A55D9 /* FavTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FavTableViewCell.swift; sourceTree = "<group>"; };
+		15C5231D1F0D16BD00473A82 /* RegisterUserViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegisterUserViewController.swift; sourceTree = "<group>"; };
 		15C769B61ECC9C89001ED39B /* Slide.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = Slide.xib; sourceTree = "<group>"; };
 		15C769B81ECC9CCB001ED39B /* Slide.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Slide.swift; sourceTree = "<group>"; };
 		15E83CD31F0A84FF009525DA /* SearchViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
@@ -133,6 +135,7 @@
 				157B4A771EC1C2A40061D175 /* SWRevealViewController.m */,
 				15416D261EBB5AEC0008FAD6 /* ViewController.swift */,
 				15416D281EBB5AEC0008FAD6 /* Main.storyboard */,
+				15C5231D1F0D16BD00473A82 /* RegisterUserViewController.swift */,
 				15E83CD51F0BCABD009525DA /* SearchTableViewCell.swift */,
 				15E83CD31F0A84FF009525DA /* SearchViewController.swift */,
 				15BBFE2F1F0142D6002A55D9 /* FavTableViewCell.swift */,
@@ -332,6 +335,7 @@
 				15416D271EBB5AEC0008FAD6 /* ViewController.swift in Sources */,
 				15416D251EBB5AEB0008FAD6 /* AppDelegate.swift in Sources */,
 				15C769B91ECC9CCB001ED39B /* Slide.swift in Sources */,
+				15C5231E1F0D16BD00473A82 /* RegisterUserViewController.swift in Sources */,
 				15925C001ECC7EB60090DE5F /* CategorieViewController.swift in Sources */,
 				15E83CD61F0BCABD009525DA /* SearchTableViewCell.swift in Sources */,
 				157B4A821EC35A980061D175 /* MyAccountViewController.swift in Sources */,

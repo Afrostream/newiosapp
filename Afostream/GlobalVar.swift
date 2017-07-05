@@ -47,6 +47,14 @@ extension UIView {
     }
 }
 
+extension String
+{
+    func trim() -> String
+    {
+        return self.trimmingCharacters(in: .whitespaces)
+    }
+}
+
 
 struct SectionData {
     let title: String

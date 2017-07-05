@@ -17,3 +17,11 @@
 "ReadLess" = "Read Less";
 
 "Search" = "Search";
+
+"RegisterErrorLastname" = "Please enter your lastname";
+"RegisterErrorFirstname" = "Please enter your firstname";
+"RegisterErrorEmail" = "Please enter your email";
+"RegisterErrorPhone" = "Please enter your phone number";
+"RegisterErrorPassword" = "Please enter your password";
+"RegisterErrorRetypePass" = "Please retype your password";
+"RegisterErrorPassNotMatch" = "Your password and your retype password not match";
