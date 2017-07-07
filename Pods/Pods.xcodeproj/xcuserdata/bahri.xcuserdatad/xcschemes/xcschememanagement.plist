@@ -24,6 +24,11 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
+		<key>M13Checkbox.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 		<key>NVActivityIndicatorView.xcscheme</key>
 		<dict>
 			<key>isShown</key>
@@ -47,11 +52,6 @@
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
-		<key>018D50D9D485E240F68139A5901E7FDC</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
 		<key>095287BE6F9A04831E600E3C65ADA452</key>
 		<dict>
 			<key>primary</key>
@@ -62,12 +62,27 @@
 			<key>primary</key>
 			<true/>
 		</dict>
+		<key>20A9DD9ABBF08BC57372A26C35327BF1</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
 		<key>30E01F11C650E0C3126E563C155D51EF</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
+		<key>37877A77BC0D2D411444547BEFEBE25D</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
 		<key>88E9EC28B8B46C3631E6B242B50F4442</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>B521CA4CB1F8CA46A927DB302D49CCF7</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -78,11 +93,6 @@
 			<true/>
 		</dict>
 		<key>D415513396571CC3964B6C310ABB1D08</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>D948AD6926B075B03353EAA714D27A32</key>
 		<dict>
 			<key>primary</key>
 			<true/>

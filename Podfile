@@ -12,6 +12,7 @@ pod 'SDWebImage', '~>3.8'
 pod "ExpandableLabel"
 pod 'BMPlayer'
 pod 'google-cast-sdk'
+pod 'M13Checkbox'
 
   # Pods for Afostream
 
