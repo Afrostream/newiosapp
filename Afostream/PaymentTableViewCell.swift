@@ -10,6 +10,7 @@ import UIKit
 
 class PaymentTableViewCell: UITableViewCell {
 
+    @IBOutlet weak var lblName: UILabel!
     @IBOutlet weak var lblDescription: UILabel!
     @IBOutlet weak var lblPrice: UILabel!
     override func awakeFromNib() {

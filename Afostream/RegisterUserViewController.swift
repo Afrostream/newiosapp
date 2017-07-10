@@ -176,12 +176,14 @@ class RegisterUserViewController: UIViewController {
                         GlobalVar.StaticVar.expires_in = expires_in as! Int
                     }
                     
+                    let vc = self.storyboard?.instantiateViewController(withIdentifier: "SWRevealViewController")
+                    self.present(vc!, animated: true, completion: nil)
+                    
                 }
                 
                 
               
-                let vc = self.storyboard?.instantiateViewController(withIdentifier: "SWRevealViewController")
-                self.present(vc!, animated: true, completion: nil)
+          
                 
                 
                 

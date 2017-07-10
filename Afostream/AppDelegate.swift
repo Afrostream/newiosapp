@@ -9,6 +9,10 @@
 import UIKit
 import AlamofireNetworkActivityIndicator
 
+import Stripe
+
+
+
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
@@ -27,7 +31,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         UINavigationBar.appearance().barTintColor=GlobalVar.StaticVar.Violet
         UINavigationBar.appearance().tintColor=UIColor.white
         UINavigationBar.appearance().titleTextAttributes = [NSForegroundColorAttributeName : UIColor.white]
-        
+
         
         GlobalVar.StaticVar.densityPixel = Int(UIScreen.main.scale)
        
@@ -38,6 +42,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             
             GlobalVar.StaticVar.drmLicenseUrl = "https://lic.staging.drmtoday.com/license-proxy-widevine/cenc/?specConform=true" //dev
             GlobalVar.StaticVar.StripeKey = "pk_test_s9YFHvFFIjo2gdAL5x4k2ISh" //dev
+            
+            
         }else
         {
             GlobalVar.StaticVar.BaseUrl = "https://legacy-api.afrostream.tv" // prod cdn
@@ -46,7 +52,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             GlobalVar.StaticVar.StripeKey = "pk_live_Qyu5litLIYwE3ks66iBIFbQk" //prod
             
         }
-        
+         STPPaymentConfiguration.shared().publishableKey = GlobalVar.StaticVar.StripeKey
+         //STPPaymentConfiguration.shared().appleMerchantIdentifier = "your apple merchant identifier"
         
         return true
     }

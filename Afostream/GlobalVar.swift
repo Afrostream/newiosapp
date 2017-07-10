@@ -29,10 +29,30 @@ struct MovieModel {
     var movieInfo : [String: Any]
 }
 
+
+struct PlanModel {
+    
+    var internalPlanUuid:String
+    var amountInCents:String
+    var name:String
+    var description:String
+    var currency:String
+    var periodUnit:String
+    var periodLength:String
+    var amount:String
+    var isCouponCodeCompatible:Bool
+    var Showlogo:Bool
+    var providerPlanUuid:String
+    var providerName:String
+}
+
 struct HomeCatMovie {
 var CatTitle : String
 var Movies = [MovieModel]()
 }
+
+
+
 
 extension UIView {
     var parentViewController: UIViewController? {
@@ -133,6 +153,8 @@ class GlobalVar: NSObject {
         
         static let   CouponUUIDGenStaging = "e9d0c006-175a-4564-a736-7cc9edb3e532"
         static let   CouponUUIDGenProd = "d9e879c7-e445-409f-ad44-817e30e62fc0"
+        
+        static let app_version_code = "2"
         
         
         static var menuSections: [SectionData] = [SectionData]()

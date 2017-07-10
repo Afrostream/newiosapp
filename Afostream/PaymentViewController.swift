@@ -9,13 +9,13 @@
 import UIKit
 import Alamofire
 import SDWebImage
-
+import Stripe
 
 class PaymentViewController: UIViewController ,UITableViewDataSource,UITableViewDelegate{
     
     
     
-    var MoviesList = [MovieModel]()
+    var PlansList = [PlanModel]()
     
     @IBOutlet weak var tableView: UITableView!
 
@@ -28,6 +28,32 @@ class PaymentViewController: UIViewController ,UITableViewDataSource,UITableView
         dismiss(animated: true, completion: nil)
     }
     
+    @IBAction func bntValidate(_ sender: Any) {
+    }
+    @IBAction func bntCgu(_ sender: Any) {
+        
+        let url = URL(string: "http://www.facebook.com")!
+        if UIApplication.shared.canOpenURL(url) {
+            UIApplication.shared.open(url, options: [:], completionHandler: nil)
+            //If you want handle the completion block than
+            UIApplication.shared.open(url, options: [:], completionHandler: { (success) in
+                print("Open url : \(success)")
+            })
+        }
+        
+    }
+ 
+    @IBAction func bntWithdrawal(_ sender: Any) {
+        
+        let url = URL(string: "http://www.facebook.com")!
+        if UIApplication.shared.canOpenURL(url) {
+            UIApplication.shared.open(url, options: [:], completionHandler: nil)
+            //If you want handle the completion block than
+            UIApplication.shared.open(url, options: [:], completionHandler: { (success) in
+                print("Open url : \(success)")
+            })
+        }
+    }
     func StartLoadingSpinner()
     {
         laoding_spinner.center=self.view.center
@@ -78,7 +104,7 @@ class PaymentViewController: UIViewController ,UITableViewDataSource,UITableView
         
         
         
-        Alamofire.request(GlobalVar.StaticVar.BaseUrl + "/api/billings/internalplans"  + GlobalVar.StaticVar.ApiUrlParams, method: .get, parameters: nil, encoding: JSONEncoding.default, headers: headers).responseJSON { response in
+        Alamofire.request(GlobalVar.StaticVar.BaseUrl + "/api/billings/internalplans"  + GlobalVar.StaticVar.ApiUrlParams + "&clientVersion=" + GlobalVar.StaticVar.app_version_code, method: .get, parameters: nil, encoding: JSONEncoding.default, headers: headers).responseJSON { response in
             
             switch(response.result) {
             case .success(_):
@@ -87,46 +113,70 @@ class PaymentViewController: UIViewController ,UITableViewDataSource,UITableView
                 
                 self.StopLoadingSpinner()
                 
-                let dt = response.result.value as? [String: Any]
+              
                 
                 
-                if let JSON = dt?["hits"] as! NSArray? {
-                    self.MoviesList.removeAll()
+                if let dt = response.result.value as! NSArray?  {
+                    self.PlansList.removeAll()
                     
                     
-                    for elementMovie in JSON {
-                        if let dataMovie = elementMovie as? [String: Any] {
-                            
-                            let movileTitle = dataMovie["title"] as! String
-                            let movileLabel = dataMovie["genre"] as? String
-                            
-                            let movileID = dataMovie["_id"] as! Int
-                            
-                            
-                            if let posterMovie = dataMovie ["poster"] as? [String: Any]
-                            {
+                    for PlanData in dt  {
+                 
+                        
+                      if let Plan = PlanData as? [String: Any] {
+                        
+                        
+                        let internalPlanUuid = Plan["internalPlanUuid"] as! String
+                        let amountInCents = Plan["amountInCents"] as! String
+                        let name = Plan["name"] as! String
+                        let amount = Plan["amount"] as! String
+                        let description = Plan["description"] as! String
+                        let currency = Plan["currency"] as! String
+                        let periodUnit = Plan["periodUnit"] as! String
+                        let periodLength = Plan["periodLength"] as! String
+                        
+                            if let providerPlans = Plan["providerPlans"]  as? [String: Any] {
+                        
                                 
-                                var urlImageMovie = posterMovie["imgix"] as! String
+                        
+                                    var isCouponCodeCompatible:Bool = false
+                                    var providerPlanUuid=""
+                                    var providerName=""
                                 
-                                urlImageMovie = urlImageMovie + "?&crop=entropy&fit=min&w=300&h=250&q=90&fm=jpg&&auto=format&dpr=" + String(GlobalVar.StaticVar.densityPixel)
+                        
+                               
+                                    if let stripe = providerPlans["stripe"]  as? [String: Any] {
+                        
+                                    isCouponCodeCompatible = stripe["isCouponCodeCompatible"] as! Bool
+                                    providerPlanUuid=stripe["providerPlanUuid"] as! String
+                        
+                                    providerName="stripe";
+                                    }
                                 
-                                var mov:MovieModel
+                        
+                        
                                 
-                                // if self.IsContainFav(idMovie: movileID)
-                                //{
-                                mov = MovieModel(title: movileTitle, movieID: movileID, imageUrl: urlImageMovie, label: "", isFav: true,movieInfo: dataMovie)
-                                // }else
-                                // {
-                                //   mov = MovieModel(title: movileTitle, movieID: movileID, imageUrl: urlImageMovie, label: "", isFav: false,movieInfo: dataMovie)
-                                //}
+                                    if let google = providerPlans["google"]  as? [String: Any] {
+                               
+                        
+                                    isCouponCodeCompatible = google["isCouponCodeCompatible"]  as! Bool
+                                    providerPlanUuid=google["providerPlanUuid"] as! String
+                                    providerName="google";
+                                    }
                                 
-                                self.MoviesList.append(mov)
+                                let pl  = PlanModel(internalPlanUuid: internalPlanUuid, amountInCents: amountInCents, name: name, description: description, currency: currency, periodUnit: periodUnit, periodLength: periodLength, amount: amount, isCouponCodeCompatible: isCouponCodeCompatible, Showlogo: true, providerPlanUuid: providerPlanUuid, providerName: providerName)
                                 
-                            }
-                            
-                            
-                            
+                                self.PlansList.append(pl)
+                        
+                                
+                          }
+                        
                         }
+                        
+                            
+                            
+                            
+                        
                         
                         
                     }
@@ -164,13 +214,15 @@ class PaymentViewController: UIViewController ,UITableViewDataSource,UITableView
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return self.MoviesList.count
+        return self.PlansList.count
     }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell") as! PaymentTableViewCell
+        
+        cell.lblName.text = PlansList[indexPath.row].name
    
-        cell.lblDescription.text = ""
-        cell.lblPrice.text = "" 
+        cell.lblDescription.text = PlansList[indexPath.row].description
+        cell.lblPrice.text = PlansList[indexPath.row].amount + " " +  PlansList[indexPath.row].currency
         
         
         
@@ -179,13 +231,13 @@ class PaymentViewController: UIViewController ,UITableViewDataSource,UITableView
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let title = MoviesList[indexPath.row].title
+       /* let title = PlansList[indexPath.row].title
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         let vc = storyboard.instantiateViewController(withIdentifier: "MovieDetailsViewController") as! MovieDetailsViewController
         vc.title = title
         vc.Movie =  MoviesList[indexPath.row]
         self.navigationItem.title = ""
-        self.navigationController?.pushViewController(vc,animated: true)
+        self.navigationController?.pushViewController(vc,animated: true)*/
         
     }
     
@@ -195,6 +247,8 @@ class PaymentViewController: UIViewController ,UITableViewDataSource,UITableView
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        
+        self.MakeGetListPlan(access_token: GlobalVar.StaticVar.access_token)
         // Do any additional setup after loading the view.
     }
 

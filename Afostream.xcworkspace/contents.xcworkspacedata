@@ -2,6 +2,9 @@
 <Workspace
    version = "1.0">
    <FileRef
+      location = "group:UIVerticalAlignLabel.swift">
+   </FileRef>
+   <FileRef
       location = "group:Afostream.xcodeproj">
    </FileRef>
    <FileRef

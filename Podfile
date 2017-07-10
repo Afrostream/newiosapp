@@ -13,6 +13,7 @@ pod "ExpandableLabel"
 pod 'BMPlayer'
 pod 'google-cast-sdk'
 pod 'M13Checkbox'
+pod 'Stripe'
 
   # Pods for Afostream
 
