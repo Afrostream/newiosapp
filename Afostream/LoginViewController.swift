@@ -15,6 +15,29 @@ class LoginViewController: UIViewController {
     @IBOutlet weak var txtUser: DesignableUITextField!
     @IBOutlet weak var txtPass: DesignableUITextField!
     
+    @IBAction func bntOrange(_ sender: Any) {
+        
+        let vc = self.storyboard?.instantiateViewController(withIdentifier: "WebViewViewController") as! WebViewViewController
+        
+        vc.url = GlobalVar.StaticVar.BaseUrl + "/auth/orange/signin?clientType=legacy-api.android"
+        self.present(vc, animated: true, completion: nil)
+        
+    }
+    
+    @IBAction func bntBouygue(_ sender: Any) {
+        
+        let vc = self.storyboard?.instantiateViewController(withIdentifier: "WebViewViewController") as! WebViewViewController
+        
+        vc.url = GlobalVar.StaticVar.BaseUrl + "/auth/bouygues/signin?clientType=legacy-api.android"
+        self.present(vc, animated: true, completion: nil)
+
+        
+    }
+    
+    @IBAction func bntFacebook(_ sender: Any) {
+        
+    }
+    
     var laoding_spinner:UIActivityIndicatorView=UIActivityIndicatorView()
     func StartLoadingSpinner()
     {

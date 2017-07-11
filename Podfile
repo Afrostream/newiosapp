@@ -14,6 +14,9 @@ pod 'BMPlayer'
 pod 'google-cast-sdk'
 pod 'M13Checkbox'
 pod 'Stripe'
+pod 'FacebookCore'
+pod 'FacebookLogin'
+pod 'FacebookShare'
 
   # Pods for Afostream
 

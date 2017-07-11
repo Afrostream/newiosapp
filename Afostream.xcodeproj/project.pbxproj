@@ -33,6 +33,7 @@
 		158C75D51ECDEF8A00501FD3 /* VideoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 158C75D41ECDEF8A00501FD3 /* VideoCell.swift */; };
 		15925C001ECC7EB60090DE5F /* CategorieViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15925BFF1ECC7EB60090DE5F /* CategorieViewController.swift */; };
 		159359791EBCCF9F00E16085 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 159359781EBCCF9F00E16085 /* LoginViewController.swift */; };
+		159400781F14F777006DC9E4 /* WebViewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 159400771F14F777006DC9E4 /* WebViewViewController.swift */; };
 		15A5D50B1EDF0842005EDC17 /* CategoryRowSaisonEpisode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15A5D50A1EDF0842005EDC17 /* CategoryRowSaisonEpisode.swift */; };
 		15A9EAB71F0FAC1E00AB7EDF /* PaymentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15A9EAB61F0FAC1E00AB7EDF /* PaymentViewController.swift */; };
 		15A9EAB91F0FCDA000AB7EDF /* PaymentTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15A9EAB81F0FCDA000AB7EDF /* PaymentTableViewCell.swift */; };
@@ -78,6 +79,7 @@
 		158C75D41ECDEF8A00501FD3 /* VideoCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VideoCell.swift; sourceTree = "<group>"; };
 		15925BFF1ECC7EB60090DE5F /* CategorieViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CategorieViewController.swift; sourceTree = "<group>"; };
 		159359781EBCCF9F00E16085 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		159400771F14F777006DC9E4 /* WebViewViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WebViewViewController.swift; sourceTree = "<group>"; };
 		15A5D50A1EDF0842005EDC17 /* CategoryRowSaisonEpisode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CategoryRowSaisonEpisode.swift; sourceTree = "<group>"; };
 		15A9EAB61F0FAC1E00AB7EDF /* PaymentViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PaymentViewController.swift; sourceTree = "<group>"; };
 		15A9EAB81F0FCDA000AB7EDF /* PaymentTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PaymentTableViewCell.swift; sourceTree = "<group>"; };
@@ -139,6 +141,7 @@
 				157B4A771EC1C2A40061D175 /* SWRevealViewController.m */,
 				15416D261EBB5AEC0008FAD6 /* ViewController.swift */,
 				15416D281EBB5AEC0008FAD6 /* Main.storyboard */,
+				159400771F14F777006DC9E4 /* WebViewViewController.swift */,
 				15A9EAB61F0FAC1E00AB7EDF /* PaymentViewController.swift */,
 				15A9EAB81F0FCDA000AB7EDF /* PaymentTableViewCell.swift */,
 				15C5231D1F0D16BD00473A82 /* RegisterUserViewController.swift */,
@@ -335,6 +338,7 @@
 				156A55B01EF174B900B06B4E /* PlayerViewController.swift in Sources */,
 				15BBFE301F0142D6002A55D9 /* FavTableViewCell.swift in Sources */,
 				1550EAEC1EC4CE8800EC4948 /* GlobalVar.swift in Sources */,
+				159400781F14F777006DC9E4 /* WebViewViewController.swift in Sources */,
 				15E83CD41F0A84FF009525DA /* SearchViewController.swift in Sources */,
 				158C75D31ECDE49500501FD3 /* CategoryRow.swift in Sources */,
 				157B4A7E1EC33FFC0061D175 /* MenuViewController.swift in Sources */,

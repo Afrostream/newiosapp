@@ -9,7 +9,32 @@ PODS:
     - BMPlayer/Core
     - NVActivityIndicatorView (~> 3.5)
     - SnapKit (~> 3.2)
+  - Bolts (1.8.4):
+    - Bolts/AppLinks (= 1.8.4)
+    - Bolts/Tasks (= 1.8.4)
+  - Bolts/AppLinks (1.8.4):
+    - Bolts/Tasks
+  - Bolts/Tasks (1.8.4)
   - ExpandableLabel (0.1.4)
+  - FacebookCore (0.2.0):
+    - Bolts (~> 1.8)
+    - FBSDKCoreKit (~> 4.15)
+  - FacebookLogin (0.2.0):
+    - Bolts (~> 1.8)
+    - FacebookCore (~> 0.2)
+    - FBSDKCoreKit (~> 4.15)
+    - FBSDKLoginKit (~> 4.15)
+  - FacebookShare (0.2.0):
+    - Bolts (~> 1.8)
+    - FacebookCore (~> 0.2)
+    - FBSDKCoreKit (~> 4.15)
+    - FBSDKShareKit (~> 4.15)
+  - FBSDKCoreKit (4.22.0):
+    - Bolts (~> 1.7)
+  - FBSDKLoginKit (4.22.0):
+    - FBSDKCoreKit
+  - FBSDKShareKit (4.22.0):
+    - FBSDKCoreKit
   - google-cast-sdk (3.4.0):
     - google-cast-sdk/Core (= 3.4.0)
   - google-cast-sdk/Core (3.4.0)
@@ -26,6 +51,9 @@ DEPENDENCIES:
   - AlamofireNetworkActivityIndicator (~> 2.0)
   - BMPlayer
   - ExpandableLabel
+  - FacebookCore
+  - FacebookLogin
+  - FacebookShare
   - google-cast-sdk
   - M13Checkbox
   - SDWebImage (~> 3.8)
@@ -35,7 +63,14 @@ SPEC CHECKSUMS:
   Alamofire: dc44b1600b800eb63da6a19039a0083d62a6a62d
   AlamofireNetworkActivityIndicator: 4716f6554bdfb9c7cf13b1e0e3af21163129690a
   BMPlayer: 9faf3d033ba6c60b110ac6edd1c25149aa6b2c5d
+  Bolts: 8a7995239dbe724f9cba2248b766d48b7ebdd322
   ExpandableLabel: e82b5dbd9ec1d30d945ca47836f1354f5e782b73
+  FacebookCore: 2cb3f0fbff218e9d3119cec84bae983b232412de
+  FacebookLogin: c9d606504735780a9e3002465a615512e0a691a5
+  FacebookShare: 8e9ee8ea06505e6a1d3d719b0cc63e840fb8aaeb
+  FBSDKCoreKit: c693bad19feb225469eeff14452ba364522ee48b
+  FBSDKLoginKit: 1fa529fc622d7b32ebeaffbecd377180833c6d30
+  FBSDKShareKit: 21ab3c8d173f4fa20c47c1061f3a9fac5950b5fa
   google-cast-sdk: 35da95f568b50d72628014f3320e2f3240bf2a7a
   M13Checkbox: c132a7e0eb964731855eff67b883a0b21b7c0977
   NVActivityIndicatorView: 9f52a7f84bf5c6a798722c450fe3c198e01c56ed
@@ -43,6 +78,6 @@ SPEC CHECKSUMS:
   SnapKit: 1ca44df72cfa543218d177cb8aab029d10d86ea7
   Stripe: dd6df0e2c6a8463e2f1ca9b15dc246e5ae1eee64
 
-PODFILE CHECKSUM: 4271e94b3c29a7f256588604ab7bb311b42c1866
+PODFILE CHECKSUM: 5c54e3ca0238934eb0ca7e2f4404a8f707d8064d
 
 COCOAPODS: 1.2.1
