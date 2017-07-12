@@ -47,8 +47,8 @@ struct PlanModel {
 }
 
 struct HomeCatMovie {
-var CatTitle : String
-var Movies = [MovieModel]()
+    var CatTitle : String
+    var Movies = [MovieModel]()
 }
 
 
@@ -67,13 +67,7 @@ extension UIView {
     }
 }
 
-extension String
-{
-    func trim() -> String
-    {
-        return self.trimmingCharacters(in: .whitespaces)
-    }
-}
+
 
 
 struct SectionData {
@@ -102,8 +96,8 @@ class GlobalVar: NSObject {
     
     
     
-       struct StaticVar{
-    
+    struct StaticVar{
+        
         static let Violet :UIColor = UIColor(hex: 0x4a2b50)
         static let Yellow :UIColor = UIColor(hex: 0xfec730)
         
@@ -129,7 +123,7 @@ class GlobalVar: NSObject {
         static var  date_token=""
         
         static var  densityPixel=0
-    
+        
         static var user_first_name=""
         static var user_last_name=""
         static var user_email=""
@@ -158,8 +152,8 @@ class GlobalVar: NSObject {
         
         
         static var menuSections: [SectionData] = [SectionData]()
- 
-
+        
+        
     }
-
+    
 }

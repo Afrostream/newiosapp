@@ -36,7 +36,47 @@ class WebViewViewController: UIViewController,UIWebViewDelegate {
     
     func webView(_ webView: UIWebView, shouldStartLoadWith request: URLRequest, navigationType: UIWebViewNavigationType) -> Bool {
         
-        let docUrl = request.url!.absoluteString
+        let docUrl :String = request.url!.absoluteString
+        
+        
+        if docUrl.lowercased().range(of: "callback-android")  != nil
+            {
+            
+                //let index :Int = docUrl.lastIndexOf("?")!.distanc
+                
+                 let index = docUrl.distance(from: docUrl.startIndex, to: docUrl.lastIndexOf("?")!)
+                
+                
+                let indexSub = docUrl.index(docUrl.startIndex, offsetBy: index)
+                
+                let nextIndex = docUrl.index(indexSub, offsetBy: 1)
+
+                let data : String = docUrl.substring(from: nextIndex)
+             
+                
+                
+             
+                if let trs :String = data.base64Decoded() {
+
+                    let json = convertToDictionary (text: trs)
+                    
+                     let statusCode = json?["statusCode"] as! Int
+                    
+                    if statusCode == 200 {
+                        let data = json?["data"] as? [String: Any]
+                        let access_token = data?["access_token"] as! String
+                        let refresh_token = data?["refresh_token"] as! String
+                        let token = data?["token"] as! String
+                    }
+                    
+                    
+             
+                
+                }
+                       
+            
+            
+        }
         
         return true
     }
