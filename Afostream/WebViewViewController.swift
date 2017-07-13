@@ -67,6 +67,21 @@ class WebViewViewController: UIViewController,UIWebViewDelegate {
                         let access_token = data?["access_token"] as! String
                         let refresh_token = data?["refresh_token"] as! String
                         let token = data?["token"] as! String
+                        let expires_in = data?["expires_in"] as! Int
+                        
+                        
+                        GlobalVar.StaticVar.access_token=access_token
+                        GlobalVar.StaticVar.refresh_token=refresh_token
+                        GlobalVar.StaticVar.expires_in=expires_in
+                  
+                        
+                        
+                        let vc = self.storyboard?.instantiateViewController(withIdentifier: "SWRevealViewController")
+                        self.present(vc!, animated: true, completion: nil)
+                        
+                        //dismiss(animated: true, completion: nil)
+
+                        
                     }
                     
                     

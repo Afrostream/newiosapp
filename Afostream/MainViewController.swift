@@ -222,19 +222,23 @@ class MainViewController: UIViewController,UIScrollViewDelegate,UITableViewDataS
                 
                 self.StopLoadingSpinner()
                 if let JSON = response.result.value as? [String: Any] {
-                    var user_id = JSON["_id"] as! Int
-                    var user_first_name = JSON["first_name"] as! String
-                    var user_last_name = JSON["last_name"] as! String
-                    var user_picture_url = JSON["picture"] as! String
+                    var user_id = JSON["_id"] as? Int
+                    var user_first_name = JSON["first_name"] as? String
+                    var user_last_name = JSON["last_name"] as? String
+                    var user_picture_url = JSON["picture"] as? String
                     
-                    var user_gender = JSON["gender"] as! String
-                    var user_birthday = JSON["birthDate"] as! String
-                    var user_postalAddressCountry = JSON["postalAddressCountry"] as! String
-                    var user_postalAddressCity = JSON["postalAddressCity"] as! String
-                     var user_postalAddressStreet = JSON["postalAddressStreet"] as! String
+                    var user_gender = JSON["gender"] as? String
+                   
+
                     
-                    var user_phone = JSON["telephone"] as! String
-                    var user_email = JSON["email"] as! String
+                   
+                    var user_birthday = JSON["birthDate"] as? String
+                    var user_postalAddressCountry = JSON["postalAddressCountry"] as? String
+                    var user_postalAddressCity = JSON["postalAddressCity"] as? String
+                     var user_postalAddressStreet = JSON["postalAddressStreet"] as? String
+                    
+                    var user_phone = JSON["telephone"] as? String
+                    var user_email = JSON["email"] as? String
                    
               
                     if user_first_name == "null" {user_first_name = ""}
@@ -249,17 +253,17 @@ class MainViewController: UIViewController,UIScrollViewDelegate,UITableViewDataS
                     if user_phone == "null" {user_first_name = ""}
                     if user_email == "null" {user_first_name = ""}
                     
-                    GlobalVar.StaticVar.user_id = user_id
-                    GlobalVar.StaticVar.user_first_name = user_first_name
-                    GlobalVar.StaticVar.user_last_name = user_last_name
-                    GlobalVar.StaticVar.user_email = user_email
-                    GlobalVar.StaticVar.user_phone = user_phone
-                    GlobalVar.StaticVar.user_gender = user_gender
-                    GlobalVar.StaticVar.user_birthday = user_birthday
-                    GlobalVar.StaticVar.user_picture_url = user_picture_url
-                    GlobalVar.StaticVar.user_postalAddressCity = user_postalAddressCity
-                    GlobalVar.StaticVar.user_address = user_postalAddressStreet
-                    GlobalVar.StaticVar.user_postalAddressCountry = user_postalAddressCountry
+                    if user_id != nil  {GlobalVar.StaticVar.user_id = user_id!}
+                    if user_first_name != nil  {GlobalVar.StaticVar.user_first_name = user_first_name!}
+                    if user_last_name != nil  {GlobalVar.StaticVar.user_last_name = user_last_name!}
+                    if user_email != nil  {GlobalVar.StaticVar.user_email = user_email!}
+                    if user_phone != nil  {GlobalVar.StaticVar.user_phone = user_phone!}
+                    if user_gender != nil  {GlobalVar.StaticVar.user_gender = user_gender!}
+                    if user_birthday != nil  {GlobalVar.StaticVar.user_birthday = user_birthday!}
+                    if user_picture_url != nil  {GlobalVar.StaticVar.user_picture_url = user_picture_url!}
+                    if user_postalAddressCity != nil  {GlobalVar.StaticVar.user_postalAddressCity = user_postalAddressCity!}
+                    if user_postalAddressStreet != nil  {GlobalVar.StaticVar.user_address = user_postalAddressStreet!}
+                    if user_postalAddressCountry != nil  {GlobalVar.StaticVar.user_postalAddressCountry = user_postalAddressCountry!}
                     
                  
                     
