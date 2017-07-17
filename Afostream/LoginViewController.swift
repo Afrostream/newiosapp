@@ -8,6 +8,8 @@
 
 import UIKit
 import Alamofire
+import FacebookCore
+import FacebookLogin
 
 class LoginViewController: UIViewController {
 
@@ -34,9 +36,70 @@ class LoginViewController: UIViewController {
         
     }
     
-    @IBAction func bntFacebook(_ sender: Any) {
-        
+    @objc fileprivate func facebookSignIn() {
+        let loginManager = LoginManager()
+        print("LOGIN MANAGER: \(loginManager)")
+        loginManager.logIn([ .publicProfile, .email,.userFriends ], viewController: self) { loginResult in
+            print("LOGIN RESULT! \(loginResult)")
+            switch loginResult {
+            case .failed(let error):
+                print("FACEBOOK LOGIN FAILED: \(error)")
+            case .cancelled:
+                print("User cancelled login.")
+            case .success(let grantedPermissions, let declinedPermissions, let accessToken):
+                print("Logged in!")
+                print("GRANTED PERMISSIONS: \(grantedPermissions)")
+                print("DECLINED PERMISSIONS: \(declinedPermissions)")
+                print("ACCESS TOKEN \(accessToken)")
+                
+                let connection = GraphRequestConnection()
+                connection.add(MyProfileRequest()) { response, result in
+                    switch result {
+                    case .success(let response):
+                        print("Custom Graph Request Succeeded: \(response)")
+                        
+                        print("My facebook id is \(response)")
+                        if let result = response as? [String: Any] {
+                            // Got the email; send it to Lucid's server
+                            guard let email = result["email"] as? String else {
+                                // No email? Fail the login
+                                return
+                            }
+                            guard let username = result["name"] as? String else {
+                                // No username? Fail the login
+                                return
+                            }
+                            
+                            guard let firstname = result["first_name"] as? String else {
+                                // No username? Fail the login
+                                return
+                            }
+                            
+                            guard let lastname = result["last_name"] as? String else {
+                                // No username? Fail the login
+                                return
+                            }
+
+                            
+                            guard let userId = result["id"] as? String else {
+                                // No userId? Fail the login
+                                return
+                            }
+                            self.MakeGeoFacebook(FbToken: accessToken.authenticationToken, Email: email, Firstname: firstname, Lastname: lastname)
+                        }
+              
+                    case .failed(let error):
+                        print("Custom Graph Request Failed: \(error)")
+                    }
+                }
+                connection.start()
+                
+            }
+        }
     }
+    @IBAction func bntFacebook(_ sender: Any) {
+        self.facebookSignIn()
+            }
     
     var laoding_spinner:UIActivityIndicatorView=UIActivityIndicatorView()
     func StartLoadingSpinner()
@@ -83,7 +146,51 @@ class LoginViewController: UIViewController {
       //  view.addGestureRecognizer(tapGesture)
     }
     
-       func MakeLogin(Username:String ,Password :String)
+    func MakeGeoFacebook(FbToken:String ,Email :String,Firstname:String ,Lastname:String)
+    {
+        
+        
+        let headers = [
+            "Content-Type": "application/json"
+            
+        ]
+        
+        self.StartLoadingSpinner()
+        
+        Alamofire.request(GlobalVar.StaticVar.BaseUrl + "/auth/geo", method: .get, parameters: nil, encoding: JSONEncoding.default, headers: headers).responseJSON { response in
+            
+            switch(response.result) {
+            case .success(_):
+                
+                self.StopLoadingSpinner()
+                if let JSON = response.result.value as? [String: Any] {
+                    var countryCode = JSON["countryCode"] as! String
+                    
+                    if countryCode == "null" || countryCode == ""  {
+                    countryCode="--"
+                    }
+                    
+                    let language = Locale.preferredLanguages[0]
+                    GlobalVar.StaticVar.CountryCode=countryCode
+                    GlobalVar.StaticVar.ApiUrlParams="?country=" + countryCode + "&language=" + language
+                    self.MakeLoginFacebook(FbToken: FbToken, Email: Email, Firstname: Firstname, Lastname: Lastname)
+                    
+                    
+                    
+                    
+                }
+                break
+                
+            case .failure(_):
+                self.StopLoadingSpinner()
+                print("There is an error")
+                break
+            }
+        }
+        
+    }
+
+    func MakeLogin(Username:String ,Password :String)
     {
         
         if Username.isEmpty || Password.isEmpty
@@ -94,7 +201,7 @@ class LoginViewController: UIViewController {
         
         let headers = [
             "Content-Type": "application/json"
-    
+            
         ]
         let parameters = [
             "grant_type": "password",
@@ -135,6 +242,63 @@ class LoginViewController: UIViewController {
                     
                     let vc = self.storyboard?.instantiateViewController(withIdentifier: "PaymentViewController")
                     self.present(vc!, animated: true, completion: nil)
+                    
+                    
+                    
+                }
+                break
+                
+            case .failure(_):
+                self.StopLoadingSpinner()
+                print("There is an error")
+                break
+            }
+        }
+        
+    }
+
+       func MakeLoginFacebook(FbToken:String ,Email :String,Firstname:String ,Lastname:String)
+    {
+        
+        
+        
+        let headers = [
+            "Content-Type": "application/json"
+    
+        ]
+        let parameters = [
+            "grant_type": "facebook",
+            "client_id": GlobalVar.StaticVar.clientApiID,
+            "client_secret": GlobalVar.StaticVar.clientSecret,
+            "token": FbToken
+          
+        ]
+        
+        self.StartLoadingSpinner()
+        
+        Alamofire.request(GlobalVar.StaticVar.BaseUrl + "/auth/oauth2/token", method: .post, parameters: parameters, encoding: JSONEncoding.default, headers: headers).responseJSON { response in
+            
+            switch(response.result) {
+            case .success(_):
+                
+                self.StopLoadingSpinner()
+                if let JSON = response.result.value as? [String: Any] {
+                    let access_token = JSON["access_token"] as! String
+                    let refresh_token = JSON["refresh_token"] as! String
+                    let expires_in = JSON["expires_in"] as! Int
+                    let token_type = JSON["token_type"] as! String
+                    
+                    GlobalVar.StaticVar.access_token=access_token
+                    GlobalVar.StaticVar.refresh_token=refresh_token
+                    GlobalVar.StaticVar.expires_in=expires_in
+                    GlobalVar.StaticVar.token_type=token_type
+                    
+                    
+                    
+                    let vc = self.storyboard?.instantiateViewController(withIdentifier: "SWRevealViewController")
+                    self.present(vc!, animated: true, completion: nil)
+                    
+               
                     
                     
                     

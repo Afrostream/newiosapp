@@ -7,6 +7,23 @@
 //
 
 import UIKit
+
+import FacebookCore
+
+struct MyProfileRequest: GraphRequestProtocol {
+    struct Response: GraphResponseProtocol {
+        init(rawResponse: Any?) {
+            // Decode JSON from rawResponse into other properties here.
+        }
+    }
+    
+    var graphPath = "/me"
+    var parameters: [String : Any]? = ["fields": "id, name"]
+    var accessToken = AccessToken.current
+    var httpMethod: GraphRequestHTTPMethod = .GET
+    var apiVersion: GraphAPIVersion = .defaultVersion
+}
+
 extension UIColor {
     
     convenience init(hex: Int) {
