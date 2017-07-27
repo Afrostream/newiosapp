@@ -8,7 +8,7 @@
 [![Platform](https://img.shields.io/cocoapods/p/BMPlayer.svg?style=flat)](http://cocoapods.org/pods/BMPlayer)
 [![Weibo](https://img.shields.io/badge/%E5%BE%AE%E5%8D%9A-%40%E8%89%BE%E5%8A%9B%E4%BA%9A%E5%B0%94-yellow.svg?style=flat)](http://weibo.com/536445669)
 
-A simple video player for iOS, based on AVPlayer, pure swift.
+A video player for iOS, based on AVPlayer, support the horizontal, vertical screen. support adjust volume, brightness and seek by slide, support subtitles. 
 
 [中文说明](https://github.com/BrikerMan/BMPlayer/blob/master/README.zh.md)
 
@@ -19,7 +19,7 @@ A simple video player for iOS, based on AVPlayer, pure swift.
 - [x] Adjust volume by slide vertical at right side of screen
 - [x] Slide horizontal to fast forward and rewind
 - [x] Support multi-definition video
-- [x] Mirror mode, slow play mode
+- [x] Custom playrate
 - [x] Add Http header and other options to AVURLAsset
 - [x] Easy to customize
 - [x] Supporting show local and online subtitles 
@@ -41,6 +41,12 @@ target 'ProjectName' do
     use_frameworks!
     pod 'BMPlayer'
 end
+```
+
+**To test the experimental caching support with [VIMediaCache](https://github.com/vitoziv/VIMediaCache), use**
+
+```swift
+pod 'BMPlayer/CacheSupport', :git => 'https://github.com/BrikerMan/BMPlayer.git'
 ```
 
 #### Swift 2.2 
@@ -170,15 +176,13 @@ BMPlayerConf.shouldAutoPlay = true
 BMPlayerConf.tintColor = UIColor.whiteColor()
 // options to show header view (which include the back button, title and definition change button) , default .Always，options: .Always, .HorizantalOnly and .None
 BMPlayerConf.topBarShowInCase = .Always
-// show mirror mode, slow play mode button, default false
-BMPlayerConf.slowAndMirror = true
 // loader type, see detail：https://github.com/ninjaprox/NVActivityIndicatorView
 BMPlayerConf.loaderType  = NVActivityIndicatorType.BallRotateChase
 ```
 
 ## Advanced Customize
-- Subclass 
-- Use the `BMPlayerLayer` with your own player control view
+- Subclass `BMPlayerControlView` to create your personal control UI, check the Example.
+- Use the `BMPlayerLayer` with your own player control view.
 
 ## Demonstration
 ![gif](https://github.com/BrikerMan/resources/raw/master/BMPlayer/demo.gif)
@@ -194,6 +198,7 @@ This project heavily reference the Objective-C version of this project [ZFPlayer
 - [Albert Young](https://github.com/cedared)
 - [tooodooo](https://github.com/tooodooo)
 - [Ben Bahrenburg](https://github.com/benbahrenburg)
+- [MangoMade](https://github.com/MangoMade)
 
 You are welcome to fork and submit pull requests.
 

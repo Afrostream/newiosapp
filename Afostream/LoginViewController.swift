@@ -220,6 +220,17 @@ class LoginViewController: UIViewController {
                 
                 self.StopLoadingSpinner()
                 if let JSON = response.result.value as? [String: Any] {
+                    
+                    if  let error = JSON["error"] as? String
+                    {
+                         let error_description = JSON["error_description"] as! String
+                        print (error_description)
+                        self.ShowAlert(Title: "Error", Message: error_description)
+                        return
+                        
+                    }
+
+                    
                     let access_token = JSON["access_token"] as! String
                     let refresh_token = JSON["refresh_token"] as! String
                     let expires_in = JSON["expires_in"] as! Int

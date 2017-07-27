@@ -35,7 +35,10 @@
 
 @property(nonatomic)STPPaymentConfiguration *configuration;
 @property(nonatomic)STPAddress *shippingAddress;
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wdeprecated"
 @property(nonatomic)id<STPBackendAPIAdapter> apiAdapter;
+#pragma clang diagnostic pop
 @property(nonatomic)STPAPIClient *apiClient;
 @property(nonatomic)STPPromise<STPPaymentMethodTuple *> *loadingPromise;
 @property(nonatomic)NSArray<id<STPPaymentMethod>> *paymentMethods;
@@ -48,6 +51,8 @@
 
 @implementation STPPaymentMethodsViewController
 
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wdeprecated"
 - (instancetype)initWithPaymentContext:(STPPaymentContext *)paymentContext {
     return [self initWithConfiguration:paymentContext.configuration
                             apiAdapter:paymentContext.apiAdapter
@@ -55,6 +60,13 @@
                                  theme:paymentContext.theme
                        shippingAddress:paymentContext.shippingAddress
                               delegate:paymentContext];
+}
+
+- (instancetype)initWithConfiguration:(STPPaymentConfiguration *)configuration
+                                theme:(STPTheme *)theme
+                      customerContext:(STPCustomerContext *)customerContext
+                             delegate:(id<STPPaymentMethodsViewControllerDelegate>)delegate {
+    return [self initWithConfiguration:configuration theme:theme apiAdapter:customerContext delegate:delegate];
 }
 
 - (instancetype)initWithConfiguration:(STPPaymentConfiguration *)configuration
@@ -98,6 +110,7 @@
     }];
     return promise;
 }
+#pragma clang diagnostic pop
 
 - (void)createAndSetupViews {
     [super createAndSetupViews];
@@ -162,16 +175,14 @@
     self.activityIndicator.tintColor = self.theme.accentColor;
 }
 
-- (void)handleBackOrCancelTapped:(__unused id)sender {
-    [self.delegate paymentMethodsViewControllerDidFinish:self];
-}
-
 - (void)finishWithPaymentMethod:(id<STPPaymentMethod>)paymentMethod {
     if ([paymentMethod isKindOfClass:[STPCard class]]) {
         [self.apiAdapter selectDefaultCustomerSource:(STPCard *)paymentMethod completion:^(__unused NSError *error) {
         }];
     }
-    [self.delegate paymentMethodsViewController:self didSelectPaymentMethod:paymentMethod];
+    if ([self.delegate respondsToSelector:@selector(paymentMethodsViewController:didSelectPaymentMethod:)]) {
+        [self.delegate paymentMethodsViewController:self didSelectPaymentMethod:paymentMethod];
+    }
     [self.delegate paymentMethodsViewControllerDidFinish:self];
 }
 
@@ -200,8 +211,14 @@
     }];
 }
 
+- (void)internalViewControllerDidCancel {
+    [self.delegate paymentMethodsViewControllerDidCancel:self];
+}
+
 - (void)addCardViewControllerDidCancel:(__unused STPAddCardViewController *)addCardViewController {
-    [self.delegate paymentMethodsViewControllerDidFinish:self];
+    // Add card is only our direct delegate if there are no other payment methods possible
+    // and we skipped directly to this screen. In this case, a cancel from it is the same as a cancel to us.
+    [self.delegate paymentMethodsViewControllerDidCancel:self];
 }
 
 - (void)addCardViewController:(__unused STPAddCardViewController *)addCardViewController
@@ -230,6 +247,8 @@
 
 @implementation STPPaymentMethodsViewController (Private)
 
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wdeprecated"
 - (instancetype)initWithConfiguration:(STPPaymentConfiguration *)configuration
                            apiAdapter:(id<STPBackendAPIAdapter>)apiAdapter
                        loadingPromise:(STPPromise<STPPaymentMethodTuple *> *)loadingPromise
@@ -258,8 +277,10 @@
         }] onSuccess:^(STPPaymentMethodTuple *tuple) {
             STRONG(self);
             if (tuple.selectedPaymentMethod) {
-                [self.delegate paymentMethodsViewController:self
+                if ([self.delegate respondsToSelector:@selector(paymentMethodsViewController:didSelectPaymentMethod:)]) {
+                    [self.delegate paymentMethodsViewController:self
                                          didSelectPaymentMethod:tuple.selectedPaymentMethod];
+                }
             }
         }] onFailure:^(NSError *error) {
             STRONG(self);
@@ -268,5 +289,6 @@
     }
     return self;
 }
+#pragma clang diagnostic pop
 
 @end

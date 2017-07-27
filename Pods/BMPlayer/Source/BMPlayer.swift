@@ -61,15 +61,15 @@ open class BMPlayer: UIView {
         return playerLayer?.player
     }
     
+    open var playerLayer: BMPlayerLayerView?
+    
     fileprivate var resource: BMPlayerResource!
     
     fileprivate var currentDefinition = 0
     
-    fileprivate var playerLayer: BMPlayerLayerView?
-    
     fileprivate var controlView: BMPlayerControlView!
     
-    fileprivate var customControllView: BMPlayerControlView?
+    fileprivate var customControlView: BMPlayerControlView?
     
     fileprivate var isFullScreen:Bool {
         get {
@@ -210,6 +210,15 @@ open class BMPlayer: UIView {
         controlView.prepareToDealloc()
     }
     
+    /**
+     If you want to create BMPlayer with custom control in storyboard.
+     create a subclass and override this method.
+     
+     - return: costom control which you want to use
+     */
+    class open func storyBoardCustomControl() -> BMPlayerControlView? {
+        return nil
+    }
     
     // MARK: - Action Response
     
@@ -330,21 +339,25 @@ open class BMPlayer: UIView {
     }
     
     
-    override init(frame: CGRect) {
-        super.init(frame: frame)
-    }
-    
     required public init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
+        if let customControlView = classForCoder.storyBoardCustomControl() {
+            self.customControlView = customControlView
+        }
         initUI()
         initUIData()
         configureVolume()
         preparePlayer()
     }
     
-    public convenience init (customControllView: BMPlayerControlView?) {
-        self.init(frame:CGRect.zero)
-        self.customControllView = customControllView
+    @available(*, deprecated:3.0, message:"Use newer init(customControlView:_)")
+    public convenience init(customControllView: BMPlayerControlView?) {
+        self.init(customControlView: customControllView)
+    }
+    
+    public init(customControlView: BMPlayerControlView?) {
+        super.init(frame:CGRect.zero)
+        self.customControlView = customControlView
         initUI()
         initUIData()
         configureVolume()
@@ -352,14 +365,14 @@ open class BMPlayer: UIView {
     }
     
     public convenience init() {
-        self.init(customControllView:nil)
+        self.init(customControlView:nil)
     }
     
     // MARK: - 初始化
     fileprivate func initUI() {
         self.backgroundColor = UIColor.black
         
-        if let customView = customControllView {
+        if let customView = customControlView {
             controlView = customView
         } else {
             controlView =  BMPlayerControlView()
@@ -368,6 +381,7 @@ open class BMPlayer: UIView {
         addSubview(controlView)
         controlView.updateUI(isFullScreen)
         controlView.delegate = self
+        controlView.player   = self
         controlView.snp.makeConstraints { (make) in
             make.edges.equalTo(self)
         }
@@ -423,7 +437,18 @@ extension BMPlayer: BMPlayerLayerViewDelegate {
         controlView.playerStateDidChange(state: state)
         switch state {
         case BMPlayerState.readyToPlay:
-            play()
+            if !isPauseByUser {
+                play()
+            }
+            if shouldSeekTo != 0 {
+                seek(shouldSeekTo, completion: {
+                    if !self.isPauseByUser {
+                        self.play()
+                    } else {
+                        self.pause()
+                    }
+                })
+            }
             
         case BMPlayerState.bufferFinished:
             autoPlay()
@@ -481,7 +506,7 @@ extension BMPlayer: BMPlayerControlViewDelegate {
                     pause()
                 } else {
                     if isPlayToTheEnd {
-                        seek(0, completion: { 
+                        seek(0, completion: {
                             self.play()
                         })
                         controlView.hidePlayToTheEndView()
@@ -518,7 +543,7 @@ extension BMPlayer: BMPlayerControlViewDelegate {
             
             if isPlayToTheEnd {
                 isPlayToTheEnd = false
-                seek(target, completion: { 
+                seek(target, completion: {
                     self.play()
                 })
                 controlView.hidePlayToTheEndView()

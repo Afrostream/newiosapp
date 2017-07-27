@@ -15,8 +15,9 @@ class RegisterUserViewController: UIViewController {
 
     @IBOutlet weak var txtLastName: UITextField!
     @IBOutlet weak var txtFirstnName: UITextField!
-    @IBOutlet weak var txtPhone: UITextField!
+  
     
+    @IBOutlet weak var txtPhone: UITextField!
     @IBOutlet weak var txtPassword: UITextField!
     
     @IBOutlet weak var txtRetypePassword: UITextField!
@@ -131,7 +132,7 @@ class RegisterUserViewController: UIViewController {
         }
         
         let headers = [
-            "Authorization": "Bearer " + GlobalVar.StaticVar.access_token
+            "Authorization": "Bearer " + access_token
             
         ]
         
@@ -163,6 +164,18 @@ class RegisterUserViewController: UIViewController {
                 self.StopLoadingSpinner()
                 
                 if let data = response.result.value as? [String: Any] {
+                    
+                    if  let error = data["error"] as? String
+                    {
+                        if let error_description = data["message"] as? String
+                        {
+                        print (error_description)
+                        self.ShowAlert(Title: "Error", Message: error_description)
+                        }
+                        return
+                        
+                    }
+
                     
                     if let access_token = data["access_token"]  {
                         GlobalVar.StaticVar.access_token = access_token as! String

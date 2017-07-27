@@ -29,6 +29,8 @@ class PaymentViewController: UIViewController ,UITableViewDataSource,UITableView
     }
     
     @IBAction func bntValidate(_ sender: Any) {
+        
+        self.MakeGetStripeKey (access_token: GlobalVar.StaticVar.access_token)
     }
     @IBAction func bntCgu(_ sender: Any) {
         
@@ -78,7 +80,94 @@ class PaymentViewController: UIViewController ,UITableViewDataSource,UITableView
         
         self.present(alertController, animated: true, completion: nil)
     }
+    func MakeGetStripeKey(access_token:String)
+    {
+        
+        if access_token.isEmpty
+        {
+            ShowAlert(Title: NSLocalizedString("Error", comment: ""), Message: NSLocalizedString("ErrorAccessToken", comment: ""))
+            return
+        }
+        
+        let headers = [
+            "Authorization": "Bearer " + access_token,
+              "Content-Type": "application/json"
+            
+        ]
+        
+        let opt = [
+            "apiVersion": "2017-06-05"
+          
+            
+            ]
+
+        let parameters = [
+            "billingProviderName": "Stripe " ,
+            "firstName":"",
+            "opts":opt
+            
+        ] as [String : Any]
+        
+        
+        self.StartLoadingSpinner()
+        
+        
+        
+        Alamofire.request(GlobalVar.StaticVar.BaseUrl + "/api/billings/customerKey", method: .post, parameters: parameters, encoding: JSONEncoding.default, headers: headers).responseJSON { response in
+            
+            switch(response.result) {
+            case .success(_):
+                
+                
+                
+                self.StopLoadingSpinner()
+                
+                
+                
+                
+                if let dt = response.result.value as? [String : Any]  {
+                    
+                    if  let error = dt["error"] as? String
+                    {
+                        if let error_description = dt["message"] as? String
+                        {
+                            print (error_description)
+                            self.ShowAlert(Title: "Error", Message: error_description)
+                        }
+                        return
+                        
+                    }
+
+                 
+                    
+                    let ephemeralKey = dt["ephemeralKey"] as? [String : Any]
+                    print(ephemeralKey)
+
+                    
+                }
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                break
+                
+            case .failure(_):
+                self.StopLoadingSpinner()
+                print("There is an error")
+                break
+            }
+        }
+        
+    }
     
+    
+
     
     func MakeGetListPlan(access_token:String)
     {
@@ -90,7 +179,7 @@ class PaymentViewController: UIViewController ,UITableViewDataSource,UITableView
         }
         
         let headers = [
-            "Authorization": "Bearer " + GlobalVar.StaticVar.access_token
+            "Authorization": "Bearer " + access_token
             
         ]
         
@@ -102,9 +191,9 @@ class PaymentViewController: UIViewController ,UITableViewDataSource,UITableView
         
         self.StartLoadingSpinner()
         
+        let url = GlobalVar.StaticVar.BaseUrl + "/api/billings/internalplans"  + GlobalVar.StaticVar.ApiUrlParams + "&clientVersion=" + GlobalVar.StaticVar.app_version_code
         
-        
-        Alamofire.request(GlobalVar.StaticVar.BaseUrl + "/api/billings/internalplans"  + GlobalVar.StaticVar.ApiUrlParams + "&clientVersion=" + GlobalVar.StaticVar.app_version_code, method: .get, parameters: nil, encoding: JSONEncoding.default, headers: headers).responseJSON { response in
+        Alamofire.request(url, method: .get, parameters: nil, encoding: JSONEncoding.default, headers: headers).responseJSON { response in
             
             switch(response.result) {
             case .success(_):
@@ -114,13 +203,13 @@ class PaymentViewController: UIViewController ,UITableViewDataSource,UITableView
                 self.StopLoadingSpinner()
                 
               
+             
                 
-                
-                if let dt = response.result.value as! NSArray?  {
+                if let dt = response.result.value as? NSArray?  {
                     self.PlansList.removeAll()
                     
                     
-                    for PlanData in dt  {
+                    for PlanData in dt!  {
                  
                         
                       if let Plan = PlanData as? [String: Any] {
@@ -174,8 +263,8 @@ class PaymentViewController: UIViewController ,UITableViewDataSource,UITableView
                         }
                         
                             
-                            
-                            
+                   
+                    
                         
                         
                         
@@ -186,7 +275,7 @@ class PaymentViewController: UIViewController ,UITableViewDataSource,UITableView
                     
                 }
                 
-                
+               
                 
                 
                 

@@ -118,7 +118,7 @@ class GlobalVar: NSObject {
         static let Violet :UIColor = UIColor(hex: 0x4a2b50)
         static let Yellow :UIColor = UIColor(hex: 0xfec730)
         
-        static var DevMode:Bool = false
+        static var DevMode:Bool = true
         static var BaseUrl:String = ""
         static var drmLicenseUrl:String = ""
         static var StripeKey:String = ""
@@ -158,8 +158,8 @@ class GlobalVar: NSObject {
         static var  Subscription_isCancelable=""
         static var Subscription_subStatus=""
         
-        static let clientSecret = "0426914d-96bc-46f6-849e-bca34ef7300a" //prod et dev
-        static let clientApiID = "85f700d9-4a80-4913-8223-e0d49fef3a05" //prod et dev
+        static let clientSecret = "14480982-9487-42ed-8250-cc93d368c208" //prod et dev ios
+        static let clientApiID = "989796ec-5d63-4ef2-89b0-7d3923d6484f" //prod et dev ios
         
         
         static let   CouponUUIDGenStaging = "e9d0c006-175a-4564-a736-7cc9edb3e532"

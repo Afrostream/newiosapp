@@ -13,10 +13,12 @@ pod "ExpandableLabel"
 pod 'BMPlayer'
 pod 'google-cast-sdk'
 pod 'M13Checkbox'
+pod 'CountryPicker'
+pod 'DropDown'
 pod 'Stripe'
 pod 'FacebookCore'
 pod 'FacebookLogin'
-pod 'FacebookShare'
+
 
   # Pods for Afostream
 

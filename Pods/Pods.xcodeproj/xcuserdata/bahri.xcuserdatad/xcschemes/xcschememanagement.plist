@@ -24,6 +24,16 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
+		<key>CountryPicker.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>DropDown.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 		<key>ExpandableLabel.xcscheme</key>
 		<dict>
 			<key>isShown</key>
@@ -39,22 +49,12 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
-		<key>FBSDKShareKit.xcscheme</key>
-		<dict>
-			<key>isShown</key>
-			<false/>
-		</dict>
 		<key>FacebookCore.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
 		</dict>
 		<key>FacebookLogin.xcscheme</key>
-		<dict>
-			<key>isShown</key>
-			<false/>
-		</dict>
-		<key>FacebookShare.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
@@ -97,7 +97,7 @@
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
-		<key>095287BE6F9A04831E600E3C65ADA452</key>
+		<key>007E1F352BBDCF79216810967474DAE6</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -112,22 +112,22 @@
 			<key>primary</key>
 			<true/>
 		</dict>
+		<key>20B8D91A7066936C41028C8262F6D91B</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
 		<key>30E01F11C650E0C3126E563C155D51EF</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>332F91393FB1DE033D370B4CEDDD5FCF</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>3CA5601C0EA4C0569B305269BD953CAB</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
 		<key>44CAD6CE523055ED339E87154473A254</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>5168099F2EBFC99A707C03C9EADE01A5</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -147,42 +147,42 @@
 			<key>primary</key>
 			<true/>
 		</dict>
+		<key>826849F370A00C20C80253DB890B169A</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
 		<key>88E9EC28B8B46C3631E6B242B50F4442</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>9EEEBAB2055421A43058928A9796575E</key>
+		<key>AC35C69033D2484655EFAC4D72D13D19</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>A7FEAA14E89971698ACA148F7F7202F2</key>
+		<key>B2E551BC483D18D72EF81DE3AF614AF6</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>B0CECCF2B0FBE6B1EDD3A4C959773B4A</key>
+		<key>BD7E251B4CF2E3402364A8D6472D9356</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>BF182144B63266AFB51DC72CFD39341F</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>CFBE9028B2B10B5217315D99A3955EB2</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>D415513396571CC3964B6C310ABB1D08</key>
+		<key>CF7D5D6C203849F69F787F31045FF721</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
 		<key>DDBCFDE490CDFDABF6F16A26F346932D</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>DEC05651D1F4F24769A11DC2A95A1FF7</key>
 		<dict>
 			<key>primary</key>
 			<true/>
