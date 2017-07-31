@@ -251,9 +251,20 @@ class LoginViewController: UIViewController {
                     //let vc = self.storyboard?.instantiateViewController(withIdentifier: "SWRevealViewController")
                     //self.present(vc!, animated: true, completion: nil)
                     
-                    let vc = self.storyboard?.instantiateViewController(withIdentifier: "PaymentViewController")
-                    self.present(vc!, animated: true, completion: nil)
+                    //var PaymentView = PaymentViewController()
                     
+                    //let vc = UIStoryboard(name: "PaymentViewController", bundle: nil).instantiateInitialViewController()
+                    
+                    //PaymentView = (self.storyboard?.instantiateViewController(withIdentifier: "PaymentViewController") as! PaymentViewController).instantiate()
+                    
+                    let viewController:PaymentViewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "PaymentViewController")  as! PaymentViewController
+                    // .instantiatViewControllerWithIdentifier() returns AnyObject! this must be downcast to utilize it
+                    
+                    self.present(viewController, animated: false, completion: nil)
+                    
+                    
+                    
+                   // self.present(vc!, animated: true, completion: nil)
                     
                     
                 }

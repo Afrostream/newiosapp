@@ -23,6 +23,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
          NetworkActivityIndicatorManager.shared.isEnabled = true
         NetworkActivityIndicatorManager.shared.startDelay = 0.1
     }
+    override init()
+    {
+        super.init()
+       
+     
+    }
    
 
    

@@ -11,17 +11,46 @@ import Alamofire
 import SDWebImage
 import Stripe
 
-class PaymentViewController: UIViewController ,UITableViewDataSource,UITableViewDelegate{
+class PaymentViewController: UIViewController ,UITableViewDataSource,UITableViewDelegate,STPPaymentContextDelegate{
     
+    let paymentContext: STPPaymentContext
     
+    let theme: STPTheme
+    
+    let companyName = "Afrostream"
+    let paymentCurrency = "eur"
+   
+    
+     let numberFormatter: NumberFormatter
     
     var PlansList = [PlanModel]()
+      var product = ""
+    
+    @IBOutlet weak var bntValidate: UIButton!
     
     @IBOutlet weak var tableView: UITableView!
 
     
     
     var laoding_spinner:UIActivityIndicatorView=UIActivityIndicatorView()
+    
+    var paymentInProgress: Bool = false {
+        didSet {
+            UIView.animate(withDuration: 0.3, delay: 0, options: .curveEaseIn, animations: {
+                if self.paymentInProgress {
+                    self.laoding_spinner.startAnimating()
+                    self.laoding_spinner.alpha = 1
+                    self.bntValidate.alpha = 0
+                }
+                else {
+                    self.laoding_spinner.stopAnimating()
+                    self.laoding_spinner.alpha = 0
+                    self.bntValidate.alpha = 1
+                }
+            }, completion: nil)
+        }
+    }
+
     
     lazy var searchBar = UISearchBar()
     @IBAction func bntCancel(_ sender: Any) {
@@ -30,7 +59,9 @@ class PaymentViewController: UIViewController ,UITableViewDataSource,UITableView
     
     @IBAction func bntValidate(_ sender: Any) {
         
-        self.MakeGetStripeKey (access_token: GlobalVar.StaticVar.access_token)
+        self.paymentInProgress = true
+        self.paymentContext.requestPayment()
+        
     }
     @IBAction func bntCgu(_ sender: Any) {
         
@@ -80,91 +111,63 @@ class PaymentViewController: UIViewController ,UITableViewDataSource,UITableView
         
         self.present(alertController, animated: true, completion: nil)
     }
-    func MakeGetStripeKey(access_token:String)
-    {
+       
+    init() {
         
-        if access_token.isEmpty
-        {
-            ShowAlert(Title: NSLocalizedString("Error", comment: ""), Message: NSLocalizedString("ErrorAccessToken", comment: ""))
-            return
-        }
+        let settingsVC  = StripeSettings()
+        let settings : Settings = settingsVC.settings
         
-        let headers = [
-            "Authorization": "Bearer " + access_token,
-              "Content-Type": "application/json"
-            
-        ]
         
-        let opt = [
-            "apiVersion": "2017-06-05"
-          
-            
+        let stripePublishableKey = GlobalVar.StaticVar.StripeKey
+        let backendBaseURL = GlobalVar.StaticVar.BaseUrl + "/api/billings/customerKey"
+        
+       
+        self.theme = settings.theme
+        StripeAPIClient.sharedClient.baseURLString = backendBaseURL
+        
+     
+        let config = STPPaymentConfiguration.shared()
+        config.publishableKey = stripePublishableKey
+        config.appleMerchantIdentifier = ""
+        config.companyName = "Afrostream"
+        config.requiredBillingAddressFields = .none
+        config.requiredShippingAddressFields = .email
+        
+        
+        
+        let customerContext = STPCustomerContext(keyProvider: StripeAPIClient.sharedClient)
+         self.paymentContext = STPPaymentContext(customerContext: customerContext,
+                                               configuration: config,
+                                               theme: settings.theme)
+        let userInformation = STPUserInformation()
+         self.paymentContext.prefilledInformation = userInformation
+       
+         self.paymentContext.paymentCurrency = self.paymentCurrency
+       
+      
+        var localeComponents: [String: String] = [
+            NSLocale.Key.currencyCode.rawValue: self.paymentCurrency,
             ]
-
-        let parameters = [
-            "billingProviderName": "Stripe " ,
-            "firstName":"",
-            "opts":opt
-            
-        ] as [String : Any]
+        localeComponents[NSLocale.Key.languageCode.rawValue] = NSLocale.preferredLanguages.first
+        let localeID = NSLocale.localeIdentifier(fromComponents: localeComponents)
+        let numberFormatter = NumberFormatter()
+        numberFormatter.locale = Locale(identifier: localeID)
+        numberFormatter.numberStyle = .currency
+        numberFormatter.usesGroupingSeparator = true
+        self.numberFormatter = numberFormatter
+        super.init(nibName: nil, bundle: nil)
+        self.paymentContext.delegate = self
+      
         
-        
-        self.StartLoadingSpinner()
-        
-        
-        
-        Alamofire.request(GlobalVar.StaticVar.BaseUrl + "/api/billings/customerKey", method: .post, parameters: parameters, encoding: JSONEncoding.default, headers: headers).responseJSON { response in
-            
-            switch(response.result) {
-            case .success(_):
-                
-                
-                
-                self.StopLoadingSpinner()
-                
-                
-                
-                
-                if let dt = response.result.value as? [String : Any]  {
-                    
-                    if  let error = dt["error"] as? String
-                    {
-                        if let error_description = dt["message"] as? String
-                        {
-                            print (error_description)
-                            self.ShowAlert(Title: "Error", Message: error_description)
-                        }
-                        return
-                        
-                    }
-
-                 
-                    
-                    let ephemeralKey = dt["ephemeralKey"] as? [String : Any]
-                    print(ephemeralKey)
-
-                    
-                }
-                
-                
-                
-                
-                
-                
-                
-                
-                
-                
-                break
-                
-            case .failure(_):
-                self.StopLoadingSpinner()
-                print("There is an error")
-                break
-            }
-        }
+    
         
     }
+    
+    required init?(coder aDecoder: NSCoder) {
+        super.init()
+        //fatalError("init(coder:) has not been implemented")
+    }
+
     
     
 
@@ -271,7 +274,7 @@ class PaymentViewController: UIViewController ,UITableViewDataSource,UITableView
                     }
                     
                     
-                    self.tableView.reloadData()
+                    self.tableView?.reloadData()
                     
                 }
                 
@@ -336,6 +339,7 @@ class PaymentViewController: UIViewController ,UITableViewDataSource,UITableView
     override func viewDidLoad() {
         super.viewDidLoad()
 
+   
         
         self.MakeGetListPlan(access_token: GlobalVar.StaticVar.access_token)
         // Do any additional setup after loading the view.
@@ -344,6 +348,97 @@ class PaymentViewController: UIViewController ,UITableViewDataSource,UITableView
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    
+    
+    
+    
+    
+    
+    
+    
+    func paymentContext(_ paymentContext: STPPaymentContext, didCreatePaymentResult paymentResult: STPPaymentResult, completion: @escaping STPErrorBlock) {
+       StripeAPIClient.sharedClient.completeCharge(paymentResult,
+                                                amount: self.paymentContext.paymentAmount,
+                                                shippingAddress: self.paymentContext.shippingAddress,
+                                                shippingMethod: self.paymentContext.selectedShippingMethod,
+                                                completion: completion)
+    }
+    
+    func paymentContext(_ paymentContext: STPPaymentContext, didFinishWith status: STPPaymentStatus, error: Error?) {
+        self.paymentInProgress = false
+        let title: String
+        let message: String
+        switch status {
+        case .error:
+            title = "Error"
+            message = error?.localizedDescription ?? ""
+        case .success:
+            title = "Success"
+            message = "You bought a \(self.product)!"
+        case .userCancellation:
+            return
+        }
+        let alertController = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        let action = UIAlertAction(title: "OK", style: .default, handler: nil)
+        alertController.addAction(action)
+        self.present(alertController, animated: true, completion: nil)
+    }
+    
+    func paymentContextDidChange(_ paymentContext: STPPaymentContext) {
+       
+    }
+    
+    func paymentContext(_ paymentContext: STPPaymentContext, didFailToLoadWithError error: Error) {
+        let alertController = UIAlertController(
+            title: "Error",
+            message: error.localizedDescription,
+            preferredStyle: .alert
+        )
+        let cancel = UIAlertAction(title: "Cancel", style: .cancel, handler: { action in
+            // Need to assign to _ because optional binding loses @discardableResult value
+            // https://bugs.swift.org/browse/SR-1681
+            _ = self.navigationController?.popViewController(animated: true)
+        })
+        let retry = UIAlertAction(title: "Retry", style: .default, handler: { action in
+            self.paymentContext.retryLoading()
+        })
+        alertController.addAction(cancel)
+        alertController.addAction(retry)
+        self.present(alertController, animated: true, completion: nil)
+    }
+    
+    func paymentContext(_ paymentContext: STPPaymentContext, didUpdateShippingAddress address: STPAddress, completion: @escaping STPShippingMethodsCompletionBlock) {
+        let upsGround = PKShippingMethod()
+        upsGround.amount = 0
+        upsGround.label = "UPS Ground"
+        upsGround.detail = "Arrives in 3-5 days"
+        upsGround.identifier = "ups_ground"
+        let upsWorldwide = PKShippingMethod()
+        upsWorldwide.amount = 10.99
+        upsWorldwide.label = "UPS Worldwide Express"
+        upsWorldwide.detail = "Arrives in 1-3 days"
+        upsWorldwide.identifier = "ups_worldwide"
+        let fedEx = PKShippingMethod()
+        fedEx.amount = 5.99
+        fedEx.label = "FedEx"
+        fedEx.detail = "Arrives tomorrow"
+        fedEx.identifier = "fedex"
+        
+        DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
+            if address.country == nil || address.country == "US" {
+                completion(.valid, nil, [upsGround, fedEx], fedEx)
+            }
+            else if address.country == "AQ" {
+                let error = NSError(domain: "ShippingError", code: 123, userInfo: [NSLocalizedDescriptionKey: "Invalid Shipping Address",
+                                                                                   NSLocalizedFailureReasonErrorKey: "We can't ship to this country."])
+                completion(.invalid, error, nil, nil)
+            }
+            else {
+                fedEx.amount = 20.99
+                completion(.valid, nil, [upsWorldwide, fedEx], fedEx)
+            }
+        }
     }
     
 

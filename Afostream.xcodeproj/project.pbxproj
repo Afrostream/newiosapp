@@ -29,6 +29,8 @@
 		157B4A821EC35A980061D175 /* MyAccountViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 157B4A811EC35A980061D175 /* MyAccountViewController.swift */; };
 		157B4A841EC35AA60061D175 /* FavorisViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 157B4A831EC35AA60061D175 /* FavorisViewController.swift */; };
 		157F2EF41EDC51BF0011F3B0 /* MovieDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 157F2EF31EDC51BF0011F3B0 /* MovieDetailsViewController.swift */; };
+		15870FDC1F2B7775008C63F6 /* StripeAPIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15870FDB1F2B7775008C63F6 /* StripeAPIClient.swift */; };
+		15870FDE1F2F6C90008C63F6 /* StripeSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15870FDD1F2F6C90008C63F6 /* StripeSettings.swift */; };
 		158C75D31ECDE49500501FD3 /* CategoryRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 158C75D21ECDE49500501FD3 /* CategoryRow.swift */; };
 		158C75D51ECDEF8A00501FD3 /* VideoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 158C75D41ECDEF8A00501FD3 /* VideoCell.swift */; };
 		15925C001ECC7EB60090DE5F /* CategorieViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15925BFF1ECC7EB60090DE5F /* CategorieViewController.swift */; };
@@ -76,6 +78,8 @@
 		157B4A811EC35A980061D175 /* MyAccountViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyAccountViewController.swift; sourceTree = "<group>"; };
 		157B4A831EC35AA60061D175 /* FavorisViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FavorisViewController.swift; sourceTree = "<group>"; };
 		157F2EF31EDC51BF0011F3B0 /* MovieDetailsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MovieDetailsViewController.swift; sourceTree = "<group>"; };
+		15870FDB1F2B7775008C63F6 /* StripeAPIClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StripeAPIClient.swift; sourceTree = "<group>"; };
+		15870FDD1F2F6C90008C63F6 /* StripeSettings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = StripeSettings.swift; path = ../StripeSettings.swift; sourceTree = "<group>"; };
 		158C75D21ECDE49500501FD3 /* CategoryRow.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CategoryRow.swift; sourceTree = "<group>"; };
 		158C75D41ECDEF8A00501FD3 /* VideoCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VideoCell.swift; sourceTree = "<group>"; };
 		15925BFF1ECC7EB60090DE5F /* CategorieViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CategorieViewController.swift; sourceTree = "<group>"; };
@@ -137,6 +141,7 @@
 		15416D231EBB5AEB0008FAD6 /* Afostream */ = {
 			isa = PBXGroup;
 			children = (
+				15870FDD1F2F6C90008C63F6 /* StripeSettings.swift */,
 				15416D241EBB5AEB0008FAD6 /* AppDelegate.swift */,
 				1594007B1F1659A5006DC9E4 /* StringUtil.swift */,
 				1550EAEB1EC4CE8800EC4948 /* GlobalVar.swift */,
@@ -146,6 +151,7 @@
 				15416D281EBB5AEC0008FAD6 /* Main.storyboard */,
 				159400771F14F777006DC9E4 /* WebViewViewController.swift */,
 				15A9EAB61F0FAC1E00AB7EDF /* PaymentViewController.swift */,
+				15870FDB1F2B7775008C63F6 /* StripeAPIClient.swift */,
 				15A9EAB81F0FCDA000AB7EDF /* PaymentTableViewCell.swift */,
 				15C5231D1F0D16BD00473A82 /* RegisterUserViewController.swift */,
 				15E83CD51F0BCABD009525DA /* SearchTableViewCell.swift */,
@@ -341,6 +347,7 @@
 				15416D371EBB838B0008FAD6 /* DesignableUITextField.swift in Sources */,
 				156A55B01EF174B900B06B4E /* PlayerViewController.swift in Sources */,
 				15BBFE301F0142D6002A55D9 /* FavTableViewCell.swift in Sources */,
+				15870FDC1F2B7775008C63F6 /* StripeAPIClient.swift in Sources */,
 				1550EAEC1EC4CE8800EC4948 /* GlobalVar.swift in Sources */,
 				159400781F14F777006DC9E4 /* WebViewViewController.swift in Sources */,
 				15E83CD41F0A84FF009525DA /* SearchViewController.swift in Sources */,
@@ -354,6 +361,7 @@
 				15C5231E1F0D16BD00473A82 /* RegisterUserViewController.swift in Sources */,
 				15925C001ECC7EB60090DE5F /* CategorieViewController.swift in Sources */,
 				15E83CD61F0BCABD009525DA /* SearchTableViewCell.swift in Sources */,
+				15870FDE1F2F6C90008C63F6 /* StripeSettings.swift in Sources */,
 				157B4A821EC35A980061D175 /* MyAccountViewController.swift in Sources */,
 				157F2EF41EDC51BF0011F3B0 /* MovieDetailsViewController.swift in Sources */,
 			);
