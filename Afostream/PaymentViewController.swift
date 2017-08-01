@@ -13,15 +13,15 @@ import Stripe
 
 class PaymentViewController: UIViewController ,UITableViewDataSource,UITableViewDelegate,STPPaymentContextDelegate{
     
-    let paymentContext: STPPaymentContext
+    var paymentContext: STPPaymentContext?
     
-    let theme: STPTheme
+    var theme: STPTheme?
     
     let companyName = "Afrostream"
     let paymentCurrency = "eur"
    
     
-     let numberFormatter: NumberFormatter
+     var numberFormatter: NumberFormatter?
     
     var PlansList = [PlanModel]()
       var product = ""
@@ -59,8 +59,11 @@ class PaymentViewController: UIViewController ,UITableViewDataSource,UITableView
     
     @IBAction func bntValidate(_ sender: Any) {
         
+         self.paymentContext?.paymentAmount = 1000
+        
         self.paymentInProgress = true
-        self.paymentContext.requestPayment()
+       // self.paymentContext?.pushPaymentMethodsViewController()
+        self.paymentContext?.requestPayment()
         
     }
     @IBAction func bntCgu(_ sender: Any) {
@@ -113,58 +116,28 @@ class PaymentViewController: UIViewController ,UITableViewDataSource,UITableView
     }
        
     init() {
-        
-        let settingsVC  = StripeSettings()
-        let settings : Settings = settingsVC.settings
+   
         
         
-        let stripePublishableKey = GlobalVar.StaticVar.StripeKey
-        let backendBaseURL = GlobalVar.StaticVar.BaseUrl + "/api/billings/customerKey"
-        
-       
-        self.theme = settings.theme
-        StripeAPIClient.sharedClient.baseURLString = backendBaseURL
-        
-     
-        let config = STPPaymentConfiguration.shared()
-        config.publishableKey = stripePublishableKey
-        config.appleMerchantIdentifier = ""
-        config.companyName = "Afrostream"
-        config.requiredBillingAddressFields = .none
-        config.requiredShippingAddressFields = .email
-        
-        
-        
-        let customerContext = STPCustomerContext(keyProvider: StripeAPIClient.sharedClient)
-         self.paymentContext = STPPaymentContext(customerContext: customerContext,
-                                               configuration: config,
-                                               theme: settings.theme)
-        let userInformation = STPUserInformation()
-         self.paymentContext.prefilledInformation = userInformation
-       
-         self.paymentContext.paymentCurrency = self.paymentCurrency
-       
-      
-        var localeComponents: [String: String] = [
-            NSLocale.Key.currencyCode.rawValue: self.paymentCurrency,
-            ]
-        localeComponents[NSLocale.Key.languageCode.rawValue] = NSLocale.preferredLanguages.first
-        let localeID = NSLocale.localeIdentifier(fromComponents: localeComponents)
-        let numberFormatter = NumberFormatter()
-        numberFormatter.locale = Locale(identifier: localeID)
-        numberFormatter.numberStyle = .currency
-        numberFormatter.usesGroupingSeparator = true
-        self.numberFormatter = numberFormatter
         super.init(nibName: nil, bundle: nil)
-        self.paymentContext.delegate = self
-      
+
+       
+
+        
         
     
         
     }
     
     required init?(coder aDecoder: NSCoder) {
-        super.init()
+        
+        
+        
+        
+        
+        
+        super.init(coder: aDecoder)
+     
         //fatalError("init(coder:) has not been implemented")
     }
 
@@ -338,7 +311,51 @@ class PaymentViewController: UIViewController ,UITableViewDataSource,UITableView
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
+        let settingsVC  = StripeSettings()
+        let settings : Settings = settingsVC.settings
+        
+        
+        let stripePublishableKey = GlobalVar.StaticVar.StripeKey
+        let backendBaseURL = GlobalVar.StaticVar.BaseUrl + "/api/billings/customerKey"
+        
+        
+        self.theme = settings.theme
+        StripeAPIClient.sharedClient.baseURLString = backendBaseURL
+        
+        
+        let config = STPPaymentConfiguration.shared()
+        config.publishableKey = stripePublishableKey
+        config.appleMerchantIdentifier = ""
+        config.companyName = "Afrostream"
+        config.requiredBillingAddressFields = .none
+        config.requiredShippingAddressFields = .email
+        
+        
+        
+        let customerContext = STPCustomerContext(keyProvider: StripeAPIClient.sharedClient)
+        self.paymentContext = STPPaymentContext(customerContext: customerContext,
+                                                configuration: config,
+                                                theme: settings.theme)
+        let userInformation = STPUserInformation()
+        self.paymentContext?.prefilledInformation = userInformation
+        
+        self.paymentContext?.paymentCurrency = self.paymentCurrency
+        
+        
+        var localeComponents: [String: String] = [
+            NSLocale.Key.currencyCode.rawValue: self.paymentCurrency,
+            ]
+        localeComponents[NSLocale.Key.languageCode.rawValue] = NSLocale.preferredLanguages.first
+        let localeID = NSLocale.localeIdentifier(fromComponents: localeComponents)
+        let numberFormatter = NumberFormatter()
+        numberFormatter.locale = Locale(identifier: localeID)
+        numberFormatter.numberStyle = .currency
+        numberFormatter.usesGroupingSeparator = true
+        self.numberFormatter = numberFormatter
+        
+        self.paymentContext?.delegate = self
+        self.paymentContext?.hostViewController = self
    
         
         self.MakeGetListPlan(access_token: GlobalVar.StaticVar.access_token)
@@ -359,9 +376,9 @@ class PaymentViewController: UIViewController ,UITableViewDataSource,UITableView
     
     func paymentContext(_ paymentContext: STPPaymentContext, didCreatePaymentResult paymentResult: STPPaymentResult, completion: @escaping STPErrorBlock) {
        StripeAPIClient.sharedClient.completeCharge(paymentResult,
-                                                amount: self.paymentContext.paymentAmount,
-                                                shippingAddress: self.paymentContext.shippingAddress,
-                                                shippingMethod: self.paymentContext.selectedShippingMethod,
+                                                amount: (self.paymentContext?.paymentAmount)!,
+                                                shippingAddress: self.paymentContext?.shippingAddress,
+                                                shippingMethod: self.paymentContext?.selectedShippingMethod,
                                                 completion: completion)
     }
     
@@ -386,6 +403,14 @@ class PaymentViewController: UIViewController ,UITableViewDataSource,UITableView
     }
     
     func paymentContextDidChange(_ paymentContext: STPPaymentContext) {
+        print("Payment Method")
+        if let paymentMethod = paymentContext.selectedPaymentMethod {
+            print( paymentMethod.label)
+        }
+        else {
+            print("Select Payment")
+        }
+
        
     }
     
@@ -401,7 +426,7 @@ class PaymentViewController: UIViewController ,UITableViewDataSource,UITableView
             _ = self.navigationController?.popViewController(animated: true)
         })
         let retry = UIAlertAction(title: "Retry", style: .default, handler: { action in
-            self.paymentContext.retryLoading()
+            self.paymentContext?.retryLoading()
         })
         alertController.addAction(cancel)
         alertController.addAction(retry)

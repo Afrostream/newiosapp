@@ -257,10 +257,15 @@ class LoginViewController: UIViewController {
                     
                     //PaymentView = (self.storyboard?.instantiateViewController(withIdentifier: "PaymentViewController") as! PaymentViewController).instantiate()
                     
-                    let viewController:PaymentViewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "PaymentViewController")  as! PaymentViewController
-                    // .instantiatViewControllerWithIdentifier() returns AnyObject! this must be downcast to utilize it
                     
-                    self.present(viewController, animated: false, completion: nil)
+                    
+                    
+                    let settingStoryboard : UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+                    let settingVC = settingStoryboard.instantiateViewController(withIdentifier: "PaymentViewController") as! PaymentViewController
+                    self.present(settingVC, animated: true, completion: {
+                        
+                    })
+
                     
                     
                     
