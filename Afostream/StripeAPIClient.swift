@@ -24,18 +24,75 @@ class StripeAPIClient: NSObject, STPEphemeralKeyProvider {
         }
     }
     
+    func notPrettyString(from object: Any) -> String? {
+        if let objectData = try? JSONSerialization.data(withJSONObject: object, options: JSONSerialization.WritingOptions(rawValue: 0)) {
+            let objectString = String(data: objectData, encoding: .utf8)
+            return objectString
+        }
+        return nil
+    }
+    
     func completeCharge(_ result: STPPaymentResult,
                         amount: Int,
                         shippingAddress: STPAddress?,
                         shippingMethod: PKShippingMethod?,
-                        completion: @escaping STPErrorBlock) {
-        let url = self.baseURL.appendingPathComponent("charge")
-        var params: [String: Any] = [
-            "source": result.source.stripeID,
-            "amount": amount
+                        completion: @escaping STPErrorBlock,firstName : String ,lastName : String , internalPlanUuid :String ,CouponInternalPlanUuid:String,billingProviderName: String,couponCode :String,couponsCampaignTypeValue:String ) {
+        let url = GlobalVar.StaticVar.BaseUrl + "/api/billings/subscriptions/"
+        var internalPlanUuid = internalPlanUuid
+        let stripeToken = result.source.stripeID
+
+        
+        let headers = [
+            "Authorization": "Bearer " + GlobalVar.StaticVar.access_token,
+            "Content-Type": "application/json"
+            
         ]
-        params["shipping"] = STPAddress.shippingInfoForCharge(with: shippingAddress, shippingMethod: shippingMethod)
-        Alamofire.request(url, method: .post, parameters: params)
+        
+        let opt = [
+            "customerBankAccountToken": stripeToken,
+            "couponCode":couponCode
+            
+        ]
+        
+        var paymentMethod  = [String : Any] ()
+        
+         paymentMethod["paymentMethodType"] = "card"
+        
+        
+        var billingInfoSub  = [String : Any] ()
+        
+        
+         billingInfoSub["countryCode"] = GlobalVar.StaticVar.CountryCode
+
+        
+        if couponsCampaignTypeValue != "" {
+            billingInfoSub["paymentMethod"] = couponsCampaignTypeValue
+        }
+        
+        billingInfoSub["paymentMethod"] = paymentMethod
+        
+        print (billingInfoSub)
+        
+        if CouponInternalPlanUuid != "" {
+            internalPlanUuid = CouponInternalPlanUuid
+        }
+        
+        let parameters = [
+            "billingProviderName": billingProviderName ,
+            "firstName":firstName,
+            "lastName":lastName,
+            "internalPlanUuid":internalPlanUuid,
+            "subOpts":opt,
+            "billingInfo" : billingInfoSub
+            
+            ] as [String : Any]
+
+
+        let valid = JSONSerialization.isValidJSONObject(parameters) // true
+        print (valid)
+        print (parameters)
+        
+        Alamofire.request(url, method: .post, parameters: parameters, headers: headers)
             .validate(statusCode: 200..<300)
             .responseString { response in
                 switch response.result {
@@ -64,12 +121,13 @@ class StripeAPIClient: NSObject, STPEphemeralKeyProvider {
         
         let parameters = [
             "billingProviderName": "stripe" ,
-            "firstName":"test",
-            "lastName":"ben",
+            "firstName":GlobalVar.StaticVar.user_first_name,
+            "lastName":GlobalVar.StaticVar.user_last_name,
             "opts":opt
             
             ] as [String : Any]
-
+        
+        
         
         Alamofire.request(url, method: .post, parameters: parameters, encoding: JSONEncoding.default, headers: headers)
             .validate(statusCode: 200..<300)

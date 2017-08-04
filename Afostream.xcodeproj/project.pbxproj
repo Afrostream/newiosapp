@@ -142,6 +142,7 @@
 			isa = PBXGroup;
 			children = (
 				15870FDD1F2F6C90008C63F6 /* StripeSettings.swift */,
+				15870FDB1F2B7775008C63F6 /* StripeAPIClient.swift */,
 				15416D241EBB5AEB0008FAD6 /* AppDelegate.swift */,
 				1594007B1F1659A5006DC9E4 /* StringUtil.swift */,
 				1550EAEB1EC4CE8800EC4948 /* GlobalVar.swift */,
@@ -151,7 +152,6 @@
 				15416D281EBB5AEC0008FAD6 /* Main.storyboard */,
 				159400771F14F777006DC9E4 /* WebViewViewController.swift */,
 				15A9EAB61F0FAC1E00AB7EDF /* PaymentViewController.swift */,
-				15870FDB1F2B7775008C63F6 /* StripeAPIClient.swift */,
 				15A9EAB81F0FCDA000AB7EDF /* PaymentTableViewCell.swift */,
 				15C5231D1F0D16BD00473A82 /* RegisterUserViewController.swift */,
 				15E83CD51F0BCABD009525DA /* SearchTableViewCell.swift */,

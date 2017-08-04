@@ -24,6 +24,8 @@ class PaymentViewController: UIViewController ,UITableViewDataSource,UITableView
      var numberFormatter: NumberFormatter?
     
     var PlansList = [PlanModel]()
+    
+    var SelectedPlan :PlanModel?
       var product = ""
     
     @IBOutlet weak var bntValidate: UIButton!
@@ -59,11 +61,20 @@ class PaymentViewController: UIViewController ,UITableViewDataSource,UITableView
     
     @IBAction func bntValidate(_ sender: Any) {
         
-         self.paymentContext?.paymentAmount = 1000
+        if self.SelectedPlan != nil {
+            
+            self.paymentContext?.paymentAmount = Int(self.SelectedPlan!.amountInCents)!
+            
+            self.paymentInProgress = true
+          
+            self.paymentContext?.requestPayment()
+
+            
+        }else
+        {
+            ShowAlert(Title: "Error", Message: "Please select paiement plan")
+        }
         
-        self.paymentInProgress = true
-       // self.paymentContext?.pushPaymentMethodsViewController()
-        self.paymentContext?.requestPayment()
         
     }
     @IBAction func bntCgu(_ sender: Any) {
@@ -289,20 +300,15 @@ class PaymentViewController: UIViewController ,UITableViewDataSource,UITableView
         cell.lblDescription.text = PlansList[indexPath.row].description
         cell.lblPrice.text = PlansList[indexPath.row].amount + " " +  PlansList[indexPath.row].currency
         
-        
+       
         
         
         return cell
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-       /* let title = PlansList[indexPath.row].title
-        let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        let vc = storyboard.instantiateViewController(withIdentifier: "MovieDetailsViewController") as! MovieDetailsViewController
-        vc.title = title
-        vc.Movie =  MoviesList[indexPath.row]
-        self.navigationItem.title = ""
-        self.navigationController?.pushViewController(vc,animated: true)*/
+      self.SelectedPlan = PlansList[indexPath.row]
+ 
         
     }
     
@@ -330,17 +336,20 @@ class PaymentViewController: UIViewController ,UITableViewDataSource,UITableView
         config.companyName = "Afrostream"
         config.requiredBillingAddressFields = .none
         config.requiredShippingAddressFields = .email
-        
-        
+    
         
         let customerContext = STPCustomerContext(keyProvider: StripeAPIClient.sharedClient)
+     
         self.paymentContext = STPPaymentContext(customerContext: customerContext,
                                                 configuration: config,
                                                 theme: settings.theme)
         let userInformation = STPUserInformation()
         self.paymentContext?.prefilledInformation = userInformation
+
         
         self.paymentContext?.paymentCurrency = self.paymentCurrency
+        
+        
         
         
         var localeComponents: [String: String] = [
@@ -379,7 +388,9 @@ class PaymentViewController: UIViewController ,UITableViewDataSource,UITableView
                                                 amount: (self.paymentContext?.paymentAmount)!,
                                                 shippingAddress: self.paymentContext?.shippingAddress,
                                                 shippingMethod: self.paymentContext?.selectedShippingMethod,
-                                                completion: completion)
+                                                completion: completion, firstName: GlobalVar.StaticVar.user_first_name,lastName : GlobalVar.StaticVar.user_last_name , internalPlanUuid :(SelectedPlan?.internalPlanUuid)! ,CouponInternalPlanUuid: "",billingProviderName: (SelectedPlan?.providerName)!,couponCode : "",couponsCampaignTypeValue: "" )
+        
+        
     }
     
     func paymentContext(_ paymentContext: STPPaymentContext, didFinishWith status: STPPaymentStatus, error: Error?) {
@@ -433,40 +444,7 @@ class PaymentViewController: UIViewController ,UITableViewDataSource,UITableView
         self.present(alertController, animated: true, completion: nil)
     }
     
-    func paymentContext(_ paymentContext: STPPaymentContext, didUpdateShippingAddress address: STPAddress, completion: @escaping STPShippingMethodsCompletionBlock) {
-        let upsGround = PKShippingMethod()
-        upsGround.amount = 0
-        upsGround.label = "UPS Ground"
-        upsGround.detail = "Arrives in 3-5 days"
-        upsGround.identifier = "ups_ground"
-        let upsWorldwide = PKShippingMethod()
-        upsWorldwide.amount = 10.99
-        upsWorldwide.label = "UPS Worldwide Express"
-        upsWorldwide.detail = "Arrives in 1-3 days"
-        upsWorldwide.identifier = "ups_worldwide"
-        let fedEx = PKShippingMethod()
-        fedEx.amount = 5.99
-        fedEx.label = "FedEx"
-        fedEx.detail = "Arrives tomorrow"
-        fedEx.identifier = "fedex"
-        
-        DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
-            if address.country == nil || address.country == "US" {
-                completion(.valid, nil, [upsGround, fedEx], fedEx)
-            }
-            else if address.country == "AQ" {
-                let error = NSError(domain: "ShippingError", code: 123, userInfo: [NSLocalizedDescriptionKey: "Invalid Shipping Address",
-                                                                                   NSLocalizedFailureReasonErrorKey: "We can't ship to this country."])
-                completion(.invalid, error, nil, nil)
-            }
-            else {
-                fedEx.amount = 20.99
-                completion(.valid, nil, [upsWorldwide, fedEx], fedEx)
-            }
-        }
-    }
-    
-
+  
     /*
     // MARK: - Navigation
 

@@ -259,7 +259,8 @@ class LoginViewController: UIViewController {
                     
                     
                     
-                    
+                    GlobalVar.StaticVar.user_first_name = "test"
+                    GlobalVar.StaticVar.user_last_name = "ben"
                     let settingStoryboard : UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
                     let settingVC = settingStoryboard.instantiateViewController(withIdentifier: "PaymentViewController") as! PaymentViewController
                     self.present(settingVC, animated: true, completion: {
