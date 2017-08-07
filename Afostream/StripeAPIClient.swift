@@ -13,7 +13,9 @@ import Stripe
 import Alamofire
 
 class StripeAPIClient: NSObject, STPEphemeralKeyProvider {
+   
     
+
     static let sharedClient = StripeAPIClient()
     var baseURLString: String? = nil
     var baseURL: URL {
@@ -32,14 +34,13 @@ class StripeAPIClient: NSObject, STPEphemeralKeyProvider {
         return nil
     }
     
-    func completeCharge(_ result: STPPaymentResult,
-                        amount: Int,
-                        shippingAddress: STPAddress?,
-                        shippingMethod: PKShippingMethod?,
-                        completion: @escaping STPErrorBlock,firstName : String ,lastName : String , internalPlanUuid :String ,CouponInternalPlanUuid:String,billingProviderName: String,couponCode :String,couponsCampaignTypeValue:String ) {
+    func completeCharge(_ token: String,
+                     
+                        
+                        firstName : String ,lastName : String , internalPlanUuid :String ,CouponInternalPlanUuid:String,billingProviderName: String,couponCode :String,couponsCampaignTypeValue:String ,completion:  @escaping STPTokenSubmissionHandler) {
         let url = GlobalVar.StaticVar.BaseUrl + "/api/billings/subscriptions/"
         var internalPlanUuid = internalPlanUuid
-        let stripeToken = result.source.stripeID
+        let stripeToken = token
 
         
         let headers = [
@@ -69,7 +70,7 @@ class StripeAPIClient: NSObject, STPEphemeralKeyProvider {
             billingInfoSub["paymentMethod"] = couponsCampaignTypeValue
         }
         
-        billingInfoSub["paymentMethod"] = paymentMethod
+       billingInfoSub["paymentMethod"] = paymentMethod
         
         print (billingInfoSub)
         
@@ -92,14 +93,18 @@ class StripeAPIClient: NSObject, STPEphemeralKeyProvider {
         print (valid)
         print (parameters)
         
-        Alamofire.request(url, method: .post, parameters: parameters, headers: headers)
+        Alamofire.request(url, method: .post, parameters: parameters, encoding: JSONEncoding.default, headers: headers)
             .validate(statusCode: 200..<300)
             .responseString { response in
                 switch response.result {
                 case .success:
-                    completion(nil)
+                    completion(.success, nil)
                 case .failure(let error):
-                    completion(error)
+                    if error != nil {
+                        completion(.failure, error as NSError?)
+                    } else {
+                        completion(.failure, NSError(domain: StripeDomain, code: 50, userInfo: [NSLocalizedDescriptionKey: "There was an error communicating with your payment backend."]))
+                    }
                 }
         }
     }

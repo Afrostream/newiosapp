@@ -484,7 +484,7 @@
                                     <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
                                 <connections>
-                                    <action selector="bntCancel:" destination="vIX-oM-rKx" eventType="touchUpInside" id="zuu-an-5Um"/>
+                                    <action selector="bntCancel:" destination="A5m-dj-9L3" eventType="touchUpInside" id="YTr-aP-ZrF"/>
                                 </connections>
                             </button>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="36j-07-XOR" customClass="M13Checkbox" customModule="M13Checkbox">

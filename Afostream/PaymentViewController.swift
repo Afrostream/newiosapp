@@ -11,7 +11,13 @@ import Alamofire
 import SDWebImage
 import Stripe
 
-class PaymentViewController: UIViewController ,UITableViewDataSource,UITableViewDelegate,STPPaymentContextDelegate{
+enum STPBackendChargeResult {
+    case success, failure
+}
+typealias STPTokenSubmissionHandler = (STPBackendChargeResult?, NSError?) -> Void
+
+
+class PaymentViewController: UIViewController ,UITableViewDataSource,UITableViewDelegate,STPPaymentContextDelegate,PKPaymentAuthorizationViewControllerDelegate{
     
     var paymentContext: STPPaymentContext?
     
@@ -55,19 +61,40 @@ class PaymentViewController: UIViewController ,UITableViewDataSource,UITableView
 
     
     lazy var searchBar = UISearchBar()
+  
     @IBAction func bntCancel(_ sender: Any) {
-        dismiss(animated: true, completion: nil)
+            dismiss(animated: true, completion: nil)
+        
     }
     
     @IBAction func bntValidate(_ sender: Any) {
         
         if self.SelectedPlan != nil {
             
-            self.paymentContext?.paymentAmount = Int(self.SelectedPlan!.amountInCents)!
+           /* self.paymentContext?.paymentAmount = Int(self.SelectedPlan!.amountInCents)!
             
             self.paymentInProgress = true
           
-            self.paymentContext?.requestPayment()
+            self.paymentContext?.requestPayment()*/
+            
+            let paymentRequest = Stripe.paymentRequest(withMerchantIdentifier: "merchant.tv.afrostream.pay")
+            // Configure the line items on the payment sheet
+            let price = Int(self.SelectedPlan!.amountInCents)!
+            let priceS = String (price)
+            
+            paymentRequest.paymentSummaryItems = [
+                PKPaymentSummaryItem(label: self.SelectedPlan!.name, amount: NSDecimalNumber(string:  priceS))
+             
+            
+            ]
+ 
+            if Stripe.canSubmitPaymentRequest(paymentRequest) {
+                let paymentAuthorizationVC = PKPaymentAuthorizationViewController(paymentRequest: paymentRequest)
+                paymentAuthorizationVC.delegate = self
+                self.present(paymentAuthorizationVC, animated: true, completion: nil)
+            } else {
+                // there is a problem with your Apple Pay configuration.
+            }
 
             
         }else
@@ -89,6 +116,49 @@ class PaymentViewController: UIViewController ,UITableViewDataSource,UITableView
         }
         
     }
+    
+    
+    func paymentAuthorizationViewController(_ controller: PKPaymentAuthorizationViewController, didAuthorizePayment payment: PKPayment, completion: @escaping ((PKPaymentAuthorizationStatus) -> Void)) {
+        let apiClient = STPAPIClient(publishableKey: GlobalVar.StaticVar.StripeKey)
+        apiClient.createToken(with: payment, completion: { (token, error) -> Void in
+            if error == nil {
+                
+                if let token = token {
+                    
+                    StripeAPIClient.sharedClient.completeCharge(token.tokenId,
+                                                               
+                                                              
+                    firstName: GlobalVar.StaticVar.user_first_name,lastName : GlobalVar.StaticVar.user_last_name , internalPlanUuid :(self.SelectedPlan?.internalPlanUuid)! ,CouponInternalPlanUuid: "",billingProviderName: (self.SelectedPlan?.providerName)!,couponCode : "",couponsCampaignTypeValue: "",
+                    completion: { (result, error) -> Void in
+                                    if result == STPBackendChargeResult.success {
+                                        completion(PKPaymentAuthorizationStatus.success)
+                                    }
+                                    else {
+                                        completion(PKPaymentAuthorizationStatus.failure)
+                                    }
+                    })
+                    
+                   /* self.createBackendChargeWithToken(token, completion: { (result, error) -> Void in
+                        if result == STPBackendChargeResult.success {
+                            completion(PKPaymentAuthorizationStatus.success)
+                        }
+                        else {
+                            completion(PKPaymentAuthorizationStatus.failure)
+                        }
+                    })*/
+                    print (token)
+                }
+            }
+            else {
+                completion(PKPaymentAuthorizationStatus.failure)
+            }
+        })
+    }
+    
+    func paymentAuthorizationViewControllerDidFinish(_ controller: PKPaymentAuthorizationViewController) {
+        dismiss(animated: true, completion: nil)
+    }
+    
  
     @IBAction func bntWithdrawal(_ sender: Any) {
         
@@ -332,7 +402,7 @@ class PaymentViewController: UIViewController ,UITableViewDataSource,UITableView
         
         let config = STPPaymentConfiguration.shared()
         config.publishableKey = stripePublishableKey
-        config.appleMerchantIdentifier = ""
+        config.appleMerchantIdentifier = "merchant.tv.afrostream.pay"
         config.companyName = "Afrostream"
         config.requiredBillingAddressFields = .none
         config.requiredShippingAddressFields = .email
@@ -384,11 +454,7 @@ class PaymentViewController: UIViewController ,UITableViewDataSource,UITableView
     
     
     func paymentContext(_ paymentContext: STPPaymentContext, didCreatePaymentResult paymentResult: STPPaymentResult, completion: @escaping STPErrorBlock) {
-       StripeAPIClient.sharedClient.completeCharge(paymentResult,
-                                                amount: (self.paymentContext?.paymentAmount)!,
-                                                shippingAddress: self.paymentContext?.shippingAddress,
-                                                shippingMethod: self.paymentContext?.selectedShippingMethod,
-                                                completion: completion, firstName: GlobalVar.StaticVar.user_first_name,lastName : GlobalVar.StaticVar.user_last_name , internalPlanUuid :(SelectedPlan?.internalPlanUuid)! ,CouponInternalPlanUuid: "",billingProviderName: (SelectedPlan?.providerName)!,couponCode : "",couponsCampaignTypeValue: "" )
+     
         
         
     }

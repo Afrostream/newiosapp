@@ -49,6 +49,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             
             GlobalVar.StaticVar.drmLicenseUrl = "https://lic.staging.drmtoday.com/license-proxy-widevine/cenc/?specConform=true" //dev
             GlobalVar.StaticVar.StripeKey = "pk_test_s9YFHvFFIjo2gdAL5x4k2ISh" //dev
+          
             
             
         }else
@@ -60,7 +61,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             
         }
          STPPaymentConfiguration.shared().publishableKey = GlobalVar.StaticVar.StripeKey
-        
+          Stripe.setDefaultPublishableKey( GlobalVar.StaticVar.StripeKey)
+        STPPaymentConfiguration.shared().appleMerchantIdentifier = "merchant.tv.afrostream.pay"
       
 
          //STPPaymentConfiguration.shared().appleMerchantIdentifier = "your apple merchant identifier"
