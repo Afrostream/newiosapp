@@ -26,11 +26,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Afostream/MainViewController.swift"
-            timestampString = "521657535.140571"
+            timestampString = "523906884.63593"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "318"
-            endingLineNumber = "318"
+            startingLineNumber = "430"
+            endingLineNumber = "430"
             landmarkName = "MakeGetCategories(access_token:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -42,11 +42,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Afostream/MainViewController.swift"
-            timestampString = "521657535.140571"
+            timestampString = "523906884.63593"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "320"
-            endingLineNumber = "320"
+            startingLineNumber = "432"
+            endingLineNumber = "432"
             landmarkName = "MakeGetCategories(access_token:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -58,11 +58,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Afostream/MainViewController.swift"
-            timestampString = "521657535.140571"
+            timestampString = "523906884.63593"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "319"
-            endingLineNumber = "319"
+            startingLineNumber = "431"
+            endingLineNumber = "431"
             landmarkName = "MakeGetCategories(access_token:)"
             landmarkType = "7">
             <Locations>
@@ -106,11 +106,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Afostream/MainViewController.swift"
-            timestampString = "521657535.140571"
+            timestampString = "523906884.63593"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "357"
-            endingLineNumber = "357"
+            startingLineNumber = "469"
+            endingLineNumber = "469"
             landmarkName = "MakeGetCategories(access_token:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -122,11 +122,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Afostream/MainViewController.swift"
-            timestampString = "521657535.140571"
+            timestampString = "523906884.63593"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "342"
-            endingLineNumber = "342"
+            startingLineNumber = "454"
+            endingLineNumber = "454"
             landmarkName = "MakeGetCategories(access_token:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -186,11 +186,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Afostream/MainViewController.swift"
-            timestampString = "521657535.140571"
+            timestampString = "523906884.63593"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "532"
-            endingLineNumber = "532"
+            startingLineNumber = "644"
+            endingLineNumber = "644"
             landmarkName = "MakeGetSlide(access_token:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -568,11 +568,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Afostream/MainViewController.swift"
-            timestampString = "521657535.140571"
+            timestampString = "523906884.63593"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "425"
-            endingLineNumber = "425"
+            startingLineNumber = "537"
+            endingLineNumber = "537"
             landmarkName = "MakeGetCategoriesHomeMovies(access_token:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -756,7 +756,7 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Afostream/RegisterUserViewController.swift"
@@ -776,11 +776,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Afostream/PaymentViewController.swift"
-            timestampString = "523814534.283404"
+            timestampString = "523891504.686932"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "270"
-            endingLineNumber = "270"
+            startingLineNumber = "279"
+            endingLineNumber = "279"
             landmarkName = "MakeGetListPlan(access_token:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -792,11 +792,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Afostream/PaymentViewController.swift"
-            timestampString = "523814534.283404"
+            timestampString = "523891504.686932"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "283"
-            endingLineNumber = "283"
+            startingLineNumber = "292"
+            endingLineNumber = "292"
             landmarkName = "MakeGetListPlan(access_token:)"
             landmarkType = "7">
             <Locations>
@@ -840,11 +840,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Afostream/PaymentViewController.swift"
-            timestampString = "523814534.283404"
+            timestampString = "523891504.686932"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "288"
-            endingLineNumber = "288"
+            startingLineNumber = "297"
+            endingLineNumber = "297"
             landmarkName = "MakeGetListPlan(access_token:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -856,11 +856,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Afostream/PaymentViewController.swift"
-            timestampString = "523814534.283404"
+            timestampString = "523891504.686932"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "271"
-            endingLineNumber = "271"
+            startingLineNumber = "280"
+            endingLineNumber = "280"
             landmarkName = "MakeGetListPlan(access_token:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -872,11 +872,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Afostream/PaymentViewController.swift"
-            timestampString = "523814534.283404"
+            timestampString = "523891504.686932"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "313"
-            endingLineNumber = "313"
+            startingLineNumber = "322"
+            endingLineNumber = "322"
             landmarkName = "MakeGetListPlan(access_token:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -888,11 +888,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Afostream/PaymentViewController.swift"
-            timestampString = "523814534.283404"
+            timestampString = "523891504.686932"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "264"
-            endingLineNumber = "264"
+            startingLineNumber = "273"
+            endingLineNumber = "273"
             landmarkName = "MakeGetListPlan(access_token:)"
             landmarkType = "7">
             <Locations>
@@ -936,11 +936,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Afostream/PaymentViewController.swift"
-            timestampString = "523814534.283404"
+            timestampString = "523891504.686932"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "268"
-            endingLineNumber = "268"
+            startingLineNumber = "277"
+            endingLineNumber = "277"
             landmarkName = "MakeGetListPlan(access_token:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -1332,7 +1332,7 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Afostream/RegisterUserViewController.swift"
@@ -1352,11 +1352,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Afostream/PaymentViewController.swift"
-            timestampString = "523814534.283404"
+            timestampString = "523891504.686932"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "252"
-            endingLineNumber = "252"
+            startingLineNumber = "261"
+            endingLineNumber = "261"
             landmarkName = "MakeGetListPlan(access_token:)"
             landmarkType = "7">
             <Locations>
@@ -1399,92 +1399,12 @@
             shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "Afostream/LoginViewController.swift"
-            timestampString = "523549640.401457"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "264"
-            endingLineNumber = "264"
-            landmarkName = "MakeLogin(Username:Password:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Afostream/LoginViewController.swift"
-            timestampString = "523549640.401457"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "265"
-            endingLineNumber = "265"
-            landmarkName = "MakeLogin(Username:Password:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Afostream/LoginViewController.swift"
-            timestampString = "523549640.401457"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "266"
-            endingLineNumber = "266"
-            landmarkName = "MakeLogin(Username:Password:)"
-            landmarkType = "7">
-            <Locations>
-               <Location
-                  shouldBeEnabled = "No"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "Afostream.LoginViewController.(MakeLogin (Username : Swift.String, Password : Swift.String) -&gt; ()).(closure #1)"
-                  moduleName = "Afostream"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/bahri/Desktop/newiosapp/Afostream/LoginViewController.swift"
-                  timestampString = "523320147.009183"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "265"
-                  endingLineNumber = "265"
-                  offsetFromSymbolStart = "4793">
-               </Location>
-               <Location
-                  shouldBeEnabled = "No"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "Afostream.LoginViewController.(MakeLogin (Username : Swift.String, Password : Swift.String) -&gt; ()).(closure #1).(closure #1)"
-                  moduleName = "Afostream"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/bahri/Desktop/newiosapp/Afostream/LoginViewController.swift"
-                  timestampString = "523320147.01233"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "267"
-                  endingLineNumber = "267"
-                  offsetFromSymbolStart = "4">
-               </Location>
-            </Locations>
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
             filePath = "Afostream/PaymentViewController.swift"
-            timestampString = "523814534.283404"
+            timestampString = "523891504.686932"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "216"
-            endingLineNumber = "216"
+            startingLineNumber = "225"
+            endingLineNumber = "225"
             landmarkName = "init(coder:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -1496,11 +1416,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Afostream/PaymentViewController.swift"
-            timestampString = "523814534.283404"
+            timestampString = "523891504.686932"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "436"
-            endingLineNumber = "436"
+            startingLineNumber = "445"
+            endingLineNumber = "445"
             landmarkName = "viewDidLoad()"
             landmarkType = "7">
          </BreakpointContent>
@@ -1512,11 +1432,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Afostream/PaymentViewController.swift"
-            timestampString = "523814534.283404"
+            timestampString = "523891504.686932"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "484"
-            endingLineNumber = "484"
+            startingLineNumber = "493"
+            endingLineNumber = "493"
             landmarkName = "paymentContextDidChange(_:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -1528,11 +1448,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Afostream/PaymentViewController.swift"
-            timestampString = "523814534.283404"
+            timestampString = "523891504.686932"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "495"
-            endingLineNumber = "495"
+            startingLineNumber = "504"
+            endingLineNumber = "504"
             landmarkName = "paymentContext(_:didFailToLoadWithError:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -1592,11 +1512,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Afostream/PaymentViewController.swift"
-            timestampString = "523814534.283404"
+            timestampString = "523891504.686932"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "496"
-            endingLineNumber = "496"
+            startingLineNumber = "505"
+            endingLineNumber = "505"
             landmarkName = "paymentContext(_:didFailToLoadWithError:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -1608,11 +1528,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Afostream/PaymentViewController.swift"
-            timestampString = "523814534.283404"
+            timestampString = "523891504.686932"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "462"
-            endingLineNumber = "462"
+            startingLineNumber = "471"
+            endingLineNumber = "471"
             landmarkName = "paymentContext(_:didFinishWith:error:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -1624,11 +1544,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Afostream/PaymentViewController.swift"
-            timestampString = "523814534.283404"
+            timestampString = "523891504.686932"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "457"
-            endingLineNumber = "457"
+            startingLineNumber = "466"
+            endingLineNumber = "466"
             landmarkName = "paymentContext(_:didCreatePaymentResult:completion:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -1640,11 +1560,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Afostream/PaymentViewController.swift"
-            timestampString = "523814534.283404"
+            timestampString = "523891504.686932"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "408"
-            endingLineNumber = "408"
+            startingLineNumber = "417"
+            endingLineNumber = "417"
             landmarkName = "viewDidLoad()"
             landmarkType = "7">
          </BreakpointContent>
@@ -1704,11 +1624,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Afostream/PaymentViewController.swift"
-            timestampString = "523814534.283404"
+            timestampString = "523891504.686932"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "463"
-            endingLineNumber = "463"
+            startingLineNumber = "472"
+            endingLineNumber = "472"
             landmarkName = "paymentContext(_:didFinishWith:error:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -1752,12 +1672,188 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Afostream/PaymentViewController.swift"
-            timestampString = "523814534.283404"
+            timestampString = "523891504.686932"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "149"
-            endingLineNumber = "149"
+            startingLineNumber = "158"
+            endingLineNumber = "158"
             landmarkName = "paymentAuthorizationViewController(_:didAuthorizePayment:completion:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Afostream/PaymentViewController.swift"
+            timestampString = "523891504.686932"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "135"
+            endingLineNumber = "135"
+            landmarkName = "paymentAuthorizationViewController(_:didAuthorizePayment:completion:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Afostream/MainViewController.swift"
+            timestampString = "523897832.843812"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "290"
+            endingLineNumber = "290"
+            landmarkName = "MakeGetUserInfo(access_token:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Afostream/MainViewController.swift"
+            timestampString = "523897832.843812"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "281"
+            endingLineNumber = "281"
+            landmarkName = "MakeGetUserInfo(access_token:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Afostream/MainViewController.swift"
+            timestampString = "523897832.843812"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "284"
+            endingLineNumber = "284"
+            landmarkName = "MakeGetUserInfo(access_token:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Afostream/MainViewController.swift"
+            timestampString = "523897832.843812"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "291"
+            endingLineNumber = "291"
+            landmarkName = "MakeGetUserInfo(access_token:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Afostream/MainViewController.swift"
+            timestampString = "523894864.711062"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "270"
+            endingLineNumber = "270"
+            landmarkName = "MakeGetUserInfo(access_token:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Afostream/MainViewController.swift"
+            timestampString = "523895903.973291"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "218"
+            endingLineNumber = "218"
+            landmarkName = "MakeGetUserInfo(access_token:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Afostream.MainViewController.MakeGetUserInfo (access_token : Swift.String) -&gt; ()"
+                  moduleName = "Afostream"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/bahri/Desktop/newiosapp/Afostream/MainViewController.swift"
+                  timestampString = "523896417.638309"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "218"
+                  endingLineNumber = "218"
+                  offsetFromSymbolStart = "1298">
+               </Location>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Afostream.MainViewController.(MakeGetUserInfo (access_token : Swift.String) -&gt; ()).(closure #1)"
+                  moduleName = "Afostream"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/bahri/Desktop/newiosapp/Afostream/MainViewController.swift"
+                  timestampString = "523896417.640269"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "220"
+                  endingLineNumber = "220"
+                  offsetFromSymbolStart = "30">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Afostream/MainViewController.swift"
+            timestampString = "523897832.843812"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "283"
+            endingLineNumber = "283"
+            landmarkName = "MakeGetUserInfo(access_token:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Afostream/MainViewController.swift"
+            timestampString = "523896406.160103"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "271"
+            endingLineNumber = "271"
+            landmarkName = "MakeGetUserInfo(access_token:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -1767,13 +1863,61 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "Afostream/PaymentViewController.swift"
-            timestampString = "523814534.283404"
+            filePath = "Afostream/MainViewController.swift"
+            timestampString = "523906884.63593"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "134"
-            endingLineNumber = "134"
-            landmarkName = "paymentAuthorizationViewController(_:didAuthorizePayment:completion:)"
+            startingLineNumber = "335"
+            endingLineNumber = "335"
+            landmarkName = "MakeGetUserInfo(access_token:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Afostream/MainViewController.swift"
+            timestampString = "523906884.63593"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "345"
+            endingLineNumber = "345"
+            landmarkName = "MakeGetUserInfo(access_token:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Afostream/MainViewController.swift"
+            timestampString = "523906884.63593"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "356"
+            endingLineNumber = "356"
+            landmarkName = "MakeGetUserInfo(access_token:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Afostream/MainViewController.swift"
+            timestampString = "523898930.565139"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "325"
+            endingLineNumber = "325"
+            landmarkName = "MakeGetUserInfo(access_token:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

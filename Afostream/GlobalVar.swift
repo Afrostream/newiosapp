@@ -118,6 +118,8 @@ class GlobalVar: NSObject {
         static let Violet :UIColor = UIColor(hex: 0x4a2b50)
         static let Yellow :UIColor = UIColor(hex: 0xfec730)
         
+         static var FirstLaunch:Bool = true
+        static var subscription:Bool = false
         static var DevMode:Bool = true
         static var BaseUrl:String = ""
         static var drmLicenseUrl:String = ""

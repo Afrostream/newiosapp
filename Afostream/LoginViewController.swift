@@ -248,29 +248,11 @@ class LoginViewController: UIViewController {
                     print( GlobalVar.StaticVar.access_token)
                     
                     
-                    //let vc = self.storyboard?.instantiateViewController(withIdentifier: "SWRevealViewController")
-                    //self.present(vc!, animated: true, completion: nil)
+                    let vc = self.storyboard?.instantiateViewController(withIdentifier: "SWRevealViewController")
+                    self.present(vc!, animated: true, completion: nil)
                     
-                    //var PaymentView = PaymentViewController()
+                   
                     
-                    //let vc = UIStoryboard(name: "PaymentViewController", bundle: nil).instantiateInitialViewController()
-                    
-                    //PaymentView = (self.storyboard?.instantiateViewController(withIdentifier: "PaymentViewController") as! PaymentViewController).instantiate()
-                    
-                    
-                    
-                    GlobalVar.StaticVar.user_first_name = "test"
-                    GlobalVar.StaticVar.user_last_name = "ben"
-                    let settingStoryboard : UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
-                    let settingVC = settingStoryboard.instantiateViewController(withIdentifier: "PaymentViewController") as! PaymentViewController
-                    self.present(settingVC, animated: true, completion: {
-                        
-                    })
-
-                    
-                    
-                    
-                   // self.present(vc!, animated: true, completion: nil)
                     
                     
                 }

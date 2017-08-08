@@ -132,6 +132,15 @@ class PaymentViewController: UIViewController ,UITableViewDataSource,UITableView
                     completion: { (result, error) -> Void in
                                     if result == STPBackendChargeResult.success {
                                         completion(PKPaymentAuthorizationStatus.success)
+                                        GlobalVar.StaticVar.FirstLaunch = true
+                                        GlobalVar.StaticVar.subscription = true
+                                        
+                                        let vc = self.storyboard?.instantiateViewController(withIdentifier: "SWRevealViewController")
+                                        self.present(vc!, animated: true, completion: nil)
+                                        
+                                        self.dismiss(animated: true, completion: nil)
+                                        
+                                        
                                     }
                                     else {
                                         completion(PKPaymentAuthorizationStatus.failure)

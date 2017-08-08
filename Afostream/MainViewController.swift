@@ -265,8 +265,120 @@ class MainViewController: UIViewController,UIScrollViewDelegate,UITableViewDataS
                     if user_postalAddressStreet != nil  {GlobalVar.StaticVar.user_address = user_postalAddressStreet!}
                     if user_postalAddressCountry != nil  {GlobalVar.StaticVar.user_postalAddressCountry = user_postalAddressCountry!}
                     
-                 
                     
+            if let subscriptionsStatus = JSON["subscriptionsStatus"] as? [String: Any] {
+                          let subIsPromoAfr = subscriptionsStatus["promoAfr"] as? Bool
+                  
+                    
+                    
+                    if let subscriptions = subscriptionsStatus["subscriptions"] as? NSArray?  {
+                        
+                        
+                        if (subscriptions?.count)! > 0 {
+                            
+                        
+                      
+                         if let subscription = subscriptions?[0]  as? [String: Any] {
+                            
+                            let isActive = subscription["isActive"] as? String
+                            let inTrial = subscription["inTrial"] as? String
+                            GlobalVar.StaticVar.Subscription_isCancelable = (subscription["isCancelable"] as? String)!
+                            GlobalVar.StaticVar.Subscription_subscriptionBillingUuid = (subscription["subscriptionBillingUuid"] as? String)!
+                            
+                            let subStatus = subscription["subStatus"] as? String
+                            GlobalVar.StaticVar.Subscription_subStatus = subStatus!
+                            
+                            if isActive == "yes" {
+                                GlobalVar.StaticVar.subscription = true
+                                
+                                
+                                
+                                let subPeriodStartedDate=subscription["subPeriodStartedDate"] as? String
+                                let subPeriodEndsDate=subscription["subPeriodEndsDate"] as? String
+                                
+                                 if let internalPlan = subscription["internalPlan"]  as? [String: Any] {
+                                    let PlanInternalPlanUuid = internalPlan["internalPlanUuid"] as? String
+                                    let PlanName = internalPlan["name"] as? String
+                                    let PlanDescription = internalPlan["description"] as? String
+                                    let PlanAmount = internalPlan["amount"] as? String
+                                    let PlanCurrency = internalPlan["currency"] as? String
+                                }
+                                
+                            }else{
+                                
+                                
+                                if subStatus == "future" {
+                                    self.ShowAlert(Title:  "Abonnement", Message: "Votre abonnement sera bientot activé ,veuillez vous reconnecter dans quelques minutes")
+                                    self.dismiss(animated: false, completion:nil )
+                                }else if subStatus == "expired" {
+                                    
+                                     self.ShowAlert(Title:  "Abonnement", Message: "Compte expiré")
+                                    
+                                }else  if subStatus == "canceled" {
+                                    
+                                    self.ShowAlert(Title:  "Abonnement", Message: "Compte annulé")
+
+                                }
+                                
+                                GlobalVar.StaticVar.subscription = false
+                                
+                                
+                          
+                                let parent = self.parent!
+                                
+                                parent.dismiss(animated: true, completion: {
+                                    let settingStoryboard : UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+                                    let settingVC = settingStoryboard.instantiateViewController(withIdentifier: "PaymentViewController") as! PaymentViewController
+                                    UIApplication.shared.keyWindow?.rootViewController?.present(settingVC, animated: true, completion:nil)
+
+                                })
+                              
+                                
+                                
+                            }
+
+
+                            
+
+                            
+                         }else{
+                            let parent = self.parent!
+                            
+                            parent.dismiss(animated: true, completion: {
+                                let settingStoryboard : UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+                                let settingVC = settingStoryboard.instantiateViewController(withIdentifier: "PaymentViewController") as! PaymentViewController
+                                UIApplication.shared.keyWindow?.rootViewController?.present(settingVC, animated: true, completion:nil)
+                                
+                            })
+                        }
+                        }else
+                        {
+                            
+                            let parent = self.parent!
+                            
+                            parent.dismiss(animated: true, completion: {
+                                let settingStoryboard : UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+                                let settingVC = settingStoryboard.instantiateViewController(withIdentifier: "PaymentViewController") as! PaymentViewController
+                                UIApplication.shared.keyWindow?.rootViewController?.present(settingVC, animated: true, completion:nil)
+                                
+                            })
+                        }
+                
+                    }else {
+                        
+                        let parent = self.parent!
+                        
+                        parent.dismiss(animated: true, completion: {
+                            let settingStoryboard : UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+                            let settingVC = settingStoryboard.instantiateViewController(withIdentifier: "PaymentViewController") as! PaymentViewController
+                            UIApplication.shared.keyWindow?.rootViewController?.present(settingVC, animated: true, completion:nil)
+                            
+                        })
+                }
+                }
+
+                
+
                
                     
                     
