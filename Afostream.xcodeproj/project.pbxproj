@@ -40,7 +40,6 @@
 		15A5D50B1EDF0842005EDC17 /* CategoryRowSaisonEpisode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15A5D50A1EDF0842005EDC17 /* CategoryRowSaisonEpisode.swift */; };
 		15A9EAB71F0FAC1E00AB7EDF /* PaymentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15A9EAB61F0FAC1E00AB7EDF /* PaymentViewController.swift */; };
 		15A9EAB91F0FCDA000AB7EDF /* PaymentTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15A9EAB81F0FCDA000AB7EDF /* PaymentTableViewCell.swift */; };
-		15ADD4281EE6D21D008FD46A /* ExpandableLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15ADD4271EE6D21D008FD46A /* ExpandableLabel.swift */; };
 		15B186CC1EC484C500EC3EBB /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 15B186CA1EC484C500EC3EBB /* Localizable.strings */; };
 		15BBFE301F0142D6002A55D9 /* FavTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15BBFE2F1F0142D6002A55D9 /* FavTableViewCell.swift */; };
 		15C5231E1F0D16BD00473A82 /* RegisterUserViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15C5231D1F0D16BD00473A82 /* RegisterUserViewController.swift */; };
@@ -89,7 +88,6 @@
 		15A5D50A1EDF0842005EDC17 /* CategoryRowSaisonEpisode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CategoryRowSaisonEpisode.swift; sourceTree = "<group>"; };
 		15A9EAB61F0FAC1E00AB7EDF /* PaymentViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PaymentViewController.swift; sourceTree = "<group>"; };
 		15A9EAB81F0FCDA000AB7EDF /* PaymentTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PaymentTableViewCell.swift; sourceTree = "<group>"; };
-		15ADD4271EE6D21D008FD46A /* ExpandableLabel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExpandableLabel.swift; sourceTree = "<group>"; };
 		15B186C91EC4846B00EC3EBB /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Main.strings; sourceTree = "<group>"; };
 		15B186CB1EC484C500EC3EBB /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		15BBFE2F1F0142D6002A55D9 /* FavTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FavTableViewCell.swift; sourceTree = "<group>"; };
@@ -175,7 +173,6 @@
 				157B4A7D1EC33FFC0061D175 /* MenuViewController.swift */,
 				157B4A7F1EC340740061D175 /* MenuTableViewCell.swift */,
 				157B4A811EC35A980061D175 /* MyAccountViewController.swift */,
-				15ADD4271EE6D21D008FD46A /* ExpandableLabel.swift */,
 				157B4A831EC35AA60061D175 /* FavorisViewController.swift */,
 				15B186CA1EC484C500EC3EBB /* Localizable.strings */,
 				155A8BD81ECB4CD500CC4B94 /* CatTableViewCell.swift */,
@@ -338,7 +335,6 @@
 				158C75D51ECDEF8A00501FD3 /* VideoCell.swift in Sources */,
 				1594007C1F1659A5006DC9E4 /* StringUtil.swift in Sources */,
 				157B4A841EC35AA60061D175 /* FavorisViewController.swift in Sources */,
-				15ADD4281EE6D21D008FD46A /* ExpandableLabel.swift in Sources */,
 				15A5D50B1EDF0842005EDC17 /* CategoryRowSaisonEpisode.swift in Sources */,
 				159359791EBCCF9F00E16085 /* LoginViewController.swift in Sources */,
 				157B4A801EC340740061D175 /* MenuTableViewCell.swift in Sources */,

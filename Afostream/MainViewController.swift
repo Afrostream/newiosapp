@@ -322,16 +322,17 @@ class MainViewController: UIViewController,UIScrollViewDelegate,UITableViewDataS
                                 
                                 GlobalVar.StaticVar.subscription = false
                                 
-                                
-                          
-                                let parent = self.parent!
-                                
-                                parent.dismiss(animated: true, completion: {
+                                self.dismissMe(animated: true, completion: {
+                                    let ParentVc = topMostController()
+                                    
                                     let settingStoryboard : UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
                                     let settingVC = settingStoryboard.instantiateViewController(withIdentifier: "PaymentViewController") as! PaymentViewController
-                                    UIApplication.shared.keyWindow?.rootViewController?.present(settingVC, animated: true, completion:nil)
+                                    
+                                    ParentVc.present(settingVC, animated: true, completion:nil)
 
                                 })
+                                
+                                
                               
                                 
                                 
@@ -342,38 +343,49 @@ class MainViewController: UIViewController,UIScrollViewDelegate,UITableViewDataS
 
                             
                          }else{
-                            let parent = self.parent!
-                            
-                            parent.dismiss(animated: true, completion: {
+                            self.dismissMe(animated: true, completion: {
+                                let ParentVc = topMostController()
+                                
                                 let settingStoryboard : UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
                                 let settingVC = settingStoryboard.instantiateViewController(withIdentifier: "PaymentViewController") as! PaymentViewController
-                                UIApplication.shared.keyWindow?.rootViewController?.present(settingVC, animated: true, completion:nil)
+                                
+                                ParentVc.present(settingVC, animated: true, completion:nil)
                                 
                             })
+
+
+
                         }
                         }else
                         {
-                            
-                            let parent = self.parent!
-                            
-                            parent.dismiss(animated: true, completion: {
+                            self.dismissMe(animated: true, completion: {
+                                let ParentVc = topMostController()
+                                
                                 let settingStoryboard : UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
                                 let settingVC = settingStoryboard.instantiateViewController(withIdentifier: "PaymentViewController") as! PaymentViewController
-                                UIApplication.shared.keyWindow?.rootViewController?.present(settingVC, animated: true, completion:nil)
+                                
+                                ParentVc.present(settingVC, animated: true, completion:nil)
                                 
                             })
+
+
                         }
                 
                     }else {
                         
-                        let parent = self.parent!
+                    
                         
-                        parent.dismiss(animated: true, completion: {
+                        self.dismissMe(animated: true, completion: {
+                            let ParentVc = topMostController()
+                            
                             let settingStoryboard : UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
                             let settingVC = settingStoryboard.instantiateViewController(withIdentifier: "PaymentViewController") as! PaymentViewController
-                            UIApplication.shared.keyWindow?.rootViewController?.present(settingVC, animated: true, completion:nil)
+                            
+                            ParentVc.present(settingVC, animated: true, completion:nil)
                             
                         })
+
+
                 }
                 }
 

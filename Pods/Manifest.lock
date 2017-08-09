@@ -26,13 +26,13 @@ PODS:
     - FacebookCore (~> 0.2)
     - FBSDKCoreKit (~> 4.15)
     - FBSDKLoginKit (~> 4.15)
-  - FBSDKCoreKit (4.24.0):
+  - FBSDKCoreKit (4.25.0):
     - Bolts (~> 1.7)
-  - FBSDKLoginKit (4.24.0):
+  - FBSDKLoginKit (4.25.0):
     - FBSDKCoreKit
-  - google-cast-sdk (3.5.0):
-    - google-cast-sdk/Core (= 3.5.0)
-  - google-cast-sdk/Core (3.5.0)
+  - google-cast-sdk (3.5.2):
+    - google-cast-sdk/Core (= 3.5.2)
+  - google-cast-sdk/Core (3.5.2)
   - M13Checkbox (3.1.3)
   - NVActivityIndicatorView (3.7.0):
     - NVActivityIndicatorView/Presenter (= 3.7.0)
@@ -41,7 +41,7 @@ PODS:
     - SDWebImage/Core (= 3.8.2)
   - SDWebImage/Core (3.8.2)
   - SnapKit (3.2.0)
-  - Stripe (11.1.0)
+  - Stripe (11.2.0)
 
 DEPENDENCIES:
   - Alamofire (~> 4.4)
@@ -67,15 +67,15 @@ SPEC CHECKSUMS:
   ExpandableLabel: 08a058c02bf7abc4f6a91fa4f4b86e5627bfbf19
   FacebookCore: 2cb3f0fbff218e9d3119cec84bae983b232412de
   FacebookLogin: c9d606504735780a9e3002465a615512e0a691a5
-  FBSDKCoreKit: f8c9eb0dd34a9cd277c7b60da4b32226d142502d
-  FBSDKLoginKit: 1214c6d5a1c4995b694d8db8a9ba6910c6028acf
-  google-cast-sdk: fc3728ead66150ac746e001ba03a44e4b10e359e
+  FBSDKCoreKit: 53e3f4bfb64e80c5f229dd30ae33ff57fbbbd2d1
+  FBSDKLoginKit: f628c09684dae9c17f071cf90b014e886f5093ea
+  google-cast-sdk: 6f2d788ef20f2e750360f632996fa038aca329ea
   M13Checkbox: c132a7e0eb964731855eff67b883a0b21b7c0977
   NVActivityIndicatorView: d3738df7e2e476aca0ba6bf32a8c9fbcfc33d64b
   SDWebImage: 098e97e6176540799c27e804c96653ee0833d13c
   SnapKit: 1ca44df72cfa543218d177cb8aab029d10d86ea7
-  Stripe: 331994704823640a827b8da41255a439d60b61ce
+  Stripe: 898f83a95d72180c6eb4acd65b2ae6158fc6a8bd
 
-PODFILE CHECKSUM: 1c54228279d22cf70e32b9e11d6b3f535428d206
+PODFILE CHECKSUM: a44c7a233cede1ba51ba8d7a8a8d8db604cadbe7
 
 COCOAPODS: 1.2.1

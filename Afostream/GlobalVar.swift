@@ -61,6 +61,7 @@ struct PlanModel {
     var Showlogo:Bool
     var providerPlanUuid:String
     var providerName:String
+    var payMethod:String
 }
 
 struct HomeCatMovie {
@@ -69,7 +70,32 @@ struct HomeCatMovie {
 }
 
 
+func topMostController() -> UIViewController {
+    var topController: UIViewController = UIApplication.shared.keyWindow!.rootViewController!
+    while (topController.presentedViewController != nil) {
+        topController = topController.presentedViewController!
+    }
+    return topController
+}
 
+extension UIViewController {
+     func dismissMe(animated: Bool, completion: (()->())?) {
+        var count = 0
+        if let c = self.navigationController?.childViewControllers.count {
+            count = c
+        }
+        if count > 1 {
+            //Pop the last view controller off navigation controller list
+            self.navigationController!.popViewController(animated: animated)
+            if let handler = completion {
+                handler()
+            }
+        } else {
+            //Dismiss the last vc or vc without navigation controller
+            dismiss(animated: animated, completion: completion)
+        }
+    }
+}
 
 extension UIView {
     var parentViewController: UIViewController? {

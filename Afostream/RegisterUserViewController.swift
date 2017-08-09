@@ -111,9 +111,39 @@ class RegisterUserViewController: UIViewController {
             return
             
         }
-      self.MakeGetApiAccess( Firstname: Firstname!, Lastname: Lastname!, Email: Email!, Password: Password!, Phone: Phone!)
+        
+        
+        Alamofire.request(GlobalVar.StaticVar.BaseUrl + "/auth/geo", method: .get, parameters: nil, encoding: JSONEncoding.default, headers: nil).responseJSON { response in
+            
+            switch(response.result) {
+            case .success(_):
+                if let JSON = response.result.value as? [String: Any] {
+                    let country = JSON["countryCode"] as! String
+                    let language :String = "FR"
+                    GlobalVar.StaticVar.CountryCode=country
+                    GlobalVar.StaticVar.ApiUrlParams = "?country="+country + "&language="+language
+                    
+                 
+                    
+                    self.MakeGetApiAccess( Firstname: Firstname!, Lastname: Lastname!, Email: Email!, Password: Password!, Phone: Phone!)
+                    
 
+                    
+                    
+                    
+                }
+                break
+                
+            case .failure(_):
+                let errorMessage = "General error message"
+                
+                
+                print(errorMessage) //Contains General error message or specific.
+                break
+            }
+        }
 
+     
         
   }
     override func viewDidLoad() {
@@ -189,8 +219,15 @@ class RegisterUserViewController: UIViewController {
                         GlobalVar.StaticVar.expires_in = expires_in as! Int
                     }
                     
-                    let vc = self.storyboard?.instantiateViewController(withIdentifier: "SWRevealViewController")
-                    self.present(vc!, animated: true, completion: nil)
+                
+                    
+                    self.dismissMe(animated: false, completion: {
+                        let vc = self.storyboard?.instantiateViewController(withIdentifier: "SWRevealViewController")
+                        let ParentVc = topMostController()
+                        
+                        ParentVc.present(vc!, animated: true, completion: nil)
+                    
+                    })
                     
                 }
                 

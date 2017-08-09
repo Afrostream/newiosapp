@@ -9,7 +9,7 @@ target 'Afostream' do
 pod 'Alamofire', '~> 4.4'
 pod 'AlamofireNetworkActivityIndicator', '~> 2.0'
 pod 'SDWebImage', '~>3.8'
-pod "ExpandableLabel"
+pod ‘ExpandableLabel’
 pod 'BMPlayer'
 pod 'google-cast-sdk'
 pod 'M13Checkbox'

@@ -9,16 +9,21 @@
 import UIKit
 import Alamofire
 import SDWebImage
-
+import ExpandableLabel
 
 
 class MovieDetailsViewController: UIViewController,UITableViewDataSource,ExpandableLabelDelegate {
+    func willCollapseLabel(_ label: ExpandableLabel) {
+        
+    }
+
     @IBOutlet weak var imgMovie: UIImageView!
     
  
     @IBOutlet weak var bntPlay: UIButton!
     @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var ViewT: UIView!
+   
     @IBOutlet weak var lblDescription: ExpandableLabel!
     var Movie :MovieModel!
     

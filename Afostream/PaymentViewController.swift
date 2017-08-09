@@ -10,6 +10,7 @@ import UIKit
 import Alamofire
 import SDWebImage
 import Stripe
+import M13Checkbox
 
 enum STPBackendChargeResult {
     case success, failure
@@ -20,6 +21,9 @@ typealias STPTokenSubmissionHandler = (STPBackendChargeResult?, NSError?) -> Voi
 class PaymentViewController: UIViewController ,UITableViewDataSource,UITableViewDelegate,STPPaymentContextDelegate,PKPaymentAuthorizationViewControllerDelegate{
     
     var paymentContext: STPPaymentContext?
+    
+    
+    
     
     var theme: STPTheme?
     
@@ -39,6 +43,9 @@ class PaymentViewController: UIViewController ,UITableViewDataSource,UITableView
     @IBOutlet weak var tableView: UITableView!
 
     
+    @IBOutlet weak var chkPayment: M13Checkbox!
+    
+    @IBOutlet weak var chkCgu: M13Checkbox!
     
     var laoding_spinner:UIActivityIndicatorView=UIActivityIndicatorView()
     
@@ -77,10 +84,24 @@ class PaymentViewController: UIViewController ,UITableViewDataSource,UITableView
           
             self.paymentContext?.requestPayment()*/
             
+            if chkCgu.checkState == .unchecked {
+                   ShowAlert(Title: NSLocalizedString("Error", comment: ""), Message: NSLocalizedString("SelectCGU", comment: ""))
+                return
+            }
+            if chkPayment.checkState == .unchecked {
+                ShowAlert(Title: NSLocalizedString("Error", comment: ""), Message: NSLocalizedString("SelectPayTerm", comment: ""))
+                return
+            }
+
+         
+            
             let paymentRequest = Stripe.paymentRequest(withMerchantIdentifier: "merchant.tv.afrostream.pay")
             // Configure the line items on the payment sheet
-            let price = Int(self.SelectedPlan!.amountInCents)!
-            let priceS = String (price)
+            let price = Double(Int(self.SelectedPlan!.amountInCents)! )
+            let priceDouble = price / 100
+            
+            let priceS = String (priceDouble)
+            print (priceS)
             
             paymentRequest.paymentSummaryItems = [
                 PKPaymentSummaryItem(label: self.SelectedPlan!.name, amount: NSDecimalNumber(string:  priceS))
@@ -99,7 +120,7 @@ class PaymentViewController: UIViewController ,UITableViewDataSource,UITableView
             
         }else
         {
-            ShowAlert(Title: "Error", Message: "Please select paiement plan")
+            ShowAlert(Title: NSLocalizedString("Error", comment: ""), Message: NSLocalizedString("SelectPlan", comment: ""))
         }
         
         
@@ -128,17 +149,26 @@ class PaymentViewController: UIViewController ,UITableViewDataSource,UITableView
                     StripeAPIClient.sharedClient.completeCharge(token.tokenId,
                                                                
                                                               
-                    firstName: GlobalVar.StaticVar.user_first_name,lastName : GlobalVar.StaticVar.user_last_name , internalPlanUuid :(self.SelectedPlan?.internalPlanUuid)! ,CouponInternalPlanUuid: "",billingProviderName: (self.SelectedPlan?.providerName)!,couponCode : "",couponsCampaignTypeValue: "",
+                                                                firstName: GlobalVar.StaticVar.user_first_name,lastName : GlobalVar.StaticVar.user_last_name , internalPlanUuid :(self.SelectedPlan?.internalPlanUuid)! ,CouponInternalPlanUuid: "",billingProviderName: (self.SelectedPlan?.providerName)!,couponCode : "",couponsCampaignTypeValue: "",payMethod:(self.SelectedPlan?.payMethod)!,
                     completion: { (result, error) -> Void in
                                     if result == STPBackendChargeResult.success {
                                         completion(PKPaymentAuthorizationStatus.success)
                                         GlobalVar.StaticVar.FirstLaunch = true
                                         GlobalVar.StaticVar.subscription = true
                                         
-                                        let vc = self.storyboard?.instantiateViewController(withIdentifier: "SWRevealViewController")
-                                        self.present(vc!, animated: true, completion: nil)
+                                        //let vc = self.storyboard?.instantiateViewController(withIdentifier: "SWRevealViewController")
+                                        //self.present(vc!, animated: true, completion: nil)
                                         
-                                        self.dismiss(animated: true, completion: nil)
+                                       // self.dismiss(animated: true, completion: nil)
+                                        self.dismissMe(animated: false, completion: {
+                                        
+                                            let ParentVc = topMostController()
+                                            
+                                            let vc = self.storyboard?.instantiateViewController(withIdentifier: "SWRevealViewController")
+                                            ParentVc.present(vc!, animated: true, completion: nil)
+
+                                        
+                                        })
                                         
                                         
                                     }
@@ -298,31 +328,35 @@ class PaymentViewController: UIViewController ,UITableViewDataSource,UITableView
                                     var providerPlanUuid=""
                                     var providerName=""
                                 
-                        
+                                var paymentMethods : NSArray?
+                                 var payMethod = ""
                                
                                     if let stripe = providerPlans["stripe"]  as? [String: Any] {
                         
                                     isCouponCodeCompatible = stripe["isCouponCodeCompatible"] as! Bool
                                     providerPlanUuid=stripe["providerPlanUuid"] as! String
+                                        
+                                    paymentMethods	= stripe["paymentMethods"]  as? NSArray
+                                      
+                                        if let pay = paymentMethods? [0] as? [String: Any] {
+                                             payMethod = (pay ["paymentMethodType"] as? String)!
+                                        }
+                                       
                         
                                     providerName="stripe";
+                                        
+                                        let pl  = PlanModel(internalPlanUuid: internalPlanUuid, amountInCents: amountInCents, name: name, description: description, currency: currency, periodUnit: periodUnit, periodLength: periodLength, amount: amount, isCouponCodeCompatible: isCouponCodeCompatible, Showlogo: true, providerPlanUuid: providerPlanUuid, providerName: providerName,payMethod: payMethod)
+                                        
+                                        self.PlansList.append(pl)
+
+                                        
                                     }
                                 
                         
                         
                                 
-                                    if let google = providerPlans["google"]  as? [String: Any] {
-                               
-                        
-                                    isCouponCodeCompatible = google["isCouponCodeCompatible"]  as! Bool
-                                    providerPlanUuid=google["providerPlanUuid"] as! String
-                                    providerName="google";
-                                    }
                                 
-                                let pl  = PlanModel(internalPlanUuid: internalPlanUuid, amountInCents: amountInCents, name: name, description: description, currency: currency, periodUnit: periodUnit, periodLength: periodLength, amount: amount, isCouponCodeCompatible: isCouponCodeCompatible, Showlogo: true, providerPlanUuid: providerPlanUuid, providerName: providerName)
                                 
-                                self.PlansList.append(pl)
-                        
                                 
                           }
                         
@@ -352,9 +386,9 @@ class PaymentViewController: UIViewController ,UITableViewDataSource,UITableView
                 
                 break
                 
-            case .failure(_):
+            case .failure(let error):
                 self.StopLoadingSpinner()
-                print("There is an error")
+                print("There is an error " + error.localizedDescription)
                 break
             }
         }
@@ -396,6 +430,8 @@ class PaymentViewController: UIViewController ,UITableViewDataSource,UITableView
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        
         
         let settingsVC  = StripeSettings()
         let settings : Settings = settingsVC.settings
@@ -445,8 +481,12 @@ class PaymentViewController: UIViewController ,UITableViewDataSource,UITableView
         self.paymentContext?.delegate = self
         self.paymentContext?.hostViewController = self
    
-        
+       
         self.MakeGetListPlan(access_token: GlobalVar.StaticVar.access_token)
+        
+        
+       
+
         // Do any additional setup after loading the view.
     }
 

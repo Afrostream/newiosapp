@@ -650,6 +650,8 @@
                     </view>
                     <connections>
                         <outlet property="bntValidate" destination="Nax-pl-yTZ" id="jFr-eT-KV0"/>
+                        <outlet property="chkCgu" destination="36j-07-XOR" id="mct-n5-YiM"/>
+                        <outlet property="chkPayment" destination="sAm-fx-SlL" id="B56-pB-ISR"/>
                         <outlet property="tableView" destination="znK-Sg-ajE" id="PX9-TH-zoJ"/>
                     </connections>
                 </viewController>
@@ -1168,7 +1170,7 @@
                         <outlet property="ViewT" destination="sD3-LX-79j" id="669-4I-1s7"/>
                         <outlet property="bntPlay" destination="WGJ-Vs-4DQ" id="bwU-CH-BWw"/>
                         <outlet property="imgMovie" destination="dDv-7Q-EMa" id="dXA-h6-7lq"/>
-                        <outlet property="lblDescription" destination="wvY-et-knu" id="XYi-79-e8i"/>
+                        <outlet property="lblDescription" destination="wvY-et-knu" id="UaL-bx-u6x"/>
                         <outlet property="scrollView" destination="59w-lB-xNk" id="EXp-Ju-Mbk"/>
                         <outlet property="tableView" destination="CWd-cB-oU2" id="967-x0-x6W"/>
                     </connections>

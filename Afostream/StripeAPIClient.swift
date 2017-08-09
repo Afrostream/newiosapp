@@ -37,7 +37,7 @@ class StripeAPIClient: NSObject, STPEphemeralKeyProvider {
     func completeCharge(_ token: String,
                      
                         
-                        firstName : String ,lastName : String , internalPlanUuid :String ,CouponInternalPlanUuid:String,billingProviderName: String,couponCode :String,couponsCampaignTypeValue:String ,completion:  @escaping STPTokenSubmissionHandler) {
+                        firstName : String ,lastName : String , internalPlanUuid :String ,CouponInternalPlanUuid:String,billingProviderName: String,couponCode :String,couponsCampaignTypeValue:String ,payMethod:String,completion:  @escaping STPTokenSubmissionHandler) {
         let url = GlobalVar.StaticVar.BaseUrl + "/api/billings/subscriptions/"
         var internalPlanUuid = internalPlanUuid
         let stripeToken = token
@@ -57,7 +57,7 @@ class StripeAPIClient: NSObject, STPEphemeralKeyProvider {
         
         var paymentMethod  = [String : Any] ()
         
-         paymentMethod["paymentMethodType"] = "card"
+         paymentMethod["paymentMethodType"] = payMethod
         
         
         var billingInfoSub  = [String : Any] ()

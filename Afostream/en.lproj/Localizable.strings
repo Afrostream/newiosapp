@@ -25,3 +25,6 @@
 "RegisterErrorPassword" = "Please enter your password";
 "RegisterErrorRetypePass" = "Please retype your password";
 "RegisterErrorPassNotMatch" = "Your password and your retype password not match";
+"SelectPayTerm" = "Please accept payment terms";
+"SelectCGU" = "Please accept the general terms of use";
+"SelectPlan" = "Please select a plan";
