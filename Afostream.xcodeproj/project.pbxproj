@@ -45,6 +45,12 @@
 		15C5231E1F0D16BD00473A82 /* RegisterUserViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15C5231D1F0D16BD00473A82 /* RegisterUserViewController.swift */; };
 		15C769B71ECC9C89001ED39B /* Slide.xib in Resources */ = {isa = PBXBuildFile; fileRef = 15C769B61ECC9C89001ED39B /* Slide.xib */; };
 		15C769B91ECC9CCB001ED39B /* Slide.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15C769B81ECC9CCB001ED39B /* Slide.swift */; };
+		15D08F401F3DE983009FB7D0 /* FBSDKCoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 15D08F3E1F3DE982009FB7D0 /* FBSDKCoreKit.framework */; };
+		15D08F411F3DE983009FB7D0 /* FBSDKLoginKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 15D08F3F1F3DE982009FB7D0 /* FBSDKLoginKit.framework */; };
+		15D08F431F3DE98B009FB7D0 /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 15D08F421F3DE98B009FB7D0 /* Alamofire.framework */; };
+		15D08F451F3DE994009FB7D0 /* SDWebImage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 15D08F441F3DE994009FB7D0 /* SDWebImage.framework */; };
+		15D08F471F3DE998009FB7D0 /* Stripe.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 15D08F461F3DE998009FB7D0 /* Stripe.framework */; };
+		15D08F491F3DE9A1009FB7D0 /* NVActivityIndicatorView.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 15D08F481F3DE9A1009FB7D0 /* NVActivityIndicatorView.framework */; };
 		15E83CD41F0A84FF009525DA /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15E83CD31F0A84FF009525DA /* SearchViewController.swift */; };
 		15E83CD61F0BCABD009525DA /* SearchTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15E83CD51F0BCABD009525DA /* SearchTableViewCell.swift */; };
 		B025E2CA7F917FBBC541F5D6 /* Pods_Afostream.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 30C786182E7AE4F245C7BD0A /* Pods_Afostream.framework */; };
@@ -94,6 +100,12 @@
 		15C5231D1F0D16BD00473A82 /* RegisterUserViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegisterUserViewController.swift; sourceTree = "<group>"; };
 		15C769B61ECC9C89001ED39B /* Slide.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = Slide.xib; sourceTree = "<group>"; };
 		15C769B81ECC9CCB001ED39B /* Slide.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Slide.swift; sourceTree = "<group>"; };
+		15D08F3E1F3DE982009FB7D0 /* FBSDKCoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FBSDKCoreKit.framework; path = "../../../Library/Developer/Xcode/DerivedData/Afostream-dysixftaahlqktcltyhtjrcwurlh/Build/Products/Debug-iphonesimulator/FBSDKCoreKit/FBSDKCoreKit.framework"; sourceTree = "<group>"; };
+		15D08F3F1F3DE982009FB7D0 /* FBSDKLoginKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FBSDKLoginKit.framework; path = "../../../Library/Developer/Xcode/DerivedData/Afostream-dysixftaahlqktcltyhtjrcwurlh/Build/Products/Debug-iphonesimulator/FBSDKLoginKit/FBSDKLoginKit.framework"; sourceTree = "<group>"; };
+		15D08F421F3DE98B009FB7D0 /* Alamofire.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Alamofire.framework; path = "../../Library/Developer/Xcode/DerivedData/Afostream-dysixftaahlqktcltyhtjrcwurlh/Build/Products/Debug-iphonesimulator/Alamofire/Alamofire.framework"; sourceTree = "<group>"; };
+		15D08F441F3DE994009FB7D0 /* SDWebImage.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SDWebImage.framework; path = "../../Library/Developer/Xcode/DerivedData/Afostream-dysixftaahlqktcltyhtjrcwurlh/Build/Products/Debug-iphonesimulator/SDWebImage/SDWebImage.framework"; sourceTree = "<group>"; };
+		15D08F461F3DE998009FB7D0 /* Stripe.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Stripe.framework; path = "../../Library/Developer/Xcode/DerivedData/Afostream-dysixftaahlqktcltyhtjrcwurlh/Build/Products/Debug-iphonesimulator/Stripe/Stripe.framework"; sourceTree = "<group>"; };
+		15D08F481F3DE9A1009FB7D0 /* NVActivityIndicatorView.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = NVActivityIndicatorView.framework; path = "../../Library/Developer/Xcode/DerivedData/Afostream-dysixftaahlqktcltyhtjrcwurlh/Build/Products/Debug-iphonesimulator/NVActivityIndicatorView/NVActivityIndicatorView.framework"; sourceTree = "<group>"; };
 		15E83CD31F0A84FF009525DA /* SearchViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
 		15E83CD51F0BCABD009525DA /* SearchTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchTableViewCell.swift; sourceTree = "<group>"; };
 		30C786182E7AE4F245C7BD0A /* Pods_Afostream.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Afostream.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -106,6 +118,12 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				15D08F491F3DE9A1009FB7D0 /* NVActivityIndicatorView.framework in Frameworks */,
+				15D08F471F3DE998009FB7D0 /* Stripe.framework in Frameworks */,
+				15D08F451F3DE994009FB7D0 /* SDWebImage.framework in Frameworks */,
+				15D08F431F3DE98B009FB7D0 /* Alamofire.framework in Frameworks */,
+				15D08F401F3DE983009FB7D0 /* FBSDKCoreKit.framework in Frameworks */,
+				15D08F411F3DE983009FB7D0 /* FBSDKLoginKit.framework in Frameworks */,
 				156A55AE1EF1633700B06B4E /* CoreVideo.framework in Frameworks */,
 				156A55AC1EF1631900B06B4E /* UIKit.framework in Frameworks */,
 				156A55AA1EF1631200B06B4E /* MediaPlayer.framework in Frameworks */,
@@ -177,6 +195,8 @@
 				15B186CA1EC484C500EC3EBB /* Localizable.strings */,
 				155A8BD81ECB4CD500CC4B94 /* CatTableViewCell.swift */,
 				15A5D50A1EDF0842005EDC17 /* CategoryRowSaisonEpisode.swift */,
+				15D08F3F1F3DE982009FB7D0 /* FBSDKLoginKit.framework */,
+				15D08F3E1F3DE982009FB7D0 /* FBSDKCoreKit.framework */,
 			);
 			path = Afostream;
 			sourceTree = "<group>";
@@ -184,6 +204,10 @@
 		1F453CED62F1D0C074086EB4 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				15D08F481F3DE9A1009FB7D0 /* NVActivityIndicatorView.framework */,
+				15D08F461F3DE998009FB7D0 /* Stripe.framework */,
+				15D08F441F3DE994009FB7D0 /* SDWebImage.framework */,
+				15D08F421F3DE98B009FB7D0 /* Alamofire.framework */,
 				156A55AD1EF1633700B06B4E /* CoreVideo.framework */,
 				156A55AB1EF1631900B06B4E /* UIKit.framework */,
 				156A55A91EF1631200B06B4E /* MediaPlayer.framework */,

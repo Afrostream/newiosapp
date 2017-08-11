@@ -8,6 +8,7 @@
 
 import UIKit
 import SDWebImage
+import FBSDKLoginKit
 
 class MenuViewController: UIViewController,UITableViewDelegate,UITableViewDataSource {
     
@@ -18,6 +19,20 @@ class MenuViewController: UIViewController,UITableViewDelegate,UITableViewDataSo
     @IBOutlet weak var imgUser: UIImageView!
     
 
+    @IBAction func logout(_ sender: Any) {
+        
+     
+        
+            let revealviewcontroller:SWRevealViewController = self.revealViewController()
+        revealviewcontroller.dismissMe(animated: true) { 
+            GlobalVar.StaticVar.access_token = ""
+            GlobalVar.StaticVar.refresh_token = ""
+            GlobalVar.StaticVar.expires_in = 0
+            GlobalVar.StaticVar.token_type = ""
+            
+            FBSDKLoginManager().logOut()
+        }
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()

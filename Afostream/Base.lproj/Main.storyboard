@@ -802,7 +802,7 @@
                                 <rect key="frame" x="163" y="81" width="57" height="30"/>
                                 <state key="normal" title="Sign out"/>
                                 <connections>
-                                    <segue destination="BYZ-38-t0r" kind="show" id="J1Q-XL-TqM"/>
+                                    <action selector="logout:" destination="9GX-ZQ-ald" eventType="touchUpInside" id="Clb-Pt-gij"/>
                                 </connections>
                             </button>
                         </subviews>

@@ -500,7 +500,7 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            shouldBeEnabled = "No"
+            shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Afostream/PlayerViewController.swift"
@@ -1319,22 +1319,6 @@
             shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "Afostream/LoginViewController.swift"
-            timestampString = "522004265.800125"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "60"
-            endingLineNumber = "60"
-            landmarkName = "facebookSignIn()"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
             filePath = "Afostream/RegisterUserViewController.swift"
             timestampString = "523986891.661562"
             startingColumnNumber = "9223372036854775807"
@@ -1640,11 +1624,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Afostream/AppDelegate.swift"
-            timestampString = "523806930.510335"
+            timestampString = "524153717.85407"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "51"
-            endingLineNumber = "51"
+            startingLineNumber = "49"
+            endingLineNumber = "49"
             landmarkName = "application(_:didFinishLaunchingWithOptions:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -1656,11 +1640,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Afostream/AppDelegate.swift"
-            timestampString = "523810305.654856"
+            timestampString = "524153717.85407"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "64"
-            endingLineNumber = "64"
+            startingLineNumber = "62"
+            endingLineNumber = "62"
             landmarkName = "application(_:didFinishLaunchingWithOptions:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -1860,7 +1844,7 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Afostream/MainViewController.swift"
@@ -1876,7 +1860,7 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Afostream/MainViewController.swift"
@@ -1889,34 +1873,34 @@
             landmarkType = "7">
             <Locations>
                <Location
-                  shouldBeEnabled = "Yes"
+                  shouldBeEnabled = "No"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
                   symbolName = "Afostream.MainViewController.(MakeGetUserInfo (access_token : Swift.String) -&gt; ()).(closure #1)"
                   moduleName = "Afostream"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/bahri/Desktop/newiosapp/Afostream/MainViewController.swift"
-                  timestampString = "523986892.878268"
+                  timestampString = "524155629.788653"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "346"
                   endingLineNumber = "346"
-                  offsetFromSymbolStart = "21878">
+                  offsetFromSymbolStart = "19380">
                </Location>
                <Location
-                  shouldBeEnabled = "Yes"
+                  shouldBeEnabled = "No"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
                   symbolName = "Afostream.MainViewController.(MakeGetUserInfo (access_token : Swift.String) -&gt; ()).(closure #1).(closure #2)"
                   moduleName = "Afostream"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/bahri/Desktop/newiosapp/Afostream/MainViewController.swift"
-                  timestampString = "523986892.881156"
+                  timestampString = "524155629.790331"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "347"
                   endingLineNumber = "347"
-                  offsetFromSymbolStart = "4">
+                  offsetFromSymbolStart = "12">
                </Location>
             </Locations>
          </BreakpointContent>
@@ -1940,7 +1924,7 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Afostream/MainViewController.swift"
@@ -2196,7 +2180,7 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Afostream/PaymentViewController.swift"
@@ -2209,36 +2193,276 @@
             landmarkType = "7">
             <Locations>
                <Location
-                  shouldBeEnabled = "Yes"
+                  shouldBeEnabled = "No"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
                   symbolName = "Afostream.PaymentViewController.MakeGetListPlan (access_token : Swift.String) -&gt; ()"
                   moduleName = "Afostream"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/bahri/Desktop/newiosapp/Afostream/PaymentViewController.swift"
-                  timestampString = "523986892.892123"
+                  timestampString = "524155381.240978"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "292"
                   endingLineNumber = "292"
-                  offsetFromSymbolStart = "1759">
+                  offsetFromSymbolStart = "1344">
                </Location>
                <Location
-                  shouldBeEnabled = "Yes"
+                  shouldBeEnabled = "No"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
                   symbolName = "Afostream.PaymentViewController.(MakeGetListPlan (access_token : Swift.String) -&gt; ()).(closure #1)"
                   moduleName = "Afostream"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/bahri/Desktop/newiosapp/Afostream/PaymentViewController.swift"
-                  timestampString = "523986892.893791"
+                  timestampString = "524155381.242618"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "294"
                   endingLineNumber = "294"
-                  offsetFromSymbolStart = "34">
+                  offsetFromSymbolStart = "40">
                </Location>
             </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Afostream/LoginViewController.swift"
+            timestampString = "524155380.655153"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "92"
+            endingLineNumber = "92"
+            landmarkName = "facebookSignIn()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Afostream/LoginViewController.swift"
+            timestampString = "524153247.61524"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "48"
+            endingLineNumber = "48"
+            landmarkName = "facebookSignIn()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Afostream/LoginViewController.swift"
+            timestampString = "524153248.672881"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "46"
+            endingLineNumber = "46"
+            landmarkName = "facebookSignIn()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Afostream/AppDelegate.swift"
+            timestampString = "524153717.85407"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "73"
+            endingLineNumber = "73"
+            landmarkName = "application(_:open:sourceApplication:annotation:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Afostream/AppDelegate.swift"
+            timestampString = "524153717.85407"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "33"
+            endingLineNumber = "33"
+            landmarkName = "application(_:didFinishLaunchingWithOptions:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Afostream/LoginViewController.swift"
+            timestampString = "524155629.374965"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "173"
+            endingLineNumber = "173"
+            landmarkName = "MakeGeoFacebook(FbToken:Email:Firstname:Lastname:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Afostream/LoginViewController.swift"
+            timestampString = "524155629.374965"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "157"
+            endingLineNumber = "157"
+            landmarkName = "MakeGeoFacebook(FbToken:Email:Firstname:Lastname:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Afostream.LoginViewController.MakeGeoFacebook (FbToken : Swift.String, Email : Swift.String, Firstname : Swift.String, Lastname : Swift.String) -&gt; ()"
+                  moduleName = "Afostream"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/bahri/Desktop/newiosapp/Afostream/LoginViewController.swift"
+                  timestampString = "524155381.257617"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "172"
+                  endingLineNumber = "172"
+                  offsetFromSymbolStart = "388">
+               </Location>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Afostream.LoginViewController.(MakeGeoFacebook (FbToken : Swift.String, Email : Swift.String, Firstname : Swift.String, Lastname : Swift.String) -&gt; ()).(closure #1)"
+                  moduleName = "Afostream"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/bahri/Desktop/newiosapp/Afostream/LoginViewController.swift"
+                  timestampString = "524155381.259251"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "174"
+                  endingLineNumber = "174"
+                  offsetFromSymbolStart = "132">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Afostream/LoginViewController.swift"
+            timestampString = "524155629.374965"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "184"
+            endingLineNumber = "184"
+            landmarkName = "MakeGeoFacebook(FbToken:Email:Firstname:Lastname:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Afostream.LoginViewController.MakeGeoFacebook (FbToken : Swift.String, Email : Swift.String, Firstname : Swift.String, Lastname : Swift.String) -&gt; ()"
+                  moduleName = "Afostream"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/bahri/Desktop/newiosapp/Afostream/LoginViewController.swift"
+                  timestampString = "524155629.810438"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "186"
+                  endingLineNumber = "186"
+                  offsetFromSymbolStart = "908">
+               </Location>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Afostream.LoginViewController.(MakeGeoFacebook (FbToken : Swift.String, Email : Swift.String, Firstname : Swift.String, Lastname : Swift.String) -&gt; ()).(closure #1)"
+                  moduleName = "Afostream"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/bahri/Desktop/newiosapp/Afostream/LoginViewController.swift"
+                  timestampString = "524155629.812097"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "186"
+                  endingLineNumber = "186"
+                  offsetFromSymbolStart = "2428">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Afostream/LoginViewController.swift"
+            timestampString = "524155194.336608"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "66"
+            endingLineNumber = "66"
+            landmarkName = "facebookSignIn()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Afostream/LoginViewController.swift"
+            timestampString = "524155200.512939"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "87"
+            endingLineNumber = "87"
+            landmarkName = "facebookSignIn()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Afostream/PaymentViewController.swift"
+            timestampString = "524155473.585154"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "289"
+            endingLineNumber = "289"
+            landmarkName = "MakeGetListPlan(access_token:)"
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

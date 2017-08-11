@@ -52,47 +52,44 @@ class LoginViewController: UIViewController {
                 print("DECLINED PERMISSIONS: \(declinedPermissions)")
                 print("ACCESS TOKEN \(accessToken)")
                 
-                let connection = GraphRequestConnection()
-                connection.add(MyProfileRequest()) { response, result in
-                    switch result {
-                    case .success(let response):
-                        print("Custom Graph Request Succeeded: \(response)")
-                        
-                        print("My facebook id is \(response)")
-                        if let result = response as? [String: Any] {
-                            // Got the email; send it to Lucid's server
-                            guard let email = result["email"] as? String else {
-                                // No email? Fail the login
-                                return
-                            }
-                            guard let username = result["name"] as? String else {
-                                // No username? Fail the login
-                                return
-                            }
-                            
-                            guard let firstname = result["first_name"] as? String else {
-                                // No username? Fail the login
-                                return
-                            }
-                            
-                            guard let lastname = result["last_name"] as? String else {
-                                // No username? Fail the login
-                                return
-                            }
-
-                            
-                            guard let userId = result["id"] as? String else {
-                                // No userId? Fail the login
-                                return
-                            }
-                            self.MakeGeoFacebook(FbToken: accessToken.authenticationToken, Email: email, Firstname: firstname, Lastname: lastname)
-                        }
-              
-                    case .failed(let error):
-                        print("Custom Graph Request Failed: \(error)")
+                
+                let parameters = ["fields":"email,first_name,last_name,picture"]
+                
+                
+                FBSDKGraphRequest(graphPath: "me", parameters: parameters).start(completionHandler: { (connection, result, error) in
+                    
+                    if error != nil {
+                        print (error)
+                        return
                     }
-                }
-                connection.start()
+                     if let result = result as? [String: Any] {
+                    guard let email = result["email"] as? String else {
+                        // No email? Fail the login
+                        return
+                    }
+                  
+                    
+                    guard let firstname = result["first_name"] as? String else {
+                        // No username? Fail the login
+                        return
+                    }
+                    
+                    guard let lastname = result["last_name"] as? String else {
+                        // No username? Fail the login
+                        return
+                    }
+                    
+                    
+                   
+                    print (email)
+                    print (firstname)
+                    print (accessToken.authenticationToken)
+                    self.MakeGeoFacebook(FbToken: accessToken.authenticationToken, Email: email, Firstname: firstname, Lastname: lastname)
+
+                    }
+                    
+                })
+                
                 
             }
         }

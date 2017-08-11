@@ -10,9 +10,10 @@ import UIKit
 import AlamofireNetworkActivityIndicator
 
 import Stripe
-import FacebookCore
-import FacebookLogin
 
+
+import FBSDKCoreKit
+import FBSDKLoginKit
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -23,17 +24,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
          NetworkActivityIndicatorManager.shared.isEnabled = true
         NetworkActivityIndicatorManager.shared.startDelay = 0.1
     }
-    override init()
-    {
-        super.init()
-       
-     
-    }
+  
    
 
    
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
+        FBSDKApplicationDelegate.sharedInstance().application(application, didFinishLaunchingWithOptions: launchOptions)
+        
         
         UINavigationBar.appearance().barTintColor=GlobalVar.StaticVar.Violet
         UINavigationBar.appearance().tintColor=UIColor.white
@@ -71,7 +69,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
     
    
-    
+    @objc(application:openURL:sourceApplication:annotation:) func application(_ application: UIApplication, open openurl: URL, sourceApplication: String?, annotation: Any) -> Bool {
+        return FBSDKApplicationDelegate.sharedInstance().application(application, open: openurl, sourceApplication: sourceApplication, annotation: annotation)
+        
+    }
 
     func applicationWillResignActive(_ application: UIApplication) {
         // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
