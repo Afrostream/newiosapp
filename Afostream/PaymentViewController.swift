@@ -74,6 +74,15 @@ class PaymentViewController: UIViewController ,UITableViewDataSource,UITableView
         
     }
     
+    override var supportedInterfaceOrientations: UIInterfaceOrientationMask {
+        return UIInterfaceOrientationMask.portrait
+    }
+    
+    override var preferredInterfaceOrientationForPresentation: UIInterfaceOrientation {
+        return UIInterfaceOrientation.portrait
+    }
+    
+    
     @IBAction func bntValidate(_ sender: Any) {
         
         if self.SelectedPlan != nil {

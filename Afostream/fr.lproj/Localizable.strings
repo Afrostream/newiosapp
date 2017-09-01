@@ -1,0 +1,30 @@
+/* 
+  Localizable.strings
+  Afostream
+
+  Created by Bahri on 11/05/2017.
+  Copyright © 2017 Bahri. All rights reserved.
+*/
+
+"Home" = "Accueil";
+"Favoris" = "Favoris";
+"Account" = "Mon compte";
+"ErrorLoginField" = "Veuillez entrer vos idantifiants";
+"Error" = "Erreur";
+"ErrorAccessToken" = "Erreur d'authentification";
+"CategoriesMenu" = "Catégories";
+"ReadMore" = "Lire la suite";
+"ReadLess" = "Réduire";
+
+"Search" = "Recherche";
+
+"RegisterErrorLastname" = "Veuillez entrer votre nom de famille";
+"RegisterErrorFirstname" = "Veuillez entrer votre prénom";
+"RegisterErrorEmail" = "Veuillez entrer votre email";
+"RegisterErrorPhone" = "Veuillez entrer votre numéro de téléphone";
+"RegisterErrorPassword" = "Veuillez entrer votre password";
+"RegisterErrorRetypePass" = "Veuillez retapper votre password";
+"RegisterErrorPassNotMatch" = "YVotre mot de passe et votre mot de passe retape ne correspondent pas";
+"SelectPayTerm" = "Veuillez accepter les conditions de paiement";
+"SelectCGU" = "Veuillez accepter les conditions générales d'utilisation";
+"SelectPlan" = "Sélectionnez un plan";

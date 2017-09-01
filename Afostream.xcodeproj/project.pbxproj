@@ -87,6 +87,9 @@
 		15870FDD1F2F6C90008C63F6 /* StripeSettings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = StripeSettings.swift; path = ../StripeSettings.swift; sourceTree = "<group>"; };
 		158C75D21ECDE49500501FD3 /* CategoryRow.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CategoryRow.swift; sourceTree = "<group>"; };
 		158C75D41ECDEF8A00501FD3 /* VideoCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VideoCell.swift; sourceTree = "<group>"; };
+		1590E7911F5968C5004FCEB4 /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/Main.strings; sourceTree = "<group>"; };
+		1590E7921F5968C5004FCEB4 /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
+		1590E7931F599630004FCEB4 /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/Localizable.strings; sourceTree = "<group>"; };
 		15925BFF1ECC7EB60090DE5F /* CategorieViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CategorieViewController.swift; sourceTree = "<group>"; };
 		159359781EBCCF9F00E16085 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		159400771F14F777006DC9E4 /* WebViewViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WebViewViewController.swift; sourceTree = "<group>"; };
@@ -275,6 +278,7 @@
 			knownRegions = (
 				en,
 				Base,
+				fr,
 			);
 			mainGroup = 15416D181EBB5AEA0008FAD6;
 			productRefGroup = 15416D221EBB5AEB0008FAD6 /* Products */;
@@ -395,6 +399,7 @@
 			children = (
 				15416D291EBB5AEC0008FAD6 /* Base */,
 				15B186C91EC4846B00EC3EBB /* en */,
+				1590E7911F5968C5004FCEB4 /* fr */,
 			);
 			name = Main.storyboard;
 			sourceTree = "<group>";
@@ -403,6 +408,7 @@
 			isa = PBXVariantGroup;
 			children = (
 				15416D2E1EBB5AEC0008FAD6 /* Base */,
+				1590E7921F5968C5004FCEB4 /* fr */,
 			);
 			name = LaunchScreen.storyboard;
 			sourceTree = "<group>";
@@ -411,6 +417,7 @@
 			isa = PBXVariantGroup;
 			children = (
 				15B186CB1EC484C500EC3EBB /* en */,
+				1590E7931F599630004FCEB4 /* fr */,
 			);
 			name = Localizable.strings;
 			sourceTree = "<group>";
@@ -422,6 +429,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
@@ -473,6 +481,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";

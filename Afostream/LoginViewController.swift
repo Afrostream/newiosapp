@@ -17,6 +17,9 @@ class LoginViewController: UIViewController {
     @IBOutlet weak var txtUser: DesignableUITextField!
     @IBOutlet weak var txtPass: DesignableUITextField!
     
+    @IBAction func forgetPassword(_ sender: Any) {
+        
+    }
     @IBAction func bntOrange(_ sender: Any) {
         
         let vc = self.storyboard?.instantiateViewController(withIdentifier: "WebViewViewController") as! WebViewViewController
